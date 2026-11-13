@@ -5,7 +5,7 @@ window.MG_CONTENT = {
   },
   "settings": {
     "brand": "Magmafy",
-    "brandSuffix": "Ahmad Ashraf",
+    "brandSuffix": "Ashraf",
     "defaultLang": "ar",
     "email": "hello@magmafyogp.com",
     "bookingEmail": "hello@magmafyogp.com",
