@@ -113,6 +113,7 @@ const LABELS = {
   settings: 'الإعدادات والتواصل', legal: 'بيانات المنشأة', projects: 'مشاريع الأعمال',
   'i18n.ar': 'النصوص · العربية', 'i18n.en': 'النصوص · English',
   brand: 'اسم العلامة', brandSuffix: 'إضافة للاسم', defaultLang: 'اللغة الافتراضية (ar / en)', email: 'البريد الإلكتروني', bookingEmail: 'بريد استلام الحجوزات', phone: 'الجوال', whatsapp: 'واتساب (بالصيغة الدولية 9665…)', address: 'العنوان',
+  analytics: 'أدوات التتبع (تعمل بعد موافقة الزائر)', ga4: 'Google Analytics 4 — Measurement ID (G-XXXXXXXXXX)', clarity: 'Microsoft Clarity — Project ID',
   social: 'روابط التواصل الاجتماعي (https://…)', form: 'نموذج الحجز', accessKey: 'Web3Forms Access Key', endpoint: 'رابط إرسال النموذج (Magmafy OS · Apps Script /exec)', provider: 'المزود',
   name: 'الاسم', company: 'الاسم التجاري', crNumber: 'رقم السجل التجاري', vatNumber: 'الرقم الضريبي (VAT)', street: 'الشارع', zip: 'الرمز البريدي', city: 'المدينة', country: 'الدولة', hosting: 'مزود الاستضافة',
   image: 'الصورة', url: 'الرابط', tags: 'الوسوم', title: 'العنوان', label: 'التسمية', text: 'النص', languages: 'اللغات', demo: 'العرض الحي'

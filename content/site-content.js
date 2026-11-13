@@ -24,6 +24,10 @@ window.MG_CONTENT = {
       "ar",
       "en"
     ],
+    "analytics": {
+      "ga4": "",
+      "clarity": ""
+    },
     "form": {
       "provider": "google-apps-script",
       "endpoint": "https://script.google.com/macros/s/AKfycbwHc0b5-Zi0ayYiEyUseqfHg32jiORf8rTRq4MtSYR-pDS_fs09yG-Mn4x9zddQ1i1E/exec",
@@ -528,7 +532,7 @@ window.MG_CONTENT = {
       },
       "cookies": {
         "title": "إعدادات الخصوصية",
-        "banner": "نستخدم فقط التخزين الضروري لعمل الموقع، مثل حفظ لغتك واختيارك هنا. لا نستخدم حاليًا أي أدوات إحصاء أو إعلانات، ولن نفعّلها إلا بموافقتك. يمكنك تغيير اختيارك في أي وقت من «إعدادات الخصوصية» أسفل الصفحة.",
+        "banner": "نستخدم التخزين الضروري لعمل الموقع، مثل حفظ لغتك واختيارك هنا. أما أدوات الإحصاء (Google Analytics وMicrosoft Clarity) والإعلانات فلا نفعّلها إلا بموافقتك. يمكنك تغيير اختيارك في أي وقت من «إعدادات الخصوصية» أسفل الصفحة.",
         "text": "اختر الفئات التي تسمح لنا باستخدامها. يُحفظ اختيارك في متصفحك فقط لمدة 12 شهرًا.",
         "acceptAll": "قبول الكل",
         "rejectAll": "الضروري فقط",
@@ -545,7 +549,7 @@ window.MG_CONTENT = {
           },
           "statistics": {
             "title": "إحصاءات",
-            "text": "يساعدنا على فهم كيف يستخدم الزوار الموقع (مثل قياس الزيارات دون تحديد هويتك)."
+            "text": "يساعدنا على فهم كيف يستخدم الزوار الموقع عبر Google Analytics (قياس الزيارات والصفحات) وMicrosoft Clarity (خرائط حرارية وتسجيلات لتفاعل الزوار مع الصفحات، مع إخفاء بيانات النماذج). لا نحدد هويتك."
           },
           "marketing": {
             "title": "تسويق",
@@ -585,7 +589,7 @@ window.MG_CONTENT = {
           "h": "2. ما البيانات التي نجمعها؟",
           "p": [
             "عند حجز اجتماع: الاسم، البريد الإلكتروني، رقم الجوال، اسم النشاط والمدينة، الرابط الذي تشاركه (اختياري)، ملاحظاتك، ونوع الاجتماع وموعده والمنصة التي اخترتها.",
-            "عند تصفح الموقع: البيانات التقنية التي يسجلها مزود الاستضافة تلقائيًا (عنوان IP، الوقت، الصفحة، نوع المتصفح) لتشغيل الموقع وحمايته. لا نستخدم ملفات تتبع أو أدوات إعلانية حاليًا."
+            "عند تصفح الموقع: البيانات التقنية التي يسجلها مزود الاستضافة تلقائيًا (عنوان IP، الوقت، الصفحة، نوع المتصفح) لتشغيل الموقع وحمايته. وإذا وافقت على فئة الإحصاء: بيانات استخدام لا تحدد هويتك (الصفحات التي تزورها، نوع الجهاز والمتصفح، المصدر الذي جئت منه، وكيفية تفاعلك مع الصفحة) عبر Google Analytics وMicrosoft Clarity. ولا نستخدم أدوات إعلانية حاليًا."
           ]
         },
         {
@@ -603,13 +607,13 @@ window.MG_CONTENT = {
         {
           "h": "5. مع من نشاركها؟",
           "p": [
-            "تُرسل بيانات نموذج الحجز مشفّرة عبر خدمة النماذج Web3Forms التي تحوّلها لنا كرسالة بريد، ونستخدم Google Meet أو Zoom لعقد الاجتماع حسب اختيارك. قد يعالج هؤلاء المزودون البيانات خارج المملكة، ونحرص على أن يكون ذلك بالقدر اللازم فقط ووفق الضمانات التي يتطلبها النظام."
+            "تُرسل بيانات نموذج الحجز مشفّرة عبر خدمة النماذج Web3Forms التي تحوّلها لنا كرسالة بريد، ونستخدم Google Meet أو Zoom لعقد الاجتماع حسب اختيارك. قد يعالج هؤلاء المزودون البيانات خارج المملكة، ونحرص على أن يكون ذلك بالقدر اللازم فقط ووفق الضمانات التي يتطلبها النظام. وإذا فعّلت فئة الإحصاء فتُعالَج بيانات الاستخدام لدى Google (Google Analytics) وMicrosoft (Clarity)، وقد يكون ذلك خارج المملكة."
           ]
         },
         {
           "h": "6. التخزين المحلي وملفات الارتباط",
           "p": [
-            "نحفظ في متصفحك فقط ما هو ضروري: لغتك إذا غيّرتها، واختيارك لإعدادات الخصوصية. لا تغادر هذه البيانات جهازك. فئات الإحصاء والتسويق لا تُفعَّل إلا بموافقتك الصريحة، ولا نستخدم أيًّا منها حاليًا."
+            "نحفظ في متصفحك فقط ما هو ضروري: لغتك إذا غيّرتها، واختيارك لإعدادات الخصوصية. لا تغادر هذه البيانات جهازك. فئتا الإحصاء والتسويق لا تُفعَّلان إلا بموافقتك الصريحة. عند قبول الإحصاء تضع Google Analytics وMicrosoft Clarity ملفات ارتباط (مثل _ga و_clck و_clsk) تدوم من يوم واحد إلى 12 شهرًا، ويمكنك سحب موافقتك في أي وقت من «إعدادات الخصوصية» فتتوقف الأدوات وتُحذف هذه الملفات. ولا نستخدم فئة التسويق حاليًا."
           ]
         },
         {
@@ -1139,7 +1143,7 @@ window.MG_CONTENT = {
       },
       "cookies": {
         "title": "Privacy settings",
-        "banner": "We only use the storage this website needs to work, such as remembering your language and this choice. We currently use no analytics or ad tools, and we'll only turn them on with your consent. You can change your choice any time under “Privacy settings” at the bottom of the page.",
+        "banner": "We use the storage this website needs to work, such as remembering your language and this choice. Statistics tools (Google Analytics and Microsoft Clarity) and ad tools are only turned on with your consent. You can change your choice any time under “Privacy settings” at the bottom of the page.",
         "text": "Choose which categories we may use. Your choice is stored only in your browser for 12 months.",
         "acceptAll": "Accept all",
         "rejectAll": "Necessary only",
@@ -1156,7 +1160,7 @@ window.MG_CONTENT = {
           },
           "statistics": {
             "title": "Statistics",
-            "text": "Helps us understand how visitors use the website (e.g. counting visits without identifying you)."
+            "text": "Helps us understand how visitors use the website through Google Analytics (visits and pages) and Microsoft Clarity (heatmaps and recordings of how visitors interact with pages, with form fields masked). We don't identify you."
           },
           "marketing": {
             "title": "Marketing",
@@ -1196,7 +1200,7 @@ window.MG_CONTENT = {
           "h": "2. What we collect",
           "p": [
             "When you book a meeting: name, email, mobile number, business name and city, a link you share (optional), your notes, and the meeting type, time and platform you chose.",
-            "When you browse: technical data our hosting provider logs automatically (IP address, time, page, browser type) to run and protect the website. We currently use no tracking cookies or ad tools."
+            "When you browse: technical data our hosting provider logs automatically (IP address, time, page, browser type) to run and protect the website. If you accept the statistics category: usage data that doesn't identify you (pages visited, device and browser type, the source you came from, and how you interact with a page) through Google Analytics and Microsoft Clarity. We currently use no ad tools."
           ]
         },
         {
@@ -1214,13 +1218,13 @@ window.MG_CONTENT = {
         {
           "h": "5. Who we share it with",
           "p": [
-            "Booking-form data is sent encrypted through the form service Web3Forms, which forwards it to us by email, and we use Google Meet or Zoom for the meeting, as you choose. These providers may process data outside the Kingdom; we keep this to what is necessary and apply the safeguards the PDPL requires."
+            "Booking-form data is sent encrypted through the form service Web3Forms, which forwards it to us by email, and we use Google Meet or Zoom for the meeting, as you choose. These providers may process data outside the Kingdom; we keep this to what is necessary and apply the safeguards the PDPL requires. If you enable the statistics category, usage data is also processed by Google (Google Analytics) and Microsoft (Clarity), possibly outside the Kingdom."
           ]
         },
         {
           "h": "6. Local storage and cookies",
           "p": [
-            "We store only what is necessary in your browser: your language if you change it, and your privacy choice. This data never leaves your device. Statistics and marketing categories are only enabled with your explicit consent, and none are in use today."
+            "We store only what is necessary in your browser: your language if you change it, and your privacy choice. This data never leaves your device. Statistics and marketing categories are only enabled with your explicit consent. If you accept statistics, Google Analytics and Microsoft Clarity set cookies (such as _ga, _clck and _clsk) that last from one day up to 12 months; you can withdraw consent any time under “Privacy settings”, which stops the tools and deletes these cookies. We don't use the marketing category today."
           ]
         },
         {

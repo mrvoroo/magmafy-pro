@@ -3,6 +3,7 @@
 import { h, icon, L, section, svg } from './kit.js';
 import { getLang } from '../core.js';
 import { saveReadiness, crmPost } from '../crm.js';
+import { track } from '../analytics.js';
 
 const T = {
   demo: { ar: 'تجربة حية · بيانات توضيحية', en: 'Live demo · sample data' },
@@ -124,6 +125,7 @@ function readiness() {
     // Keep the result for the booking form and record it (anonymously) in Magmafy OS.
     const readinessResult = { score, level, answers: vals.slice(), at: Date.now() };
     saveReadiness(readinessResult);
+    track('readiness_completed', { score, level });
     if (window.MGConsent && window.MGConsent.has('statistics')) crmPost('readiness', { readiness: readinessResult, language: getLang() });
     const recs = vals.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]).slice(0, 3).map(([, i]) => L(c.recs)[i]);
     const restart = h('button', { type: 'button', class: 'btn btn--ghost btn--sm' }, L(c.restart));

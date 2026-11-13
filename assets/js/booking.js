@@ -4,6 +4,7 @@
 // Either way the visitor gets a Google Calendar link and an .ics file for the slot.
 import { h, t, str, icon, settings, getLang, safeUrl } from './core.js';
 import { socialLinks } from './layout.js';
+import { track } from './analytics.js';
 import { crmEndpoint, crmPost, crmBusySlots, getUtm, getReferrer, getReadiness } from './crm.js';
 
 const arr = (v) => (Array.isArray(v) ? v : []);
@@ -149,7 +150,7 @@ export function bookingPage() {
   const submit = h('button', { type: 'submit', class: 'btn btn--primary btn--block' }, h('span', { class: 'btn__label' }, b.confirm), icon('arrow', 18));
   const stepEls = arr(b.steps).map((s, i) => h('li', { class: 'bk-steps__item' }, h('i', {}, String(i + 1)), h('span', {}, s)));
 
-  const form = h('form', { class: 'bk-form', novalidate: true },
+  const form = h('form', { class: 'bk-form', 'data-clarity-mask': 'True', novalidate: true },
     h('ol', { class: 'bk-steps', 'aria-hidden': 'true' }, ...stepEls),
     h('fieldset', { class: 'bk-block' },
       h('legend', {}, h('i', {}, '1'), b.typeHead),
@@ -295,6 +296,7 @@ export function bookingPage() {
     const mailto = EMAIL_RE.test(to) ? 'mailto:' + encodeURIComponent(to) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.map(([k, v]) => k + ': ' + v).join('\n')) : '';
     if (!sent && !mailto) { status.textContent = b.errors.noEmail; return; }
     lastSent = Date.now();
+    if (sent) track('generate_lead', { meeting_type: st.type, meeting_platform: platform, language: getLang() });
 
     // Calendar links for the visitor.
     const gcal = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(brand + ' · ' + typeTitle()) +

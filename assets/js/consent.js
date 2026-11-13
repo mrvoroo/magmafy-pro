@@ -5,14 +5,15 @@
 // - the record expires after 12 months.
 // Optional scripts must check MGConsent.has('statistics' | 'marketing') before loading.
 import { h, t } from './core.js';
+import { analyticsServices } from './analytics.js';
 
 const KEY = 'mg-consent';
 const VERSION = 1;
 const MAX_AGE = 365 * 24 * 60 * 60 * 1000;
 const CATS = ['necessary', 'statistics', 'marketing'];
 // Categories with services actually in use.
-// statistics: the anonymous growth-readiness result is counted only after opt-in.
-const IN_USE = { statistics: ['Magmafy OS (Google Apps Script)'], marketing: [] };
+// statistics: the anonymous growth-readiness result and the analytics tools run only after opt-in.
+const inUse = () => ({ statistics: ['Magmafy OS (Google Apps Script)', ...analyticsServices()], marketing: [] });
 
 const listeners = new Set();
 let record = read();
@@ -81,7 +82,7 @@ export function openSettings() {
     const locked = cat === 'necessary';
     const input = h('input', { type: 'checkbox', role: 'switch', id: 'c-' + cat, checked: locked || state[cat], disabled: locked });
     input.addEventListener('change', () => { state[cat] = input.checked; });
-    const note = locked ? t('cookies.alwaysOn') : (IN_USE[cat].length ? IN_USE[cat].join(', ') : t('cookies.notUsed'));
+    const note = locked ? t('cookies.alwaysOn') : (inUse()[cat].length ? inUse()[cat].join(', ') : t('cookies.notUsed'));
     return h('div', { class: 'consent__cat' },
       h('div', { class: 'consent__cat-head' },
         h('label', { for: 'c-' + cat }, t('cookies.cats.' + cat + '.title')),

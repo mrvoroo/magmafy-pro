@@ -5,8 +5,10 @@ import { renderPage, pageTitle } from './pages.js';
 import { createWorld } from './world.js';
 import { showBanner, refreshBanner } from './consent.js';
 import { captureUtm } from './crm.js';
+import { initAnalytics } from './analytics.js';
 
 captureUtm();
+initAnalytics();
 
 const page = document.body.dataset.page || 'home';
 const reduced = reducedMotion();
