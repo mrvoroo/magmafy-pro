@@ -18,7 +18,7 @@ window.MG_CONTENT = {
       "snapchat": "",
       "x": "",
       "linkedin": "https://www.linkedin.com/in/ahmxash/",
-      "whatsapp": ""
+      "whatsapp": "+966590873178"
     },
     "languages": [
       "ar",
