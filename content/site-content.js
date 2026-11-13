@@ -5,7 +5,7 @@ window.MG_CONTENT = {
   },
   "settings": {
     "brand": "Magmafy",
-    "brandSuffix": "Ashraf",
+    "brandSuffix": "",
     "defaultLang": "ar",
     "email": "hello@magmafyogp.com",
     "bookingEmail": "hello@magmafyogp.com",
@@ -619,7 +619,7 @@ window.MG_CONTENT = {
         {
           "h": "5. مع من نشاركها؟",
           "p": [
-            "تُرسل بيانات نموذج الحجز مشفّرة عبر خدمة النماذج Web3Forms التي تحوّلها لنا كرسالة بريد، ونستخدم Google Meet أو Zoom لعقد الاجتماع حسب اختيارك. قد يعالج هؤلاء المزودون البيانات خارج المملكة، ونحرص على أن يكون ذلك بالقدر اللازم فقط ووفق الضمانات التي يتطلبها النظام. وإذا فعّلت فئة الإحصاء فتُعالَج بيانات الاستخدام لدى Google (Google Analytics) وMicrosoft (Clarity)، وقد يكون ذلك خارج المملكة."
+            "تُرسل بيانات نموذج الحجز مشفّرة عبر الاتصال الآمن (HTTPS) وتصلنا كرسالة بريد إلكتروني، ونستخدم Google Meet أو Zoom لعقد الاجتماع حسب اختيارك. قد يعالج هؤلاء المزودون البيانات خارج المملكة، ونحرص على أن يكون ذلك بالقدر اللازم فقط ووفق الضمانات التي يتطلبها النظام. وإذا فعّلت فئة الإحصاء فتُعالَج بيانات الاستخدام لدى Google (Google Analytics) وMicrosoft (Clarity)، وقد يكون ذلك خارج المملكة."
           ]
         },
         {
@@ -1242,7 +1242,7 @@ window.MG_CONTENT = {
         {
           "h": "5. Who we share it with",
           "p": [
-            "Booking-form data is sent encrypted through the form service Web3Forms, which forwards it to us by email, and we use Google Meet or Zoom for the meeting, as you choose. These providers may process data outside the Kingdom; we keep this to what is necessary and apply the safeguards the PDPL requires. If you enable the statistics category, usage data is also processed by Google (Google Analytics) and Microsoft (Clarity), possibly outside the Kingdom."
+            "Booking-form data is sent over a secure connection (HTTPS) and reaches us by email, and we use Google Meet or Zoom for the meeting, as you choose. These providers may process data outside the Kingdom; we keep this to what is necessary and apply the safeguards the PDPL requires. If you enable the statistics category, usage data is also processed by Google (Google Analytics) and Microsoft (Clarity), possibly outside the Kingdom."
           ]
         },
         {
