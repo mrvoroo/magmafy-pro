@@ -13,7 +13,7 @@ window.MG_CONTENT = {
     "whatsapp": "+966590873178",
     "address": "Online",
     "social": {
-      "instagram": "https://www.instagram.com/magmafy.ogp",
+      "instagram": "https://www.instagram.com/ahmed__ash",
       "tiktok": "",
       "snapchat": "",
       "x": "",
