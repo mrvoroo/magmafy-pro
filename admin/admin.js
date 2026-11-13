@@ -217,7 +217,7 @@ function loginScreen(error = '') {
   const go = h('button', { type: 'submit', class: 'btn btn--primary' }, 'دخول');
   const offline = h('button', { type: 'button', class: 'btn btn--ghost' }, 'تعديل بدون GitHub (تنزيل الملف)');
   const form = h('form', { class: 'card login', novalidate: true },
-    h('div', { class: 'brand', dir: 'ltr' }, h('b', {}, 'Magmafy'), h('small', {}, 'Admin')),
+    h('div', { class: 'brand', dir: 'ltr' }, h('img', { src: '../assets/img/logo-mark.webp', width: '28', height: '28', alt: '', class: 'brand__logo' }), h('b', {}, 'Magmafy'), h('small', {}, 'Admin')),
     h('h1', {}, 'إدارة محتوى الموقع'),
     h('p', { class: 'muted' }, 'ادخل بتوكن GitHub له صلاحية على هذا المستودع فقط. التعديلات تظهر على الموقع خلال دقيقة تقريبًا.'),
     h('div', { class: 'grid3' },
@@ -267,7 +267,7 @@ function sectionList() {
 }
 
 function editor() {
-  const nav = h('nav', { class: 'side' }, h('div', { class: 'brand', dir: 'ltr' }, h('b', {}, 'Magmafy'), h('small', {}, 'Admin')));
+  const nav = h('nav', { class: 'side' }, h('div', { class: 'brand', dir: 'ltr' }, h('img', { src: '../assets/img/logo-mark.webp', width: '28', height: '28', alt: '', class: 'brand__logo' }), h('b', {}, 'Magmafy'), h('small', {}, 'Admin')));
   const main = h('section', { class: 'content' });
   const search = h('input', { type: 'search', placeholder: 'ابحث عن حقل أو نص…', class: 'search' });
   const save = h('button', { type: 'button', class: 'btn btn--primary save' }, state.offline ? 'تنزيل الملف' : 'نشر');

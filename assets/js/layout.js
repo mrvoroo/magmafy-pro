@@ -3,8 +3,6 @@ import { h, t, icon, settings, getLang, safeUrl, LANGS, SERVICE_KEYS, SERVICE_PA
 import { openSettings } from './consent.js';
 
 const SOCIAL = [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['snapchat', 'Snapchat'], ['x', 'X'], ['linkedin', 'LinkedIn'], ['whatsapp', 'WhatsApp']];
-const SVG_NS = 'http://www.w3.org/2000/svg';
-let logoId = 0;
 
 // Social icons are always shown; without a link they render as quiet placeholders.
 export function socialLinks(cls = 'footer__social') {
@@ -27,16 +25,9 @@ const NAV = [
   { key: 'contact', href: 'booking.html', page: 'contact' }
 ];
 
-// The Magmafy "M" tile in the brand gradient.
+// The Magmafy "M" logo (raster, transparent corners).
 function logoMark() {
-  const id = 'mg-logo-' + (++logoId);
-  const s = (tag, attrs, ...kids) => h(tag, { ns: SVG_NS, ...attrs }, ...kids);
-  return s('svg', { class: 'brand__mark', viewBox: '0 0 40 40', width: '34', height: '34', 'aria-hidden': 'true', focusable: 'false' },
-    s('defs', {}, s('linearGradient', { id, x1: '0', y1: '1', x2: '1', y2: '0' },
-      ...[['0', '#4f5bd5'], ['.35', '#962fbf'], ['.6', '#d62976'], ['.82', '#fa7e1e'], ['1', '#feda75']].map(([o, c]) => s('stop', { offset: o, 'stop-color': c })))),
-    s('rect', { width: '40', height: '40', rx: '12', fill: 'url(#' + id + ')' }),
-    s('path', { d: 'M10 28V13.5c0-1.2 1.5-1.8 2.3-.9L20 21l7.7-8.4c.8-.9 2.3-.3 2.3.9V28', fill: 'none', stroke: '#fff', 'stroke-width': '3.4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }),
-    s('circle', { cx: '20', cy: '30', r: '2.2', fill: '#fff' }));
+  return h('img', { class: 'brand__mark', src: 'assets/img/logo-mark.webp', width: '34', height: '34', alt: '', decoding: 'async' });
 }
 
 export function brandMark() {

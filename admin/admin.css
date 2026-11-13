@@ -86,3 +86,5 @@ input[type=checkbox] { width: auto; accent-color: var(--violet); }
 [dir=rtl] .toast { margin-left: 0; margin-right: auto; }
 input[type=password], input[placeholder^=github] { direction: ltr; }
 @media (max-width: 760px) { [dir=rtl] .side { border-left: 0; } }
+
+.brand__logo { width: 28px; height: 28px; align-self: center; border-radius: 8px; }
