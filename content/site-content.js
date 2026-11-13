@@ -1,23 +1,23 @@
 window.MG_CONTENT = {
   "meta": {
     "version": 1,
-    "updated": "2026-10-28"
+    "updated": "2026-11-13"
   },
   "settings": {
     "brand": "Magmafy",
-    "brandSuffix": "",
+    "brandSuffix": "Ahmad Ashraf",
     "defaultLang": "ar",
-    "email": "hello@magmafy.com",
-    "bookingEmail": "hello@magmafy.com",
-    "phone": "",
-    "whatsapp": "",
-    "address": "",
+    "email": "magmafyogp@gmail.com",
+    "bookingEmail": "magmafyogp@gmail.com",
+    "phone": "+966590873178",
+    "whatsapp": "+966590873178",
+    "address": "Online",
     "social": {
-      "instagram": "",
+      "instagram": "https://www.instagram.com/magmafy.ogp",
       "tiktok": "",
       "snapchat": "",
       "x": "",
-      "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/magmafyogp/",
       "whatsapp": ""
     },
     "languages": [
