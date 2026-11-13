@@ -39,7 +39,7 @@ window.MG_CONTENT = {
     "country": "",
     "email": "hello@magmafyogp.com",
     "phone": "",
-    "hosting": "GitHub Pages – GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA"
+    "hosting": "Cloudflare Pages – Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA"
   },
   "projects": [
     {

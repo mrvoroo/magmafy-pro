@@ -33,7 +33,7 @@ Don't double-click index.html; ES modules and the 3D models need a local server.
 ## تعديل المحتوى / Editing content
 
 - كل النصوص في `content/site-content.js` (العربية والإنجليزية).
-- لوحة التحكم: `/admin/`. ادخل بتوكن GitHub من نوع Fine-grained له صلاحية «Contents: Read and write» على هذا المستودع فقط. المستودع الافتراضي `KILLerbood/magmafy-pro` والفرع `main`.
+- لوحة التحكم: `/admin/`. ادخل بتوكن GitHub من نوع Fine-grained له صلاحية «Contents: Read and write» على هذا المستودع فقط. المستودع الافتراضي `mrvoroo/magmafy-pro` والفرع `main`.
 - نموذج الحجز: ضع Web3Forms Access Key في اللوحة تحت «الإعدادات والتواصل ← نموذج الحجز». بدون المفتاح يفتح الحجز بريد الزائر.
 
 - All copy lives in `content/site-content.js` (Arabic and English).
