@@ -10,7 +10,7 @@ const MAX_TEXT = 5000;
 const MAX_IMAGE = 1.5 * 1024 * 1024;
 
 const app = document.getElementById('app');
-const state = { owner: 'KILLerbood', repo: 'magmafy-pro', branch: 'main', token: '', sha: null, data: null, dirty: false, offline: false, section: 'settings' };
+const state = { owner: 'mrvoroo', repo: 'magmafy-pro', branch: 'main', token: '', sha: null, data: null, dirty: false, offline: false, section: 'settings' };
 
 /* ---------- DOM helper (no innerHTML anywhere) ---------- */
 function h(tag, attrs = {}, ...kids) {
