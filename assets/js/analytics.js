@@ -66,7 +66,10 @@ function startClarity() {
 
 function expireCookies(match) {
   const host = location.hostname;
-  const domains = ['', host, '.' + host, '.' + host.replace(/^www\./, '')];
+  // GA picks the widest domain the browser allows, so try the host and every parent domain.
+  const parts = host.split('.');
+  const domains = [''];
+  for (let i = 0; i < parts.length - 1; i++) domains.push('.' + parts.slice(i).join('.'));
   document.cookie.split(';').forEach((c) => {
     const name = c.split('=')[0].trim();
     if (!match.test(name)) return;
