@@ -62,7 +62,8 @@ export function showBanner() {
   accept.addEventListener('click', () => { write({ statistics: true, marketing: true }); closeBanner(); });
   settingsBtn.addEventListener('click', () => openSettings());
   document.body.append(banner);
-  requestAnimationFrame(() => banner.classList.add('is-in'));
+  const b = banner;
+  requestAnimationFrame(() => b.classList.add('is-in'));
 }
 
 function closeBanner() {
