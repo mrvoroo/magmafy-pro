@@ -1,11 +1,14 @@
 // Entry point: renders the page for <body data-page>, wires up motion and the 3D backdrop.
-import { getLang, setLang, isRTL, reducedMotion, SERVICE_KEYS } from './core.js';
+import { getLang, setLang, isRTL, reducedMotion, SERVICE_KEYS, urlLang, langUrl } from './core.js';
 import { renderHeader, renderFooter } from './layout.js';
 import { renderPage, pageTitle } from './pages.js';
 import { createWorld } from './world.js';
 import { showBanner, refreshBanner } from './consent.js';
 import { captureUtm } from './crm.js';
 import { initAnalytics } from './analytics.js';
+
+// A returning English visitor on an Arabic address (or ?lang=en) is sent to the matching address.
+if (getLang() !== urlLang()) location.replace(langUrl(getLang()));
 
 captureUtm();
 initAnalytics();
@@ -21,7 +24,11 @@ function render() {
   document.documentElement.lang = getLang();
   document.documentElement.dir = isRTL() ? 'rtl' : 'ltr';
   document.title = pageTitle(page);
-  renderHeader(page, (l) => { setLang(l); rerender(); });
+  renderHeader(page, (l) => {
+    setLang(l);
+    if (l !== urlLang()) { location.assign(langUrl(l)); return; }
+    rerender();
+  });
   const main = document.getElementById('main');
   main.replaceChildren(...[renderPage(page)].flat());
   renderFooter();

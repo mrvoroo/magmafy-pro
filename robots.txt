@@ -1,2 +1,28 @@
+# Search engines and AI assistants are welcome on the public site.
 User-agent: *
+Allow: /
 Disallow: /admin/
+
+# AI assistants, AI search and answer engines (listed explicitly so there is no doubt)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: Googlebot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: Meta-ExternalAgent
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://magmafyogp.com/sitemap.xml
