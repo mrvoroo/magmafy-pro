@@ -65,10 +65,12 @@ function renderBody(lang, p) {
   const main = w.document.getElementById('main');
   main.replaceChildren(...[pages.renderPage(p.key)].flat());
   layout.renderFooter();
+  // The page CSP blocks inline style attributes; the browser re-applies them through the CSSOM when it renders.
+  const bare = (x) => x.replace(/\sstyle="[^"]*"/g, '');
   return {
-    header: w.document.getElementById('site-header').innerHTML,
-    main: main.innerHTML,
-    footer: w.document.getElementById('site-footer').innerHTML,
+    header: bare(w.document.getElementById('site-header').innerHTML),
+    main: bare(main.innerHTML),
+    footer: bare(w.document.getElementById('site-footer').innerHTML),
     title: pages.pageTitle(p.key)
   };
 }
