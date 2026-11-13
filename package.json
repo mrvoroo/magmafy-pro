@@ -1,0 +1,8 @@
+{
+  "name": "magmafy-pro",
+  "private": true,
+  "type": "module",
+  "description": "Magmafy website. The build pre-renders every page (Arabic at /, English at /en/) so search engines and AI crawlers can read it without running JavaScript.",
+  "scripts": { "build": "node scripts/build.mjs" },
+  "dependencies": { "jsdom": "^26.1.0" }
+}

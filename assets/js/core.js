@@ -10,11 +10,30 @@ export const legal = content.legal || {};
 export const LANGS = (Array.isArray(settings.languages) ? settings.languages : ['ar', 'en'])
   .filter((l) => /^[a-z]{2}$/.test(l) && content.i18n && content.i18n[l]);
 
+// Language lives in the URL: the Arabic site is at / and the English site at /en/.
+const isEnPath = () => /^\/en(\/|$)/.test(location.pathname);
+/** The language the current URL belongs to. */
+export const urlLang = () => (isEnPath() ? 'en' : 'ar');
+const PAGE_RE = /^(index|research|content|websites|consulting|portfolio|booking|privacy|terms|accessibility)\.html(.*)$/;
+/** Site-internal page links stay inside the English site when the visitor is on /en/. */
+export function localizeHref(v) {
+  if (!isEnPath()) return v;
+  const m = PAGE_RE.exec(v);
+  return m ? '/en/' + (m[1] === 'index' ? '' : m[1]) + m[2] : v;
+}
+/** The current page's address in another language. */
+export function langUrl(l) {
+  const slug = location.pathname.replace(/^\/en(?=\/|$)/, '').replace(/^\/+/, '').replace(/\.html$/, '').replace(/\/$/, '');
+  const q = location.search.replace(/([?&])lang=[a-z]{2}&?/, '$1').replace(/[?&]$/, '');
+  return (l === 'en' ? '/en/' : '/') + (slug === 'index' ? '' : slug) + q + location.hash;
+}
+
 let lang = pickInitialLang();
 
 function pickInitialLang() {
   const fromUrl = new URLSearchParams(location.search).get('lang');
   if (LANGS.includes(fromUrl)) return fromUrl;
+  if (isEnPath() && LANGS.includes('en')) return 'en';
   try {
     const stored = localStorage.getItem(LANG_KEY);
     if (LANGS.includes(stored)) return stored;
@@ -73,11 +92,12 @@ export function h(tag, attrs = {}, ...children) {
     if (/^on/i.test(k)) throw new Error('inline handlers are not allowed');
     if (k === 'href') {
       const url = safeUrl(v);
-      if (url) el.setAttribute('href', url);
+      if (url) el.setAttribute('href', localizeHref(url));
       continue;
     }
     if (k === 'src') {
-      const url = safeImage(v) || (/^(\.\/)?assets\/[\w\-./]+$/.test(v) ? v : '');
+      let url = safeImage(v) || (/^(\.\/)?assets\/[\w\-./]+$/.test(v) ? v : '');
+      if (url && isEnPath() && !url.startsWith('/')) url = '/' + url.replace(/^\.\//, '');
       if (url) el.setAttribute('src', url);
       continue;
     }

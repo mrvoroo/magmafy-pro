@@ -114,7 +114,19 @@ window.MG_CONTENT = {
   "i18n": {
     "ar": {
       "meta": {
-        "homeTitle": "وكالة نمو لمعارض الأثاث والديكور في السعودية"
+        "homeTitle": "وكالة نمو لمعارض الأثاث والديكور في السعودية",
+        "desc": {
+          "home": "دراسة السوق، المحتوى والإعلانات بالذكاء الاصطناعي، مواقع ومعارض ثلاثية الأبعاد، واستشارات نمو لمعارض الأثاث والديكور في السعودية والخليج.",
+          "research": "تقرير منافسين وأسعار وخريطة فرص لمعرضك في الرياض وجدة والدمام، خلال 10 أيام عمل مع خطة 90 يومًا.",
+          "content": "صور وريلز بالذكاء الاصطناعي، تقويم محتوى على مواسم البيع في السعودية، وإعلانات Meta وTikTok وSnapchat تقاس بالاستفسارات والزيارات.",
+          "websites": "مواقع ومتاجر ومعارض ثلاثية الأبعاد بالعربي والإنجليزي، مع حجز زيارة وطلب سعر عبر واتساب.",
+          "consulting": "استشارات تسويق ونمو وتحديد نطاق المواقع لمعارض الأثاث والديكور.",
+          "portfolio": "نماذج حية لمعارض 3D ومحتوى وإعلانات وتقارير من Magmafy.",
+          "booking": "احجز اجتماعًا مجانيًا 30 دقيقة على Google Meet أو Zoom: دراسة السوق، نطاق الموقع، أو استشارة عامة.",
+          "privacy": "كيف تتعامل Magmafy مع بياناتك وفق نظام حماية البيانات الشخصية.",
+          "terms": "شروط استخدام موقع Magmafy وخدماتها وبيانات المنشأة.",
+          "accessibility": "التزام Magmafy بإمكانية الوصول."
+        }
       },
       "nav": {
         "home": "الرئيسية",
@@ -725,7 +737,19 @@ window.MG_CONTENT = {
     },
     "en": {
       "meta": {
-        "homeTitle": "Growth agency for furniture & décor showrooms in Saudi Arabia"
+        "homeTitle": "Growth agency for furniture & décor showrooms in Saudi Arabia",
+        "desc": {
+          "home": "Magmafy is a growth agency for furniture and décor showrooms in Saudi Arabia and the Gulf: market research, AI-assisted content and ads, 3D websites and showrooms, and growth consulting.",
+          "research": "A competitor, pricing and opportunity report for your showroom in Riyadh, Jeddah and Dammam, delivered in 10 working days with a 90-day plan.",
+          "content": "AI-made photos and reels, a content calendar built around Saudi buying seasons, and Meta, TikTok and Snapchat ads measured by enquiries and visits.",
+          "websites": "Arabic and English websites, stores and 3D showrooms with visit booking and WhatsApp price requests for furniture and décor brands.",
+          "consulting": "Marketing, growth and website-scoping consulting for furniture and décor showrooms and stores.",
+          "portfolio": "Live demos of 3D showrooms, content, ads and reports from Magmafy.",
+          "booking": "Book a free 30-minute meeting on Google Meet or Zoom: market research, website scope, or general consulting.",
+          "privacy": "How Magmafy handles your data under the Personal Data Protection Law.",
+          "terms": "Terms of use for the Magmafy website and services, and company details.",
+          "accessibility": "Magmafy's commitment to accessibility."
+        }
       },
       "nav": {
         "home": "Home",
