@@ -13,25 +13,27 @@ const CLARITY_ID = /^[a-z0-9]{8,12}$/.test(clean(cfg.clarity)) ? clean(cfg.clari
 /** Names of the statistics tools that are actually configured (shown in the privacy settings). */
 export const analyticsServices = () => [GA_ID && 'Google Analytics', CLARITY_ID && 'Microsoft Clarity'].filter(Boolean);
 
-// The page CSP uses Trusted Types, so external script URLs go through one named, allow-listed policy.
-const SCRIPT_ORIGINS = new Set(['https://www.googletagmanager.com', 'https://www.clarity.ms']);
-let policy = null;
+// The page CSP enforces Trusted Types, and Microsoft Clarity's own tag injects a script by assigning a
+// plain string. A "default" policy lets those assignments through, but only for the tools' own hosts
+// (and the blob: worker Clarity creates for itself); anything else stays blocked.
+const SCRIPT_ORIGINS = new Set(['https://www.googletagmanager.com', 'https://www.clarity.ms', 'https://scripts.clarity.ms']);
 try {
-  if (window.trustedTypes) {
-    policy = window.trustedTypes.createPolicy('mg-analytics', {
+  if (window.trustedTypes && (GA_ID || CLARITY_ID)) {
+    window.trustedTypes.createPolicy('default', {
       createScriptURL: (u) => {
         const url = new URL(u, location.href);
-        if (!SCRIPT_ORIGINS.has(url.origin)) throw new TypeError('script origin not allowed');
+        const ownBlob = url.protocol === 'blob:' && url.origin === location.origin;
+        if (!SCRIPT_ORIGINS.has(url.origin) && !ownBlob) throw new TypeError('script origin not allowed');
         return url.href;
       }
     });
   }
-} catch (_) { /* policy blocked: loading below fails safely */ }
+} catch (_) { /* policy blocked: the tools simply do not load */ }
 
 function loadScript(src) {
   const s = document.createElement('script');
   s.async = true;
-  s.src = policy ? policy.createScriptURL(src) : src;
+  s.src = src;
   document.head.append(s);
 }
 
