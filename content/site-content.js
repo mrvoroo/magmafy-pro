@@ -25,8 +25,8 @@ window.MG_CONTENT = {
       "en"
     ],
     "analytics": {
-      "ga4": "",
-      "clarity": ""
+      "ga4": "G-6MM3HB60P9",
+      "clarity": "zd6jc9tbs6"
     },
     "form": {
       "provider": "google-apps-script",
