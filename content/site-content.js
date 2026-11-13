@@ -17,7 +17,7 @@ window.MG_CONTENT = {
       "tiktok": "",
       "snapchat": "",
       "x": "",
-      "linkedin": "https://www.linkedin.com/in/magmafyogp/",
+      "linkedin": "https://www.linkedin.com/in/ahmxash/",
       "whatsapp": ""
     },
     "languages": [
