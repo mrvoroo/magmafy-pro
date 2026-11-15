@@ -1,5 +1,5 @@
 // Small toolkit shared by the live demos on the service pages.
-import { h, icon, getLang, reducedMotion } from '../core.js';
+import { h, icon, getLang, reducedMotion, content } from '../core.js';
 
 export { h, icon, getLang };
 export const reduced = reducedMotion();
@@ -7,6 +7,23 @@ export const reduced = reducedMotion();
 // Pick the current language from an { ar, en } dictionary.
 export const L = (dict) => dict[getLang()] ?? dict.ar ?? dict.en;
 export const isAr = () => getLang() === 'ar';
+
+/* Showcase content (edited from /admin/ → "رحلة العميل"): before/after pairs, journey step visibility. */
+const showcase = content.showcase || {};
+const pct = (v) => (Number.isFinite(Number(v)) ? Math.max(0, Math.min(100, Number(v))) : 50);
+export const compareItems = () => (Array.isArray(showcase.compare) ? showcase.compare : [])
+  .filter((p) => p && p.visible !== false && p.before && p.after)
+  .map((p) => ({ id: p.id, name: (p.name && (p.name[getLang()] || p.name.ar || p.name.en)) || '', before: p.before, after: p.after, fb: pct(p.beforeFocus), fa: pct(p.afterFocus) }));
+export const stepVisible = (i) => !(Array.isArray(showcase.steps) && showcase.steps[i] && showcase.steps[i].visible === false);
+export const clientInfo = () => ({ visible: !(showcase.client && showcase.client.visible === false), ...(showcase.client || {}), text: (showcase.client && showcase.client[getLang()]) || {} });
+/** Points a before/after <img> pair at one item and keeps the product in frame. */
+export function showPair(before, after, p) {
+  // The English site lives at /en/, so asset paths must be root-relative there (same rule as core.h).
+  const abs = (u) => (/^\/en(\/|$)/.test(location.pathname) && !u.startsWith('/') ? '/' + u : u);
+  before.src = abs(p.before); after.src = abs(p.after);
+  before.alt = p.name; after.alt = p.name;
+  before.style.objectPosition = '50% ' + p.fb + '%'; after.style.objectPosition = '50% ' + p.fa + '%';
+}
 
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

@@ -1,6 +1,7 @@
 // Page renderers. Each one builds the <main> content for its data-page value.
 import { h, t, str, icon, content, settings, legal, getLang, safeUrl, safeImage, SERVICE_KEYS, SERVICE_PAGES } from './core.js';
 import { JOURNEY_VIEWS, clientCard, exampleLabel } from './journey.js';
+import { stepVisible } from './demos/kit.js';
 import { SHOWCASES } from './showcase.js';
 import { portfolioStage } from './portfolio.js';
 import { bookingPage } from './booking.js';
@@ -41,12 +42,30 @@ function hero() {
     h('a', { class: 'scroll-cue', href: '#about' }, h('span', {}, t('hero.scroll')), h('span', { class: 'scroll-cue__line', 'aria-hidden': 'true' })));
 }
 
+// First paragraph stays visible; the rest opens with "Read more" (still in the HTML for search engines).
+function aboutProse() {
+  const [first, ...rest] = arr(t('about.paragraphs'));
+  const more = h('div', { class: 'prose__more', id: 'about-more', hidden: true }, ...rest.map((p) => h('p', {}, p)));
+  const prose = h('div', { class: 'prose' }, first ? h('p', { 'data-reveal': '' }, first) : null, more);
+  if (!rest.length) return prose;
+  const readMore = t('about.readMore') || 'اقرأ المزيد', readLess = t('about.readLess') || 'عرض أقل';
+  const btn = h('button', { type: 'button', class: 'prose__toggle', 'aria-expanded': 'false', 'aria-controls': 'about-more' }, readMore);
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? readLess : readMore;
+    more.hidden = !open;
+  });
+  prose.append(btn);
+  return prose;
+}
+
 function about() {
   return h('section', { class: 'section about', id: 'about', 'data-shape': 'about' },
     h('div', { class: 'container about__grid' },
       h('div', {},
         heading({ eyebrow: t('about.eyebrow'), title: t('about.title'), accent: t('about.titleAccent') }),
-        h('div', { class: 'prose' }, ...arr(t('about.paragraphs')).map((p) => h('p', { 'data-reveal': '' }, p))),
+        aboutProse(),
         h('div', { 'data-reveal': '' }, button(t('about.cta'), 'booking.html', 'ghost'))),
       h('ul', { class: 'stats' },
         ...arr(t('about.stats')).map((s) => h('li', { class: 'stat', 'data-reveal': '' },
@@ -77,7 +96,10 @@ function services() {
 
 function journeySection() {
   const j = t('journey') || {};
-  const steps = arr(j.steps);
+  // Hidden steps (admin → "رحلة العميل") are skipped; JOURNEY_VIEWS stays keyed by the original index.
+  const all = arr(j.steps).map((s, k) => ({ ...s, k })).filter((s) => stepVisible(s.k));
+  const steps = all;
+  if (!steps.length) return null;
   let active = 0, timer = null, userPicked = false;
   const stage = h('div', { class: 'journey__stage', 'aria-live': 'polite' });
   const btns = steps.map((s, i) => {
@@ -94,7 +116,7 @@ function journeySection() {
     const s = steps[i];
     stage.replaceChildren(
       h('span', { class: 'journey__ex' }, exampleLabel()),
-      h('div', { class: 'journey__visual' }, JOURNEY_VIEWS[i]()),
+      h('div', { class: 'journey__visual' }, JOURNEY_VIEWS[s.k]()),
       h('div', { class: 'journey__copy', id: 'journey-panel', role: 'tabpanel', 'aria-labelledby': 'jt-' + i },
         h('span', { class: 'journey__tag' }, s.tag),
         h('h3', {}, s.title),

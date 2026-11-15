@@ -1,6 +1,6 @@
 // Content & ads page: an AI photo studio (before / after), a seasonal content calendar,
 // an ad preview studio with a budget planner and a filterable monthly report. Sample data.
-import { h, icon, L, section, phone, onVisible, money, num, countTo, reduced } from './kit.js';
+import { h, icon, L, section, phone, onVisible, money, num, countTo, reduced, compareItems, showPair } from './kit.js';
 
 const IMG = 'assets/img/f/';
 const pic = (f, cls = '') => h('img', { src: IMG + f + '.webp', alt: '', class: cls, loading: 'lazy', decoding: 'async' });
@@ -11,7 +11,6 @@ const T = {
     eyebrow: { ar: 'استوديو الصور بالذكاء الاصطناعي', en: 'AI photo studio' },
     title: { ar: 'صورة جوال من المخزن، ومشهد يبيع.', en: 'A phone photo from the warehouse, a scene that sells.' },
     text: { ar: 'نحافظ على شكل القطعة وخامتها ولونها بالضبط، ونغيّر المكان والإضاءة فقط. اسحب الخط لتقارن.', en: 'We keep the piece’s exact shape, material and colour and change only the room and the light. Drag the line to compare.' },
-    items: { ar: [['ba-v', 'الكنبة المخمل'], ['ba-c', 'الكرسي البرتقالي'], ['ba-l', 'الكنبة الجلد']], en: [['ba-v', 'Velvet sofa'], ['ba-c', 'Orange chair'], ['ba-l', 'Leather sofa']] },
     before: { ar: 'قبل · صورة جوال', en: 'Before · phone photo' },
     after: { ar: 'بعد · مشهد AI', en: 'After · AI scene' },
     ai: { ar: 'مشهد مولَّد بالذكاء الاصطناعي', en: 'AI-generated scene' },
@@ -64,8 +63,10 @@ const T = {
 
 /* ---------------- 1. AI photo studio ---------------- */
 function studio() {
-  const items = L(T.studio.items);
-  const before = pic(items[0][0] + '-before'), after = pic(items[0][0] + '-after');
+  const items = compareItems();
+  if (!items.length) return null;
+  const before = h('img', { src: items[0].before, alt: '', loading: 'lazy', decoding: 'async' }), after = h('img', { src: items[0].after, alt: '', loading: 'lazy', decoding: 'async' });
+  showPair(before, after, items[0]);
   const wrap = h('div', { class: 'jx-compare studio__compare', role: 'slider', tabindex: '0', 'aria-label': L(T.studio.sl), 'aria-valuemin': '0', 'aria-valuemax': '100', dir: 'ltr' },
     h('div', { class: 'jx-layer jx-layer--old' }, before),
     h('div', { class: 'jx-layer jx-layer--new' }, after, h('span', { class: 'jx-aimark' }, '✦ ' + L(T.studio.ai))),
@@ -94,11 +95,11 @@ function studio() {
   };
   const outs = [6, 3, 12].map(() => h('strong', {}, '0'));
   const count = () => [6, 3, 12].forEach((v, i) => { outs[i].dataset.v = 0; countTo(outs[i], v); });
-  const tabs = h('div', { class: 'jx-chips', role: 'group' }, ...items.map(([key, name], i) => {
-    const b = h('button', { type: 'button', class: 'jx-chip', 'aria-pressed': String(i === 0) }, name);
+  const tabs = h('div', { class: 'jx-chips', role: 'group' }, ...items.map((p, i) => {
+    const b = h('button', { type: 'button', class: 'jx-chip', 'aria-pressed': String(i === 0) }, p.name);
     b.addEventListener('click', () => {
       [...tabs.children].forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      before.src = IMG + key + '-before.webp'; after.src = IMG + key + '-after.webp';
+      showPair(before, after, p);
       cancelAnimationFrame(raf); intro(); count();
     });
     return b;
@@ -107,7 +108,7 @@ function studio() {
   const box = h('div', { class: 'studio', 'data-reveal': '' },
     wrap,
     h('div', { class: 'studio__side panel' },
-      tabs,
+      items.length > 1 ? tabs : null,
       h('ul', { class: 'check-list' }, ...L(T.studio.kept).map((k) => h('li', {}, icon('check', 16), k))),
       h('p', { class: 'panel__title' }, L(T.studio.from)),
       h('div', { class: 'studio__outs' }, ...L(T.studio.out).map((o, i) => h('div', { class: 'kpi' }, outs[i], h('span', { class: 'kpi__label' }, o)))),
@@ -314,5 +315,5 @@ function report() {
 }
 
 export function mount(container) {
-  container.replaceChildren(studio(), calendar(), media(), report());
+  container.replaceChildren(...[studio(), calendar(), media(), report()].filter(Boolean));
 }

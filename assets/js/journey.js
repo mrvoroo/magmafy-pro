@@ -1,11 +1,11 @@
 // Homepage journey showcase: one example client, "Dar Living" (a small furniture showroom in
 // Riyadh), followed through all six steps from a silent Instagram account to a busy showroom.
 // Every step is a small live demo the visitor can play with.
-import { h, icon, getLang } from './core.js';
-import { money, num, sleep, reduced } from './demos/kit.js';
+import { h, icon, getLang, content } from './core.js';
+import { money, num, sleep, reduced, compareItems, showPair, stepVisible, clientInfo } from './demos/kit.js';
 
 const IMG = 'assets/img/f/';
-const pic = (file, alt = '', cls = '') => h('img', { src: IMG + file + '.webp', alt, class: cls, loading: 'lazy', decoding: 'async' });
+const pic = (file, alt = '', cls = '') => h('img', { src: file.includes('/') ? file : IMG + file + '.webp', alt, class: cls, loading: 'lazy', decoding: 'async' });
 
 const T = {
   ar: {
@@ -14,11 +14,11 @@ const T = {
     s1: { now: 'اليوم', nowItems: ['312 متابع على إنستجرام', 'استفساران في الأسبوع', '0 زيارة معرض من السوشيال', 'آخر منشور قبل 23 يومًا'], who: 'العميل الحقيقي', next: 'الشخصية التالية', goal: 'الأهداف خلال 6 أشهر', goals: ['متجر أونلاين بعرض 3D خلال 6 أسابيع', '180 استفسارًا في الشهر', '60 زيارة معرض شهريًا'], plan: 'الخطة', planSteps: ['دراسة السوق', 'محتوى AI', 'متجر 3D', 'الرسائل', 'الإعلانات'],
       personas: [{ name: 'سارة ومحمد، 27', role: 'عرسان جدد · يجهّزون أول بيت', quote: 'نبي صالة شيك بميزانية معقولة، ونبي نشوف القطعة في بيت حقيقي قبل ما نقرر.' }, { name: 'أبو خالد، 44', role: 'عائلة تنتقل لفيلا جديدة', quote: 'أبي أأثث البيت كامل من مكان واحد، مع تقسيط وتركيب.' }, { name: 'ريم، 35', role: 'مديرة مكتب · تشتري لشركة', quote: 'أحتاج عرض سعر رسمي وتسليم سريع لـ 20 كرسي.' }],
       comp: 'المنافسون في الرياض', compRows: [['منافس أ', 'ينشر 3 مرات/أسبوع', 'يرد بعد 6 ساعات'], ['منافس ب', 'بدون موقع', 'لا يرد على التعليقات'], ['دار ليفينج + Magmafy', 'يوميًا', 'رد خلال دقائق']] },
-    s2: { before: 'قبل · صورة جوال', after: 'بعد · مشهد AI', drag: 'اسحب الخط لتقارن', sl: 'مقارنة قبل وبعد', items: [['ba-v', 'الكنبة المخمل'], ['ba-c', 'الكرسي البرتقالي'], ['ba-l', 'الكنبة الجلد']], kept: ['نفس الشكل', 'نفس الخامة', 'نفس اللون'], ai: 'مشهد مولَّد بالذكاء الاصطناعي' },
+    s2: { before: 'قبل · صورة جوال', after: 'بعد · مشهد AI', drag: 'اسحب الخط لتقارن', sl: 'مقارنة قبل وبعد', kept: ['نفس الشكل', 'نفس الخامة', 'نفس اللون'], ai: 'مشهد مولَّد بالذكاء الاصطناعي' },
     s3: { url: 'dar-living.sa', home: 'الرئيسية', shop: 'المتجر', heroT: 'بيتك الجديد يبدأ من هنا', heroP: 'أثاث مختار بعناية، توصيل وتركيب مجاني داخل الرياض.', toShop: 'تسوّق الآن', best: 'الأكثر طلبًا', add: 'أضف إلى السلة', added: 'تمت الإضافة ✓', visit: 'احجز زيارة لتجربتها', visitDone: 'تم حجز زيارتك السبت 5 م ✓', fabric: 'القماش', size: 'المقاس', back: '→ رجوع', cart: 'السلة', empty: 'سلتك فارغة.', sub: 'المجموع', ship: 'التوصيل والتركيب', free: 'مجاني', total: 'الإجمالي', checkout: 'إتمام الطلب', thanks: 'شكرًا لطلبك!', order: 'رقم الطلب', demo: 'تجربة توضيحية: لا يتم طلب أو دفع أي شيء.', again: 'متابعة التسوق', tabby: 'أو 4 دفعات بدون فوائد', view3d: '360° عرض', seats: ['3 مقاعد', 'مقعدين'] },
-    s4: { trigger: 'جرّب رسالة جديدة', running: 'جارٍ…', flow: [['رسالة جديدة على إنستجرام', '«كم سعر الكنبة الجلد؟» · {n}'], ['رد تلقائي خلال 40 ثانية', 'السعر + الكتالوج + خيارات التقسيط'], ['تأهيل العميل', 'المدينة: الرياض · الميزانية: 8–10 آلاف'], ['حجز زيارة', 'السبت 5:00 م · فرع العليا'], ['تذكير على واتساب', '«ننتظرك بكرة الساعة 5 ☕»'], ['تحديث CRM', 'العميل ← «فرصة ساخنة»']], done: 'رسالة تمت معالجتها', saved: 'مواعيد محجوزة', manual: 'قبل الأتمتة: متوسط الرد 6 ساعات، ونصف الرسائل بدون رد.' },
+    s4: { trigger: 'جرّب رسالة جديدة', running: 'جارٍ…', flow: [['رسالة جديدة على إنستجرام', '«كم سعر الركنة؟» · {n}'], ['رد تلقائي خلال 40 ثانية', 'السعر + الكتالوج + خيارات التقسيط'], ['تأهيل العميل', 'المدينة: الرياض · الميزانية: 12–14 ألف'], ['حجز زيارة', 'السبت 5:00 م · فرع العليا'], ['تذكير على واتساب', '«ننتظرك بكرة الساعة 5 ☕»'], ['تحديث CRM', 'العميل ← «فرصة ساخنة»']], done: 'رسالة تمت معالجتها', saved: 'مواعيد محجوزة', manual: 'قبل الأتمتة: متوسط الرد 6 ساعات، ونصف الرسائل بدون رد.' },
     s5: { title: 'مساعد دار ليفينج', tag: 'AI', aiLabel: 'رد بالذكاء الاصطناعي', hello: 'أهلًا وسهلًا! أقدر أساعدك تلاقي القطعة المناسبة لبيتك 🛋️', note: 'تجربة توضيحية: الردود مُعدّة مسبقًا ومعلَّمة بأنها من الذكاء الاصطناعي.',
-      qa: [['كم سعر الكنبة الجلد؟', 'كنبة «سدرة» الجلد بـ 8,400 ر.س، متوفرة بلونين، وتقدر تقسّطها على 4 دفعات بدون فوائد.', 1], ['توصلون جدة؟', 'إيه نعم، نوصّل لجدة والدمام خلال 5–7 أيام عمل، والتركيب مجاني.'], ['وين المعرض وإيش أوقاتكم؟', 'معرضنا في حي العليا بالرياض، من السبت للخميس 10 ص – 11 م، والجمعة من 4 م. تحب أحجز لك زيارة؟']],
+      qa: [['كم سعر الركنة؟', 'ركنة ليزي بوي بـ 12,900 ر.س، متوفرة بثلاثة ألوان، وتقدر تقسّطها على 4 دفعات بدون فوائد.', 0], ['توصلون جدة؟', 'إيه نعم، نوصّل لجدة والدمام خلال 5–7 أيام عمل، والتركيب مجاني.'], ['وين المعرض وإيش أوقاتكم؟', 'معرضنا في حي العليا بالرياض، من السبت للخميس 10 ص – 11 م، والجمعة من 4 م. تحب أحجز لك زيارة؟']],
       stats: [['3 ث', 'زمن الرد'], ['24/7', 'متاح دائمًا'], ['64%', 'أسئلة تُحل بدون موظف']] },
     s6: { month: 'الشهر بعد الإطلاق', followers: 'المتابعون', leads: 'استفسارات / شهر', visits: 'زيارات المعرض', cpl: 'تكلفة الاستفسار', ad: 'أول بيت؟ نجهّز صالتك كاملة', cta: 'احجز زيارة', sponsored: 'إعلان ممول', sample: 'أرقام توضيحية لمثال، وليست نتائج عميل حقيقي.' }
   },
@@ -28,23 +28,29 @@ const T = {
     s1: { now: 'Today', nowItems: ['312 Instagram followers', '2 enquiries a week', '0 showroom visits from social', 'Last post 23 days ago'], who: 'The real customer', next: 'Next persona', goal: 'Goals in 6 months', goals: ['An online store with 3D in 6 weeks', '180 enquiries a month', '60 showroom visits a month'], plan: 'Plan', planSteps: ['Research', 'AI content', '3D store', 'DMs', 'Ads'],
       personas: [{ name: 'Sara & Mohammed, 27', role: 'Newly-weds · furnishing a first home', quote: 'We want a stylish living room on a sensible budget, and to see the piece in a real home before we decide.' }, { name: 'Abu Khalid, 44', role: 'Family moving to a new villa', quote: 'I want to furnish the whole house in one place, with instalments and assembly.' }, { name: 'Reem, 35', role: 'Office manager · buying for a company', quote: 'I need a formal quote and fast delivery for 20 chairs.' }],
       comp: 'Competitors in Riyadh', compRows: [['Competitor A', 'posts 3×/week', 'replies after 6 h'], ['Competitor B', 'no website', 'ignores comments'], ['Dar Living + Magmafy', 'daily', 'replies in minutes']] },
-    s2: { before: 'Before · phone photo', after: 'After · AI scene', drag: 'Drag the line to compare', sl: 'Before and after comparison', items: [['ba-v', 'Velvet sofa'], ['ba-c', 'Orange chair'], ['ba-l', 'Leather sofa']], kept: ['Same shape', 'Same material', 'Same colour'], ai: 'AI-generated scene' },
+    s2: { before: 'Before · phone photo', after: 'After · AI scene', drag: 'Drag the line to compare', sl: 'Before and after comparison', kept: ['Same shape', 'Same material', 'Same colour'], ai: 'AI-generated scene' },
     s3: { url: 'dar-living.sa', home: 'Home', shop: 'Shop', heroT: 'Your new home starts here', heroP: 'Carefully chosen furniture, free delivery and assembly in Riyadh.', toShop: 'Shop now', best: 'Best sellers', add: 'Add to cart', added: 'Added ✓', visit: 'Book a visit to try it', visitDone: 'Visit booked: Saturday 5 PM ✓', fabric: 'Fabric', size: 'Size', back: '← Back', cart: 'Cart', empty: 'Your cart is empty.', sub: 'Subtotal', ship: 'Delivery & assembly', free: 'free', total: 'Total', checkout: 'Checkout', thanks: 'Thank you for your order!', order: 'Order no.', demo: 'Demo: nothing is ordered or paid.', again: 'Keep shopping', tabby: 'or 4 interest-free payments', view3d: '360° view', seats: ['3-seater', '2-seater'] },
-    s4: { trigger: 'Try a new message', running: 'Running…', flow: [['New Instagram DM', '“How much is the leather sofa?” · {n}'], ['Auto-reply in 40 seconds', 'Price + catalogue + instalment options'], ['Lead qualified', 'City: Riyadh · Budget: SAR 8–10k'], ['Visit booked', 'Saturday 5:00 PM · Olaya branch'], ['WhatsApp reminder', '“See you tomorrow at 5 ☕”'], ['CRM updated', 'Customer → “hot lead”']], done: 'messages handled', saved: 'visits booked', manual: 'Before automation: replies took 6 hours on average, and half the messages went unanswered.' },
+    s4: { trigger: 'Try a new message', running: 'Running…', flow: [['New Instagram DM', '“How much is the recliner corner?” · {n}'], ['Auto-reply in 40 seconds', 'Price + catalogue + instalment options'], ['Lead qualified', 'City: Riyadh · Budget: SAR 12–14k'], ['Visit booked', 'Saturday 5:00 PM · Olaya branch'], ['WhatsApp reminder', '“See you tomorrow at 5 ☕”'], ['CRM updated', 'Customer → “hot lead”']], done: 'messages handled', saved: 'visits booked', manual: 'Before automation: replies took 6 hours on average, and half the messages went unanswered.' },
     s5: { title: 'Dar Living assistant', tag: 'AI', aiLabel: 'AI-generated reply', hello: 'Welcome! I can help you find the right piece for your home 🛋️', note: 'Demo: replies are prepared in advance and labelled as AI.',
-      qa: [['How much is the leather sofa?', 'The “Sidra” leather sofa is SAR 8,400, in two colours, and you can split it into 4 interest-free payments.', 1], ['Do you deliver to Jeddah?', 'Yes, we deliver to Jeddah and Dammam in 5–7 working days, with free assembly.'], ['Where is the showroom and when are you open?', 'Our showroom is in Olaya, Riyadh: Saturday to Thursday 10 AM – 11 PM, Friday from 4 PM. Shall I book you a visit?']],
+      qa: [['How much is the recliner corner?', 'The Lazy Boy recliner corner is SAR 12,900, in three colours, and you can split it into 4 interest-free payments.', 0], ['Do you deliver to Jeddah?', 'Yes, we deliver to Jeddah and Dammam in 5–7 working days, with free assembly.'], ['Where is the showroom and when are you open?', 'Our showroom is in Olaya, Riyadh: Saturday to Thursday 10 AM – 11 PM, Friday from 4 PM. Shall I book you a visit?']],
       stats: [['3 s', 'reply time'], ['24/7', 'always on'], ['64%', 'questions solved without staff']] },
     s6: { month: 'Month after launch', followers: 'Followers', leads: 'Enquiries / month', visits: 'Showroom visits', cpl: 'Cost per enquiry', ad: 'First home? We furnish your whole living room', cta: 'Book a visit', sponsored: 'Sponsored', sample: 'Illustrative figures for an example, not real client results.' }
   }
 };
 const tx = () => T[getLang()] || T.ar;
 
-const PRODUCTS = [
-  { id: 'layan', img: 'sofa-green', price: 6900, name: { ar: 'كنبة «ليان» مخمل', en: '“Layan” velvet sofa' }, note: { ar: 'مخمل زمردي · خشب زان', en: 'Emerald velvet · beech' }, fabrics: ['#1f5a4c', '#8d8c86', '#b4613f'] },
-  { id: 'sidra', img: 'sofa-leather', price: 8400, name: { ar: 'كنبة «سدرة» جلد', en: '“Sidra” leather sofa' }, note: { ar: 'جلد طبيعي · 3 مقاعد', en: 'Genuine leather · 3 seats' }, fabrics: ['#a8683a', '#3b2a22'] },
+const BASE_PRODUCTS = [
+  { id: 'layan', img: 'sofa-green', price: 12900, name: { ar: 'ركنة ليزي بوي', en: 'Lazy Boy Recliner Corner' }, note: { ar: 'مخمل رمادي مزرق · مقاعد قابلة للإمالة', en: 'Blue-grey fabric · reclining seats' }, fabrics: ['#3b4a63', '#6b6f78', '#8a5a3c'] },
+  { id: 'sidra', img: 'sofa-leather', price: 5900, name: { ar: 'طاولة سفرة', en: 'Dining Table' }, note: { ar: 'سطح رخام طبيعي · 4 كراسي', en: 'Natural marble top · 4 chairs' }, fabrics: ['#d6bf98', '#8d8c86'] },
   { id: 'shams', img: 'chair-yellow', price: 1450, name: { ar: 'كرسي «شمس»', en: '“Shams” armchair' }, note: { ar: 'قماش بوكليه · أرجل معدن', en: 'Bouclé · metal legs' }, fabrics: ['#e2b33b', '#d6bf98', '#25335c'] },
   { id: 'najd', img: 'bed-velvet', price: 7900, name: { ar: 'سرير «نجد»', en: '“Najd” bed' }, note: { ar: 'مخمل رمادي · 180 × 200', en: 'Grey velvet · 180 × 200' }, fabrics: ['#9a9aa0', '#d9a3a6'] }
 ];
+// The first two products are the first two before/after pairs from the admin (AI scene + the pair's own name).
+const SHOWCASE_PAIRS = ((content.showcase && content.showcase.compare) || []).filter((p) => p && p.visible !== false && p.before && p.after);
+const PRODUCTS = BASE_PRODUCTS.map((p, i) => {
+  const pair = i < 2 ? SHOWCASE_PAIRS[i] : null;
+  return pair ? { ...p, img: pair.after, name: { ar: (pair.name && pair.name.ar) || p.name.ar, en: (pair.name && pair.name.en) || p.name.en } } : p;
+});
 const loc = (v) => (typeof v === 'string' ? v : v[getLang()] || v.ar);
 const setVar = (el, k, v) => { el.style.setProperty(k, v); return el; };
 
@@ -79,8 +85,11 @@ function board() {
 /* ---------- 02 AI content: phone photo vs. AI scene ---------- */
 function aiCompare() {
   const s = tx().s2;
+  const items = compareItems();
+  if (!items.length) return h('div', { class: 'jx jx--brand' });
   let cur = 0;
-  const before = pic(s.items[0][0] + '-before', ''), after = pic(s.items[0][0] + '-after', '');
+  const before = h('img', { src: items[0].before, alt: '', loading: 'lazy', decoding: 'async' }), after = h('img', { src: items[0].after, alt: '', loading: 'lazy', decoding: 'async' });
+  showPair(before, after, items[0]);
   const wrap = h('div', { class: 'jx-compare', role: 'slider', tabindex: '0', 'aria-label': s.sl, 'aria-valuemin': '0', 'aria-valuemax': '100', dir: 'ltr' },
     h('div', { class: 'jx-layer jx-layer--old' }, before),
     h('div', { class: 'jx-layer jx-layer--new' }, after, h('span', { class: 'jx-aimark' }, '✦ ' + s.ai)),
@@ -112,20 +121,20 @@ function aiCompare() {
     };
     raf = requestAnimationFrame(step);
   };
-  const tabs = s.items.map(([key, name], i) => {
-    const b = h('button', { type: 'button', class: 'jx-chip', 'aria-pressed': String(i === 0) }, name);
+  const tabs = items.map((p, i) => {
+    const b = h('button', { type: 'button', class: 'jx-chip', 'aria-pressed': String(i === 0) }, p.name);
     b.addEventListener('click', () => {
       if (cur === i) return;
       cur = i;
       tabs.forEach((x, k) => x.setAttribute('aria-pressed', String(k === i)));
-      before.src = IMG + key + '-before.webp'; after.src = IMG + key + '-after.webp';
+      showPair(before, after, p);
       cancelAnimationFrame(raf); intro();
     });
     return b;
   });
   intro();
   return h('div', { class: 'jx jx--brand' },
-    h('div', { class: 'jx-chips jx-chips--center' }, ...tabs),
+    tabs.length > 1 ? h('div', { class: 'jx-chips jx-chips--center' }, ...tabs) : null,
     wrap,
     h('p', { class: 'jx-hint' }, '↔ ', s.drag),
     h('div', { class: 'jx-kept' }, ...s.kept.map((k) => h('span', {}, icon('check', 14), k))));
@@ -163,7 +172,7 @@ function miniShop() {
   const pages = {
     home: () => [
       h('div', { class: 'jx-shop__hero' }, pic('living-teal', ''), h('div', {}, h('h5', {}, s.heroT), h('p', {}, s.heroP), btn(s.toShop, () => go('shop')))),
-      h('h6', {}, s.best), h('div', { class: 'jx-grid' }, card(PRODUCTS[0]), card(PRODUCTS[2]))],
+      h('h6', {}, s.best), h('div', { class: 'jx-grid' }, card(PRODUCTS[0]), card(PRODUCTS[1]))],
     shop: () => [h('h6', {}, s.shop), h('div', { class: 'jx-grid' }, ...PRODUCTS.map(card))],
     product: () => {
       const p = st.product;
@@ -319,12 +328,16 @@ function growth() {
 export const JOURNEY_VIEWS = [board, aiCompare, miniShop, automation, aiChat, growth];
 
 export function clientCard() {
-  const c = tx().client;
+  const info = clientInfo();
+  if (!info.visible) return null;
+  const c = { ...tx().client, ...Object.fromEntries(Object.entries(info.text).filter(([, v]) => v)) };
+  const first = compareItems()[0];
+  const thumb = (src, cls) => h('span', { class: cls }, h('img', { src, alt: '', loading: 'lazy', decoding: 'async' }));
   return h('div', { class: 'jx-client' },
     h('div', { class: 'jx-client__logos', 'aria-hidden': 'true' },
-      h('span', { class: 'jx-client__pic is-before' }, pic('ba-l-before', '')),
+      thumb(info.thumbBefore || (first && first.before) || IMG + 'living-green.webp', 'jx-client__pic is-before'),
       h('span', { class: 'jx-client__arrow' }, getLang() === 'ar' ? '←' : '→'),
-      h('span', { class: 'jx-client__pic' }, pic('living-green', ''))),
+      thumb(info.thumbAfter || (first && first.after) || IMG + 'living-green.webp', 'jx-client__pic')),
     h('div', {}, h('small', {}, c.label), h('p', {}, h('b', {}, c.name), ' – ', c.desc), h('p', { class: 'jx-client__goal' }, c.goal)));
 }
-export const exampleLabel = () => tx().example;
+export const exampleLabel = () => clientInfo().text.example || tx().example;

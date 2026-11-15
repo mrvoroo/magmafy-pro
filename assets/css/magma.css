@@ -114,7 +114,7 @@ html[dir='rtl'] .hero__chips li { padding: 8px 8px 8px 16px; }
 .jx-comp li.is-us span { color: var(--c-text); }
 
 /* 02 AI compare */
-.jx-compare { aspect-ratio: 16 / 10; background: #1a0f27; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .8); }
+.jx-compare { aspect-ratio: 4 / 3; background: #1a0f27; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .8); }
 .jx-layer { position: absolute; inset: 0; }
 .jx-layer img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
 .jx-ba--l { background: rgba(255, 255, 255, .92); color: #1a0f27; }

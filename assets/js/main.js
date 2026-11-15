@@ -30,7 +30,7 @@ function render() {
     rerender();
   });
   const main = document.getElementById('main');
-  main.replaceChildren(...[renderPage(page)].flat());
+  main.replaceChildren(...[renderPage(page)].flat().filter(Boolean));
   renderFooter();
 }
 

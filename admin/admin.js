@@ -10,7 +10,7 @@ const MAX_TEXT = 5000;
 const MAX_IMAGE = 1.5 * 1024 * 1024;
 
 const app = document.getElementById('app');
-const state = { owner: 'mrvoroo', repo: 'magmafy-pro', branch: 'main', token: '', sha: null, data: null, dirty: false, offline: false, section: 'settings' };
+const state = { owner: 'mrvoroo', repo: 'magmafy-pro', branch: 'main', token: '', sha: null, data: null, dirty: false, offline: false, section: 'journey' };
 
 /* ---------- DOM helper (no innerHTML anywhere) ---------- */
 function h(tag, attrs = {}, ...kids) {
@@ -69,11 +69,27 @@ async function saveRemote() {
   return out.commit.html_url;
 }
 
-async function uploadImage(file) {
+// Resizes (max 1400px wide) and re-encodes as WebP in the browser, so a phone photo of several MB
+// becomes a ~100-250KB file and the site stays fast. Falls back to the original if anything fails.
+async function toWebp(file, maxW = 1400, quality = 0.8) {
+  try {
+    const bmp = await createImageBitmap(file);
+    const scale = Math.min(1, maxW / bmp.width);
+    const c = document.createElement('canvas');
+    c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise((res) => c.toBlob(res, 'image/webp', quality));
+    return blob && blob.type === 'image/webp' ? new File([blob], file.name.replace(/\.[^.]+$/, '') + '.webp', { type: 'image/webp' }) : file;
+  } catch (_) { return file; }
+}
+
+async function uploadImage(input, { webp = false, base = '' } = {}) {
+  let file = input;
   if (!/^image\/(png|jpeg|webp|avif)$/.test(file.type)) throw new Error('الصيغ المسموحة: PNG أو JPG أو WebP أو AVIF.');
+  if (webp && (file.type !== 'image/webp' || file.size > 400 * 1024)) file = await toWebp(file);
   if (file.size > MAX_IMAGE) throw new Error('حجم الصورة أكبر من 1.5 ميجابايت.');
   const ext = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/avif': 'avif' }[file.type];
-  const name = file.name.replace(/\.[^.]+$/, '').toLowerCase().replace(/[^a-z0-9-]+/g, '-').slice(0, 40) || 'image';
+  const name = (base || file.name.replace(/\.[^.]+$/, '')).toLowerCase().replace(/[^a-z0-9-]+/g, '-').slice(0, 40) || 'image';
   const path = 'assets/uploads/' + name + '-' + Date.now().toString(36) + '.' + ext;
   const buf = new Uint8Array(await file.arrayBuffer());
   let bin = '';
@@ -93,7 +109,8 @@ function validate(data) {
       // i18n holds UI labels ("Email", "Link"), so format rules only apply to data fields.
       if (path.startsWith('i18n.')) return;
       if (/^(url|endpoint|linkedin|instagram|facebook|tiktok|x|snapchat|pinterest)$/.test(key) && v && !/^https:\/\/[^\s"'<>]+$/.test(v) && !(key === 'url' && /^[\w\-./]+$/.test(v))) problems.push(path + ': يجب أن يبدأ بـ https://');
-      if (key === 'image' && v && !/^assets\/[\w\-./]+\.(png|jpe?g|webp|avif|svg)$/i.test(v)) problems.push(path + ': مسار الصورة يجب أن يكون داخل assets/');
+      if (/^(image|before|after|thumbBefore|thumbAfter)$/.test(key) && v && !/^assets\/[\w\-./]+\.(png|jpe?g|webp|avif|svg)$/i.test(v)) problems.push(path + ': مسار الصورة يجب أن يكون داخل assets/');
+      if (key === 'whatsapp' && v && !/^\+?[\d\s-]{8,18}$/.test(v)) problems.push(path + ': رقم واتساب غير صالح (مثال: +966590873178)');
       if (key === 'email' && v && !/^[^\s@<>]+@[^\s@<>]+\.[a-z]{2,}$/i.test(v)) problems.push(path + ': بريد إلكتروني غير صالح');
     } else if (Array.isArray(v)) v.forEach((x, i) => walk(x, path + '[' + i + ']'));
     else if (v && typeof v === 'object') Object.entries(v).forEach(([k, x]) => walk(x, path ? path + '.' + k : k));
@@ -116,7 +133,7 @@ const LABELS = {
   analytics: 'أدوات التتبع (تعمل بعد موافقة الزائر)', ga4: 'Google Analytics 4 — Measurement ID (G-XXXXXXXXXX)', clarity: 'Microsoft Clarity — Project ID',
   social: 'روابط التواصل الاجتماعي (https://…)', form: 'نموذج الحجز', accessKey: 'Web3Forms Access Key', endpoint: 'رابط إرسال النموذج (Magmafy OS · Apps Script /exec)', provider: 'المزود',
   name: 'الاسم', company: 'الاسم التجاري', crNumber: 'رقم السجل التجاري', vatNumber: 'الرقم الضريبي (VAT)', street: 'الشارع', zip: 'الرمز البريدي', city: 'المدينة', country: 'الدولة', hosting: 'مزود الاستضافة',
-  image: 'الصورة', url: 'الرابط', tags: 'الوسوم', title: 'العنوان', label: 'التسمية', text: 'النص', languages: 'اللغات', demo: 'العرض الحي'
+  image: 'الصورة', visible: 'ظاهر في الموقع', url: 'الرابط', tags: 'الوسوم', title: 'العنوان', label: 'التسمية', text: 'النص', languages: 'اللغات', demo: 'العرض الحي'
 };
 const label = (key) => LABELS[key] || key;
 
@@ -194,6 +211,162 @@ function confirmInline(btn) {
 }
 const blank = (v) => (typeof v === 'string' ? '' : typeof v === 'number' ? 0 : typeof v === 'boolean' ? false : Array.isArray(v) ? [] : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, blank(x)])) : v);
 
+/* ---------- Journey section editor (client card, 6 steps, before/after pairs) ---------- */
+const STEP_NAMES = ['دراسة السوق', 'محتوى AI', 'معرض 3D أونلاين', 'الرسائل إلى مواعيد', 'مساعد ذكي', 'الإعلانات والنتائج'];
+
+function ensureShowcase() {
+  const d = state.data;
+  d.showcase = d.showcase || {};
+  const s = d.showcase;
+  s.client = s.client || { visible: true, thumbBefore: '', thumbAfter: '', ar: {}, en: {} };
+  s.steps = Array.isArray(s.steps) && s.steps.length === 6 ? s.steps : ['research', 'ai', 'showroom', 'dms', 'assistant', 'results'].map((id) => ({ id, visible: true }));
+  s.compare = Array.isArray(s.compare) ? s.compare : [];
+  return s;
+}
+
+function toggle(obj, key, text) {
+  const cb = h('input', { type: 'checkbox' });
+  cb.checked = obj[key] !== false;
+  const wrap = h('label', { class: 'switch' }, cb, h('span', {}, text));
+  cb.addEventListener('change', () => { obj[key] = cb.checked; markDirty(); wrap.closest('.vcard')?.classList.toggle('is-off', !cb.checked); });
+  return wrap;
+}
+
+function textField(obj, key, text, { long = false } = {}) {
+  const input = long ? h('textarea', { rows: 3, maxlength: String(MAX_TEXT) }) : h('input', { type: 'text', maxlength: String(MAX_TEXT), autocomplete: 'off' });
+  input.value = obj[key] || '';
+  input.addEventListener('input', () => { obj[key] = input.value; markDirty(); });
+  return h('div', { class: 'f', 'data-search': (text + ' ' + (obj[key] || '')).toLowerCase() }, h('label', {}, text), input);
+}
+
+function imagePicker(obj, key, title, base) {
+  const img = h('img', { alt: '', class: 'pic__img' });
+  const sync = () => { if (obj[key]) img.src = '../' + obj[key]; else img.removeAttribute('src'); };
+  sync();
+  const file = h('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp,image/avif', class: 'file' });
+  const btn = h('button', { type: 'button', class: 'btn btn--ghost', disabled: state.offline }, obj[key] ? 'استبدال الصورة' : 'رفع صورة');
+  btn.addEventListener('click', () => file.click());
+  file.addEventListener('change', async () => {
+    const f = file.files[0];
+    if (!f) return;
+    btn.disabled = true; btn.textContent = 'جاري الضغط والرفع…';
+    try { obj[key] = await uploadImage(f, { webp: true, base }); sync(); markDirty(); toast('تم رفع الصورة وتحسينها تلقائيًا.'); }
+    catch (e) { toast(e.message, true); }
+    finally { btn.disabled = false; btn.textContent = 'استبدال الصورة'; file.value = ''; }
+  });
+  return h('div', { class: 'pic' }, h('span', { class: 'pic__t' }, title), h('div', { class: 'pic__frame' }, img), btn, file);
+}
+
+function focusSlider(obj, key) {
+  const input = h('input', { type: 'range', min: '0', max: '100', step: '1', 'aria-label': 'موضع الصورة داخل الإطار' });
+  input.value = obj[key] ?? 50;
+  input.addEventListener('input', () => { obj[key] = Number(input.value); markDirty(); });
+  return h('div', { class: 'f' }, h('label', {}, 'موضع الصورة داخل الإطار (أعلى ← أسفل)'), input);
+}
+
+function journeyEditor() {
+  const s = ensureShowcase();
+  const root = h('div', { class: 'jed' });
+  const rerender = () => root.replaceChildren(...build());
+  const build = () => {
+    const out = [];
+    out.push(h('p', { class: 'note' }, 'من هنا تتحكم في سيكشن «رحلة العميل» بالصفحة الرئيسية، وفي استوديو الصور بصفحة المحتوى. أي عنصر تخفيه لا يُحذف وتقدر ترجّعه في أي وقت. اضغط «نشر» لتظهر التعديلات على الموقع.'));
+    if (state.offline) out.push(h('p', { class: 'note' }, 'وضع بدون GitHub: رفع الصور غير متاح. ادخل بالتوكن لرفع صور جديدة.'));
+
+    /* client card */
+    const c = s.client;
+    c.ar = c.ar || {}; c.en = c.en || {};
+    out.push(h('fieldset', { class: 'group vcard' + (c.visible === false ? ' is-off' : '') },
+      h('legend', {}, 'بطاقة العميل (دار ليفينج)'),
+      toggle(c, 'visible', 'إظهار البطاقة'),
+      h('div', { class: 'grid2' },
+        h('div', {}, h('h4', {}, 'العربية'), ...[['label', 'التسمية (عميل توضيحي)'], ['name', 'الاسم'], ['example', 'عنوان «مثال: …»']].map(([k, l]) => textField(c.ar, k, l)), textField(c.ar, 'desc', 'الوصف', { long: true }), textField(c.ar, 'goal', 'الهدف', { long: true })),
+        h('div', { dir: 'ltr' }, h('h4', {}, 'English'), ...[['label', 'Label'], ['name', 'Name'], ['example', 'Example title']].map(([k, l]) => textField(c.en, k, l)), textField(c.en, 'desc', 'Description', { long: true }), textField(c.en, 'goal', 'Goal', { long: true }))),
+      h('p', { class: 'muted' }, 'الصورتان الصغيرتان في البطاقة تؤخذان تلقائيًا من أول زوج ظاهر في «قبل وبعد». لتغييرهما ارفع صورة مخصصة:'),
+      h('div', { class: 'row' }, imagePicker(c, 'thumbBefore', 'الصورة الصغيرة · قبل (اختياري)', 'client-before'), imagePicker(c, 'thumbAfter', 'الصورة الصغيرة · بعد (اختياري)', 'client-after'))));
+
+    /* steps */
+    const stepsBox = h('fieldset', { class: 'group' }, h('legend', {}, 'الخطوات الست (الخدمات)'), h('p', { class: 'muted' }, 'إخفاء خطوة يخفيها من الموقع ويعيد ترقيم الباقي تلقائيًا. الترتيب ثابت لأن لكل خطوة عرضها التفاعلي.'));
+    s.steps.forEach((st, i) => {
+      const ar = state.data.i18n?.ar?.journey?.steps?.[i], en = state.data.i18n?.en?.journey?.steps?.[i];
+      stepsBox.append(h('details', { class: 'vcard' + (st.visible === false ? ' is-off' : '') },
+        h('summary', {}, h('b', {}, String(i + 1).padStart(2, '0') + ' · ' + (ar?.title || STEP_NAMES[i]))),
+        toggle(st, 'visible', 'إظهار هذه الخطوة في الموقع'),
+        h('div', { class: 'grid2' },
+          ar ? h('div', {}, h('h4', {}, 'العربية'), textField(ar, 'title', 'العنوان'), textField(ar, 'tag', 'المدة / الوسم'), textField(ar, 'text', 'الوصف', { long: true })) : null,
+          en ? h('div', { dir: 'ltr' }, h('h4', {}, 'English'), textField(en, 'title', 'Title'), textField(en, 'tag', 'Tag'), textField(en, 'text', 'Description', { long: true })) : null)));
+    });
+    out.push(stepsBox);
+
+    /* before / after pairs */
+    const box = h('fieldset', { class: 'group' }, h('legend', {}, 'صور قبل وبعد (' + s.compare.length + ')'),
+      h('p', { class: 'muted' }, 'تظهر كتابات (تابات) فوق السلايدر بنفس الترتيب. الصور تُضغط وتتحول WebP تلقائيًا عند الرفع. الإطار 4:3، فلو القطعة مقطوعة حرّك «موضع الصورة».'));
+    s.compare.forEach((p, i) => {
+      p.name = p.name || { ar: '', en: '' };
+      const up = h('button', { type: 'button', class: 'mini', 'aria-label': 'لأعلى', disabled: i === 0 }, '↑');
+      const down = h('button', { type: 'button', class: 'mini', 'aria-label': 'لأسفل', disabled: i === s.compare.length - 1 }, '↓');
+      const del = h('button', { type: 'button', class: 'mini mini--del', 'aria-label': 'حذف' }, '✕');
+      up.addEventListener('click', () => { [s.compare[i - 1], s.compare[i]] = [s.compare[i], s.compare[i - 1]]; markDirty(); rerender(); });
+      down.addEventListener('click', () => { [s.compare[i + 1], s.compare[i]] = [s.compare[i], s.compare[i + 1]]; markDirty(); rerender(); });
+      del.addEventListener('click', () => { if (confirmInline(del)) { s.compare.splice(i, 1); markDirty(); rerender(); } });
+      const pair = (key, fkey, title) => {
+        const pk = imagePicker(p, key, title, 'ba-' + p.id + '-' + key);
+        const sl = focusSlider(p, fkey);
+        const img = pk.querySelector('img');
+        sl.querySelector('input').addEventListener('input', (e) => { img.style.objectPosition = '50% ' + e.target.value + '%'; });
+        img.style.objectPosition = '50% ' + (p[fkey] ?? 50) + '%';
+        return h('div', { class: 'pairbox' }, pk, sl);
+      };
+      box.append(h('div', { class: 'vcard item' + (p.visible === false ? ' is-off' : '') },
+        h('div', { class: 'item__bar' }, h('span', {}, '#' + (i + 1) + ' · ' + (p.name.ar || '—')), toggle(p, 'visible', 'ظاهر'), up, down, del),
+        h('div', { class: 'grid2' }, textField(p.name, 'ar', 'الاسم بالعربية'), h('div', { dir: 'ltr' }, textField(p.name, 'en', 'Name (English)'))),
+        h('div', { class: 'grid2' }, pair('before', 'beforeFocus', 'قبل · صورة الجوال'), pair('after', 'afterFocus', 'بعد · مشهد AI'))));
+    });
+    const add = h('button', { type: 'button', class: 'btn btn--ghost' }, '+ إضافة زوج صور');
+    add.addEventListener('click', () => { s.compare.push({ id: 'p' + Date.now().toString(36), visible: true, name: { ar: '', en: '' }, before: '', after: '', beforeFocus: 50, afterFocus: 50 }); markDirty(); rerender(); });
+    box.append(add);
+    if (!s.compare.some((p) => p.visible !== false && p.before && p.after)) box.prepend(h('p', { class: 'note' }, 'تنبيه: لا يوجد أي زوج ظاهر بصورتين. سيختفي السلايدر من الموقع.'));
+    out.push(box);
+    return out;
+  };
+  rerender();
+  return root;
+}
+
+/* ---------- Social icons & WhatsApp (footer and contact page) ---------- */
+function socialEditor() {
+  const st = state.data.settings;
+  st.social = st.social || {};
+  st.socialVisible = st.socialVisible || {};
+  const root = h('div', { class: 'jed' });
+  root.append(h('p', { class: 'note' }, 'الأيقونة تظهر في الموقع (الفوتر وصفحة الحجز) فقط لو مفعّلة ولها رابط. أي أيقونة بدون رابط تختفي تلقائيًا. اضغط «نشر» لتظهر التعديلات.'));
+  const row = (key, name, obj, field, { placeholder, hint, dir = 'ltr' } = {}) => {
+    const input = h('input', { type: 'text', maxlength: '300', autocomplete: 'off', placeholder, dir });
+    input.value = obj[field] || '';
+    const note = h('small', { class: 'muted' });
+    const sync = () => {
+      const on = st.socialVisible[key] !== false;
+      const filled = !!input.value.trim();
+      note.textContent = !filled ? 'بدون رابط: لن تظهر الأيقونة.' : !on ? 'مخفية: لن تظهر الأيقونة.' : hint ? hint(input.value) : 'ظاهرة في الموقع.';
+      card.classList.toggle('is-off', !on || !filled);
+    };
+    input.addEventListener('input', () => { obj[field] = input.value.trim(); markDirty(); sync(); });
+    const cb = h('input', { type: 'checkbox' });
+    cb.checked = st.socialVisible[key] !== false;
+    cb.addEventListener('change', () => { st.socialVisible[key] = cb.checked; markDirty(); sync(); });
+    const card = h('div', { class: 'vcard', 'data-search': (name + ' ' + key).toLowerCase() },
+      h('label', { class: 'switch' }, cb, h('span', {}, name)),
+      h('div', { class: 'f' }, h('label', {}, field === 'whatsapp' ? 'رقم واتساب (بالصيغة الدولية)' : 'الرابط (https://…)'), input), note);
+    sync();
+    return card;
+  };
+  const waHint = (v) => { const d = v.replace(/[^\d]/g, ''); return d ? 'ظاهرة، وتفتح: wa.me/' + d : 'بدون رقم.'; };
+  root.append(
+    row('whatsapp', 'WhatsApp', st, 'whatsapp', { placeholder: '+966590873178', hint: waHint }),
+    ...[['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['snapchat', 'Snapchat'], ['x', 'X (Twitter)'], ['linkedin', 'LinkedIn']].map(([k, n]) => row(k, n, st.social, k, { placeholder: 'https://…' })));
+  return root;
+}
+
 /* ---------- Screens ---------- */
 let toastEl;
 function toast(msg, err = false) {
@@ -262,7 +435,7 @@ function loginScreen(error = '') {
 }
 
 function sectionList() {
-  const s = [['settings', LABELS.settings], ['legal', LABELS.legal], ['projects', LABELS.projects]];
+  const s = [['journey', 'رحلة العميل · قبل وبعد'], ['social', 'السوشيال والواتساب'], ['settings', LABELS.settings], ['legal', LABELS.legal], ['projects', LABELS.projects]];
   for (const l of Object.keys(state.data.i18n || {})) s.push(['i18n.' + l, LABELS['i18n.' + l] || 'النصوص · ' + l]);
   return s;
 }
@@ -279,6 +452,8 @@ function editor() {
   const show = (key) => {
     state.section = key;
     [...nav.querySelectorAll('button')].forEach((b) => b.setAttribute('aria-current', b.dataset.key === key ? 'page' : 'false'));
+    if (key === 'social') { main.replaceChildren(h('h2', {}, 'السوشيال والواتساب'), socialEditor()); filter(); return; }
+    if (key === 'journey') { main.replaceChildren(h('h2', {}, 'رحلة العميل · قبل وبعد'), journeyEditor()); filter(); return; }
     const path = key.split('.');
     let v = state.data;
     for (const p of path) v = v[p];

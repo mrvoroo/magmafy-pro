@@ -77,7 +77,7 @@ function renderBody(lang, p) {
 
 /* ---------- structured data ---------- */
 const brand = S.brand || 'Magmafy';
-const sameAs = Object.values(S.social || {}).filter((v) => /^https:\/\//.test(v));
+const sameAs = Object.entries(S.social || {}).filter(([k, v]) => (S.socialVisible || {})[k] !== false && /^https:\/\//.test(v)).map(([, v]) => v);
 const phone = String(S.phone || '').replace(/[^\d+]/g, '');
 const ld = (o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
 

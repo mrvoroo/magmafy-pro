@@ -3,6 +3,115 @@ window.MG_CONTENT = {
     "version": 1,
     "updated": "2026-11-13"
   },
+  "showcase": {
+    "client": {
+      "visible": true,
+      "thumbBefore": "",
+      "thumbAfter": "",
+      "ar": {
+        "label": "عميل توضيحي",
+        "name": "دار ليفينج",
+        "desc": "معرض أثاث عائلي صغير في الرياض منذ 2009. قطع جميلة وأسعار منافسة، لكن الحساب صامت والزوار من الحي فقط.",
+        "goal": "الهدف: معرض مزدحم ومبيعات أونلاين في كل المملكة",
+        "example": "مثال: دار ليفينج · الرياض"
+      },
+      "en": {
+        "label": "Example client",
+        "name": "Dar Living",
+        "desc": "A small family furniture showroom in Riyadh since 2009. Beautiful pieces, fair prices, but a silent account and visitors only from the neighbourhood.",
+        "goal": "Goal: a busy showroom and online sales across the Kingdom",
+        "example": "Example: Dar Living · Riyadh"
+      }
+    },
+    "steps": [
+      {
+        "id": "research",
+        "visible": true
+      },
+      {
+        "id": "ai",
+        "visible": true
+      },
+      {
+        "id": "showroom",
+        "visible": true
+      },
+      {
+        "id": "dms",
+        "visible": true
+      },
+      {
+        "id": "assistant",
+        "visible": true
+      },
+      {
+        "id": "results",
+        "visible": true
+      }
+    ],
+    "compare": [
+      {
+        "id": "p1",
+        "visible": true,
+        "name": {
+          "ar": "ركنة ليزي بوي",
+          "en": "Lazy Boy Recliner Corner"
+        },
+        "before": "assets/img/f/ba-1-before.webp",
+        "after": "assets/img/f/ba-1-after.webp",
+        "beforeFocus": 50,
+        "afterFocus": 50
+      },
+      {
+        "id": "p2",
+        "visible": true,
+        "name": {
+          "ar": "طاولة سفرة",
+          "en": "Dining Table"
+        },
+        "before": "assets/img/f/ba-2-before.webp",
+        "after": "assets/img/f/ba-2-after.webp",
+        "beforeFocus": 62,
+        "afterFocus": 55
+      },
+      {
+        "id": "p3",
+        "visible": true,
+        "name": {
+          "ar": "مجلس",
+          "en": "Majlis Seating"
+        },
+        "before": "assets/img/f/ba-3-before.webp",
+        "after": "assets/img/f/ba-3-after.webp",
+        "beforeFocus": 50,
+        "afterFocus": 50
+      },
+      {
+        "id": "p4",
+        "visible": true,
+        "name": {
+          "ar": "طاولة مجلس",
+          "en": "Majlis Coffee Table"
+        },
+        "before": "assets/img/f/ba-4-before.webp",
+        "after": "assets/img/f/ba-4-after.webp",
+        "beforeFocus": 55,
+        "afterFocus": 50
+      },
+      {
+        "id": "p5",
+        "visible": true,
+        "name": {
+          "ar": "غرفة نوم",
+          "en": "Bedroom Set"
+        },
+        "before": "assets/img/f/ba-5-before.webp",
+        "after": "assets/img/f/ba-5-after.webp",
+        "beforeFocus": 50,
+        "afterFocus": 50
+      }
+    ]
+  },
   "settings": {
     "brand": "Magmafy",
     "brandSuffix": "",
@@ -17,8 +126,7 @@ window.MG_CONTENT = {
       "tiktok": "",
       "snapchat": "",
       "x": "",
-      "linkedin": "https://www.linkedin.com/in/ahmxash/",
-      "whatsapp": "+966590873178"
+      "linkedin": "https://www.linkedin.com/in/ahmxash/"
     },
     "languages": [
       "ar",
@@ -32,6 +140,14 @@ window.MG_CONTENT = {
       "provider": "google-apps-script",
       "endpoint": "https://script.google.com/macros/s/AKfycbwHc0b5-Zi0ayYiEyUseqfHg32jiORf8rTRq4MtSYR-pDS_fs09yG-Mn4x9zddQ1i1E/exec",
       "accessKey": ""
+    },
+    "socialVisible": {
+      "instagram": true,
+      "tiktok": true,
+      "snapchat": true,
+      "x": true,
+      "linkedin": true,
+      "whatsapp": true
     }
   },
   "legal": {
@@ -117,7 +233,7 @@ window.MG_CONTENT = {
         "homeTitle": "وكالة نمو لمعارض الأثاث والديكور في السعودية",
         "desc": {
           "home": "دراسة السوق، المحتوى والإعلانات بالذكاء الاصطناعي، مواقع ومعارض ثلاثية الأبعاد، واستشارات نمو لمعارض الأثاث والديكور في السعودية والخليج.",
-          "research": "تقرير منافسين وأسعار وخريطة فرص لمعرضك في الرياض وجدة والدمام، خلال 10 أيام عمل مع خطة 90 يومًا.",
+          "research": "تقرير منافسين وأسعار وخريطة فرص لمعرضك في الرياض وجدة والدمام، خلال 2–5 أيام عمل مع خطة 90 يومًا.",
           "content": "صور وريلز بالذكاء الاصطناعي، تقويم محتوى على مواسم البيع في السعودية، وإعلانات Meta وTikTok وSnapchat تقاس بالاستفسارات والزيارات.",
           "websites": "مواقع ومتاجر ومعارض ثلاثية الأبعاد بالعربي والإنجليزي، مع حجز زيارة وطلب سعر عبر واتساب.",
           "consulting": "استشارات تسويق ونمو وتحديد نطاق المواقع لمعارض الأثاث والديكور.",
@@ -173,7 +289,7 @@ window.MG_CONTENT = {
         "title": "تعرّف على",
         "titleAccent": "Magmafy",
         "paragraphs": [
-          "Magmafy وكالة نمو متخصصة في معارض الأثاث والديكور ومتاجرها، تركّز على السوق السعودي ودول الخليج. نفهم كيف يشتري عميلك: يتصفّح إنستجرام وبنترست، يسأل عن السعر والتقسيط في الرسائل، ثم يزور المعرض قبل أن يقرر.",
+          "ماجمافاي: وكالة نمو متخصصة في معارض الأثاث والديكور في الخليج. نساعد المعارض يجيبوا 20–60% مبيعات أكثر عن طريق إعلانات الميديا، تطوير المتاجر، وتوليد صور AI.",
           "لذلك نبدأ بدراسة السوق، ثم نبني المحتوى والإعلانات والموقع حول رحلة الشراء الحقيقية: صور وريلز بالذكاء الاصطناعي من صور جوالك، حملات تصل لمن يجهّز بيته الآن، ومعارض ثلاثية الأبعاد يلفّ فيها العميل القطعة ويختار لونها.",
           "نعمل بأدوات حديثة مدعومة بالذكاء الاصطناعي، فننجز في أسابيع ما يأخذ شهورًا، ومعك مدير حساب واحد من أول اجتماع إلى أول طلب. ونقيس النجاح بالاستفسارات وزيارات المعرض والمبيعات، لا بالإعجابات."
         ],
@@ -184,7 +300,7 @@ window.MG_CONTENT = {
             "label": "خدمات متكاملة تحت سقف واحد"
           },
           {
-            "value": "10 أيام",
+            "value": "2–5 أيام",
             "label": "لتسليم تقرير دراسة السوق"
           },
           {
@@ -195,7 +311,9 @@ window.MG_CONTENT = {
             "value": "1",
             "label": "مدير حساب يعرف نشاطك"
           }
-        ]
+        ],
+        "readMore": "اقرأ المزيد",
+        "readLess": "عرض أقل"
       },
       "servicesIntro": {
         "eyebrow": "أربع خدمات، هدف واحد: مبيعات أكثر",
@@ -208,7 +326,7 @@ window.MG_CONTENT = {
           "num": "01",
           "title": "دراسة السوق",
           "tagline": "نعرف سوقك ومنافسيك قبل ما نصرف ريالًا واحدًا",
-          "intro": "تقرير واضح: من ينافسك في مدينتك، بكم يبيع، كيف يعلن ويرد، وأين الفرصة التي لم يأخذها أحد. تستلمه خلال 10 أيام عمل مع خطة 90 يومًا.",
+          "intro": "تقرير واضح: من ينافسك في مدينتك، بكم يبيع، كيف يعلن ويرد، وأين الفرصة التي لم يأخذها أحد. تستلمه خلال 2–5 أيام عمل مع خطة 90 يومًا.",
           "items": [
             "تحليل المنافسين المباشرين في مدينتك: الرياض، جدة، الدمام وغيرها",
             "مقارنة الأسعار والعروض وخيارات التقسيط مثل تابي وتمارا",
@@ -740,7 +858,7 @@ window.MG_CONTENT = {
         "homeTitle": "Growth agency for furniture & décor showrooms in Saudi Arabia",
         "desc": {
           "home": "Magmafy is a growth agency for furniture and décor showrooms in Saudi Arabia and the Gulf: market research, AI-assisted content and ads, 3D websites and showrooms, and growth consulting.",
-          "research": "A competitor, pricing and opportunity report for your showroom in Riyadh, Jeddah and Dammam, delivered in 10 working days with a 90-day plan.",
+          "research": "A competitor, pricing and opportunity report for your showroom in Riyadh, Jeddah and Dammam, delivered in 2–5 working days with a 90-day plan.",
           "content": "AI-made photos and reels, a content calendar built around Saudi buying seasons, and Meta, TikTok and Snapchat ads measured by enquiries and visits.",
           "websites": "Arabic and English websites, stores and 3D showrooms with visit booking and WhatsApp price requests for furniture and décor brands.",
           "consulting": "Marketing, growth and website-scoping consulting for furniture and décor showrooms and stores.",
@@ -796,7 +914,7 @@ window.MG_CONTENT = {
         "title": "Meet",
         "titleAccent": "Magmafy",
         "paragraphs": [
-          "Magmafy is a growth agency for furniture and décor showrooms and stores, focused on Saudi Arabia and the Gulf. We know how your customers buy: they browse Instagram and Pinterest, ask about price and instalments in DMs, then visit the showroom before they decide.",
+          "Magmafy is a growth agency specialised in furniture and décor showrooms in the Gulf. We help showrooms get 20–60% more sales through social media ads, store development and AI-generated images.",
           "So we start with market research, then build content, ads and your website around the real buying journey: AI photos and reels made from your phone shots, campaigns that reach people furnishing a home right now, and 3D showrooms where customers spin a piece and pick its colour.",
           "We work with modern, AI-assisted tools, so what usually takes months takes weeks, with one account manager from the first meeting to the first order. And we measure success in enquiries, showroom visits and sales, not likes."
         ],
@@ -807,7 +925,7 @@ window.MG_CONTENT = {
             "label": "connected services under one roof"
           },
           {
-            "value": "10 days",
+            "value": "2–5 days",
             "label": "to deliver your market report"
           },
           {
@@ -818,7 +936,9 @@ window.MG_CONTENT = {
             "value": "1",
             "label": "account manager who knows your business"
           }
-        ]
+        ],
+        "readMore": "Read more",
+        "readLess": "Show less"
       },
       "servicesIntro": {
         "eyebrow": "Four services, one goal: more sales",
@@ -831,7 +951,7 @@ window.MG_CONTENT = {
           "num": "01",
           "title": "Market research",
           "tagline": "We know your market and competitors before a single riyal is spent",
-          "intro": "A clear report: who competes with you in your city, what they charge, how they advertise and reply, and where the opportunity nobody has taken is. Delivered in 10 working days with a 90-day plan.",
+          "intro": "A clear report: who competes with you in your city, what they charge, how they advertise and reply, and where the opportunity nobody has taken is. Delivered in 2–5 working days with a 90-day plan.",
           "items": [
             "Direct competitors in your city: Riyadh, Jeddah, Dammam and beyond",
             "Prices, offers and instalment options such as Tabby and Tamara compared",

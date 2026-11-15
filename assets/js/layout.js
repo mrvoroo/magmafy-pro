@@ -4,17 +4,18 @@ import { openSettings } from './consent.js';
 
 const SOCIAL = [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['snapchat', 'Snapchat'], ['x', 'X'], ['linkedin', 'LinkedIn'], ['whatsapp', 'WhatsApp']];
 
-// Social icons are always shown; without a link they render as quiet placeholders.
+// An icon shows only when it has a link and isn't switched off in the admin (settings.socialVisible).
+// WhatsApp always links to wa.me/<settings.whatsapp>, the number set in the admin.
 export function socialLinks(cls = 'footer__social') {
   const links = { ...(settings.social || {}) };
   const wa = String(settings.whatsapp || '').replace(/[^\d]/g, '');
-  if (wa && !links.whatsapp) links.whatsapp = 'https://wa.me/' + wa;
-  return h('ul', { class: cls }, ...SOCIAL.map(([k, name]) => {
-    const url = safeUrl(links[k]);
-    return h('li', {}, url && url.startsWith('https://')
-      ? h('a', { class: 'social-btn', href: url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': name }, icon(k, 20))
-      : h('span', { class: 'social-btn is-soon', role: 'img', 'aria-label': name + ' – ' + t('contact.soon'), title: name + ' – ' + t('contact.soon') }, icon(k, 20)));
-  }));
+  links.whatsapp = wa ? 'https://wa.me/' + wa : '';
+  const vis = settings.socialVisible || {};
+  const items = SOCIAL.map(([k, name]) => ({ k, name, url: vis[k] === false ? null : safeUrl(links[k]) }))
+    .filter((x) => x.url && x.url.startsWith('https://'));
+  if (!items.length) return null;
+  return h('ul', { class: cls }, ...items.map(({ k, name, url }) =>
+    h('li', {}, h('a', { class: 'social-btn', href: url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': name }, icon(k, 20)))));
 }
 
 const NAV = [
@@ -147,7 +148,6 @@ export function renderFooter() {
   const brand = settings.brand || 'Magmafy';
   const contact = [
     settings.email ? h('li', {}, h('a', { class: 'footer__link', href: 'mailto:' + settings.email }, settings.email)) : null,
-    settings.phone ? h('li', {}, h('a', { class: 'footer__link', href: 'tel:' + settings.phone.replace(/[^\d+]/g, ''), dir: 'ltr' }, settings.phone)) : null,
     h('li', { class: 'footer__link footer__where' }, settings.address || t('contact.addressValue'))
   ];
 

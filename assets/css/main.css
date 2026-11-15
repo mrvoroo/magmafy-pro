@@ -1076,3 +1076,10 @@ a.project__link:hover .project__img { transform: scale(1.05); }
 .hero-tap.is-used { opacity: 0; }
 @keyframes tapPulse { 50% { box-shadow: 0 0 0 8px rgba(214, 41, 118, 0), 0 0 30px rgba(214, 41, 118, .35); transform: translateY(-3px); } }
 @media (max-width: 760px) { .hero-tap { right: 16px; bottom: auto; top: 96px; font-size: .7rem; } }
+
+/* About: collapsible paragraphs */
+.prose__more[hidden] { display: none; }
+.prose__more { animation: fadeUp .35s var(--ease, ease) both; }
+.prose__toggle { font: inherit; font-weight: 600; color: var(--c-gold, #feda75); background: none; border: 0; padding: .2rem 0; margin: 0 0 1.2rem; cursor: pointer; border-bottom: 1px dashed currentColor; }
+.prose__toggle:hover { color: #fff; }
+.prose__toggle:focus-visible { outline: 2px solid var(--c-cyan, #feda75); outline-offset: 4px; border-radius: 4px; }
