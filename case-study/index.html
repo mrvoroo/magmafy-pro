@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0e0716">
+<title>Magmafy — مهمة تقييم ميديا باير</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/tajawal-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Fonts: same files the main site already serves */
+@font-face{font-family:'Tajawal';font-style:normal;font-display:swap;font-weight:400;src:url('/assets/fonts/tajawal-arabic-400-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Tajawal';font-style:normal;font-display:swap;font-weight:400;src:url('/assets/fonts/tajawal-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Tajawal';font-style:normal;font-display:swap;font-weight:500;src:url('/assets/fonts/tajawal-arabic-500-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Tajawal';font-style:normal;font-display:swap;font-weight:500;src:url('/assets/fonts/tajawal-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Tajawal';font-style:normal;font-display:swap;font-weight:700;src:url('/assets/fonts/tajawal-arabic-700-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Tajawal';font-style:normal;font-display:swap;font-weight:700;src:url('/assets/fonts/tajawal-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'El Messiri';font-style:normal;font-display:swap;font-weight:700;src:url('/assets/fonts/el-messiri-arabic-700-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'El Messiri';font-style:normal;font-display:swap;font-weight:700;src:url('/assets/fonts/el-messiri-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-display:swap;font-weight:300 700;src:url('/assets/fonts/space-grotesk-latin-wght-normal.woff2') format('woff2-variations'),url('/assets/fonts/space-grotesk-latin-wght-normal.woff2') format('woff2')}
+
+:root{
+  --bg:#0e0716; --bg2:#1a0f27; --surface:#1a0f27;
+  --border:rgba(255,210,236,.14); --border-strong:rgba(255,196,226,.32);
+  --text:#fff4fa; --muted:#c7b6d6; --faint:#9a89ad;
+  --y:#feda75; --o:#fa7e1e; --p:#d62976; --v:#962fbf; --b:#4f5bd5;
+  --err:#ff9db8; --ok:#8fe3b0;
+  --grad:linear-gradient(100deg,#feda75 0%,#fa7e1e 26%,#d62976 58%,#962fbf 100%);
+  --grad-btn:linear-gradient(100deg,#feda75 0%,#fa7e1e 45%,#d62976 100%);
+  --f-display:'Space Grotesk','El Messiri','Tajawal',system-ui,sans-serif;
+  --f-head:'El Messiri','Space Grotesk','Tajawal',system-ui,sans-serif;
+  --f-body:'Tajawal','Inter',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.65;
+  background-image:radial-gradient(640px 420px at 100% -4%,rgba(150,47,191,.42),transparent 70%),radial-gradient(560px 380px at 0% 30%,rgba(214,41,118,.22),transparent 70%),radial-gradient(520px 340px at 60% 100%,rgba(250,126,30,.18),transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
+html[lang="en"] body{font-family:'Inter','Tajawal',system-ui,-apple-system,'Segoe UI',sans-serif}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] .step-n{font-family:var(--f-display)}
+.wrap{max-width:780px;margin:0 auto;padding:22px 16px 72px}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand img{width:46px;height:46px;border-radius:13px;display:block}
+.brand-name{font-family:var(--f-display);font-weight:700;font-size:23px;letter-spacing:.4px;direction:ltr;line-height:1.1}
+.brand-sub{font-size:13px;color:var(--muted);line-height:1.3}
+.lang{min-height:44px;min-width:64px;padding:8px 18px;border-radius:999px;border:1px solid var(--border-strong);background:rgba(30,17,44,.6);color:var(--text);font:700 15px var(--f-display);cursor:pointer}
+.lang:hover{border-color:var(--o)}
+
+/* hero */
+.hero{margin-top:34px}
+.eyebrow{color:var(--y);font-weight:700;font-size:16px}
+h1{margin:8px 0 12px;font-family:var(--f-head);font-weight:700;font-size:clamp(32px,7vw,50px);line-height:1.18;text-wrap:balance}
+.bar{width:110px;height:6px;border-radius:999px;background:var(--grad);margin:0 0 18px}
+.intro{margin:0;color:var(--muted);font-size:18px;max-width:60ch;text-wrap:pretty}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:24px}
+.fact{padding:16px 18px;border-radius:18px;border:1px solid var(--border);background:rgba(30,17,44,.58)}
+.fact.hot{background:var(--bg2);border-color:var(--border-strong)}
+.fact small{display:block;color:var(--muted);font-size:14px}
+.fact b{display:block;font-family:var(--f-display);font-size:32px;line-height:1.2;margin-top:2px}
+.fact.hot b{color:var(--y)}
+.fact span{font-size:14px;color:var(--muted)}
+.deadline{margin-top:14px;display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border-radius:999px;border:1px solid var(--border-strong);font-size:15px;font-weight:700}
+.deadline i{width:10px;height:10px;border-radius:99px;background:var(--o);display:block}
+
+/* cards */
+.card{margin-top:18px;padding:24px 22px;border-radius:24px;border:1px solid var(--border);background:rgba(26,15,39,.86)}
+.card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+.step-n{flex:none;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#feda75,#fa7e1e);color:#1a0f27;font-family:var(--f-head);font-weight:700;font-size:23px}
+.card-head h2{margin:0;font-family:var(--f-head);font-weight:700;font-size:25px;line-height:1.3}
+.card-head p{margin:2px 0 0;color:var(--muted);font-size:15px;line-height:1.55}
+
+.field{margin-top:16px}
+.card-head + .field{margin-top:0}
+label,.lbl{display:block;font-weight:700;font-size:16px;margin-bottom:6px}
+.hint{display:block;font-weight:400;font-size:14px;color:var(--muted);margin-top:1px}
+input[type=text],input[type=tel],input[type=number],select,textarea{width:100%;min-height:50px;padding:12px 16px;border-radius:14px;border:1px solid var(--border-strong);background:var(--bg);color:var(--text);font-size:17px;line-height:1.5;font-family:inherit}
+textarea{min-height:88px;resize:vertical}
+select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px;background-repeat:no-repeat;padding-inline-end:42px}
+html[dir="rtl"] select{background-position:22px 52%,16px 52%}
+select option{background:#1a0f27;color:#fff4fa}
+::placeholder{color:var(--faint);opacity:1}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:none;border-color:var(--o);box-shadow:0 0 0 3px rgba(250,126,30,.35)}
+[aria-invalid="true"]{border-color:var(--err)!important}
+.ltr{direction:ltr;text-align:start}
+.err{display:none;margin-top:6px;color:var(--err);font-size:14.5px;font-weight:700}
+.err.show{display:block}
+
+/* budget rows */
+.rows{display:grid;gap:10px}
+.prow{display:grid;grid-template-columns:1fr 112px;gap:6px 12px;align-items:center;padding:12px 14px;border:1px solid var(--border);border-radius:16px;background:rgba(14,7,22,.55)}
+.pname{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;margin:0}
+.dot{width:12px;height:12px;border-radius:99px;flex:none}
+.pamt{grid-column:1/-1;color:var(--muted);font-size:14px;min-height:0}
+.pamt:empty{display:none}
+.pct{position:relative;direction:ltr}
+.pct input{padding-inline-end:34px;padding-inline-start:12px;text-align:center}
+.pct::after{content:'%';position:absolute;inset-inline-end:13px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.meter{margin-top:14px}
+.track{height:10px;border-radius:99px;background:rgba(255,210,236,.14);overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;background:var(--grad);transition:width .2s}
+.fill.over{background:#ff6f9c}
+.msum{margin-top:8px;font-weight:700;font-size:15.5px}
+.msum.ok{color:var(--ok)}
+.msum.bad{color:var(--err)}
+
+/* ideas */
+.idea{padding:16px;border:1px solid var(--border);border-radius:18px;background:rgba(14,7,22,.55)}
+.idea + .idea{margin-top:12px}
+.idea h3 + .field{margin-top:0}
+.idea h3{margin:0 0 10px;font-family:var(--f-head);font-size:20px;color:var(--y)}
+html[lang="en"] .idea h3{font-family:var(--f-display)}
+
+/* results */
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.rbox{padding:14px 16px;border-radius:16px;background:var(--bg);border:1px solid var(--border)}
+.rbox small{display:block;color:var(--muted);font-size:13.5px}
+.rbox b{display:block;font-family:var(--f-display);font-size:26px;line-height:1.25;direction:ltr;text-align:start}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.two{grid-template-columns:1fr}.card{padding:20px 16px}.brand-sub{display:none}}
+
+/* submit */
+.submit{margin-top:24px}
+.btn{width:100%;min-height:58px;border:0;border-radius:18px;background:var(--grad-btn);color:#1a0f27;font:800 20px var(--f-body);cursor:pointer;box-shadow:0 14px 44px -14px rgba(214,41,118,.9)}
+.btn:hover{filter:brightness(1.06)}
+.btn[disabled]{opacity:.65;cursor:wait}
+.status{margin-top:12px;min-height:24px;font-weight:700;font-size:15.5px}
+.status.bad{color:var(--err)}
+.note{margin-top:6px;color:var(--faint);font-size:13.5px;text-align:center}
+.thanks{display:none;margin-top:28px;padding:34px 24px;border-radius:26px;border:1px solid var(--border-strong);background:rgba(26,15,39,.9);text-align:center}
+.thanks h2{margin:14px 0 8px;font-family:var(--f-head);font-size:32px}
+html[lang="en"] .thanks h2{font-family:var(--f-display)}
+.thanks p{margin:0;color:var(--muted);font-size:18px}
+.thanks .tick{width:64px;height:64px;border-radius:20px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:var(--grad-btn);color:#1a0f27;font-size:34px;font-weight:800}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+footer{margin-top:34px;text-align:center;color:var(--faint);font-size:13.5px}
+noscript{display:block;margin-top:20px;padding:14px;border:1px solid var(--err);border-radius:14px;color:var(--err)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="brand" href="/">
+    <img src="/assets/img/logo-mark.webp" width="46" height="46" alt="Magmafy">
+    <span><span class="brand-name">Magmafy</span><br><span class="brand-sub" data-i="tagline"></span></span>
+  </a>
+  <button type="button" class="lang" id="langBtn" aria-label="Switch language / تغيير اللغة">EN</button>
+</header>
+
+<noscript>يلزم تفعيل جافاسكريبت لتعبئة النموذج · JavaScript is required to fill this form.</noscript>
+
+<main id="main">
+<section class="hero">
+  <div class="eyebrow" data-i="eyebrow"></div>
+  <h1 data-i="title"></h1>
+  <div class="bar" aria-hidden="true"></div>
+  <p class="intro" data-i="intro"></p>
+
+  <div class="facts">
+    <div class="fact"><small data-i="f_aov"></small><b>3,000</b><span data-i="sar"></span></div>
+    <div class="fact"><small data-i="f_budget"></small><b>15,000</b><span data-i="sar"></span></div>
+    <div class="fact hot"><small data-i="f_goal"></small><b>200</b><span data-i="f_goal_u"></span></div>
+  </div>
+  <div class="deadline"><i aria-hidden="true"></i><span data-i="deadline"></span></div>
+</section>
+
+<form id="form" novalidate autocomplete="off">
+  <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+  <!-- 0. About you -->
+  <section class="card">
+    <div class="card-head">
+      <div class="step-n" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></div>
+      <div><h2 data-i="s0_t"></h2><p data-i="s0_h"></p></div>
+    </div>
+    <div class="field">
+      <label for="name" data-i="name_l"></label>
+      <input type="text" id="name" name="name" autocomplete="name" maxlength="80" data-ph="name_ph" aria-describedby="err-name">
+      <div class="err" id="err-name"></div>
+    </div>
+    <div class="field">
+      <label for="phone"><span data-i="phone_l"></span><span class="hint" data-i="phone_h"></span></label>
+      <input type="tel" class="ltr" id="phone" name="phone" inputmode="tel" autocomplete="tel" maxlength="24" placeholder="+20 10 0000 0000" aria-describedby="err-phone">
+      <div class="err" id="err-phone"></div>
+    </div>
+  </section>
+
+  <!-- 1. Budget -->
+  <section class="card">
+    <div class="card-head">
+      <div class="step-n" aria-hidden="true">1</div>
+      <div><h2 data-i="s1_t"></h2><p data-i="s1_h"></p></div>
+    </div>
+    <div class="rows" id="budgetRows"></div>
+    <div class="meter" aria-live="polite">
+      <div class="track"><div class="fill" id="fill"></div></div>
+      <div class="msum" id="msum"></div>
+      <div class="err" id="err-budget"></div>
+    </div>
+    <div class="field">
+      <label for="budgetWhy"><span data-i="why_l"></span><span class="hint" data-i="why_h"></span></label>
+      <textarea id="budgetWhy" name="budgetWhy" maxlength="1200" aria-describedby="err-budgetWhy"></textarea>
+      <div class="err" id="err-budgetWhy"></div>
+    </div>
+  </section>
+
+  <!-- 2. Campaign structure -->
+  <section class="card">
+    <div class="card-head">
+      <div class="step-n" aria-hidden="true">2</div>
+      <div><h2 data-i="s2_t"></h2><p data-i="s2_h"></p></div>
+    </div>
+    <div id="campFields"></div>
+    <p class="hint" id="campEmpty" data-i="camp_empty" style="margin:0"></p>
+  </section>
+
+  <!-- 3. Ad ideas -->
+  <section class="card">
+    <div class="card-head">
+      <div class="step-n" aria-hidden="true">3</div>
+      <div><h2 data-i="s3_t"></h2><p data-i="s3_h"></p></div>
+    </div>
+    <div id="ideas"></div>
+  </section>
+
+  <!-- 4. Numbers -->
+  <section class="card">
+    <div class="card-head">
+      <div class="step-n" aria-hidden="true">4</div>
+      <div><h2 data-i="s4_t"></h2><p data-i="s4_h"></p></div>
+    </div>
+    <div class="two">
+      <div class="field">
+        <label for="cost"><span data-i="cost_l"></span></label>
+        <input type="number" class="ltr" id="cost" name="cost" inputmode="decimal" min="0" step="0.01" aria-describedby="err-cost">
+        <div class="err" id="err-cost"></div>
+      </div>
+      <div class="field">
+        <label for="close"><span data-i="close_l"></span></label>
+        <input type="number" class="ltr" id="close" name="close" inputmode="decimal" min="0" max="100" step="0.1" aria-describedby="err-close">
+        <div class="err" id="err-close"></div>
+      </div>
+    </div>
+    <div class="res" aria-live="polite">
+      <div class="rbox"><small data-i="r_conv"></small><b id="rConv">—</b></div>
+      <div class="rbox"><small data-i="r_sales"></small><b id="rSales">—</b></div>
+      <div class="rbox"><small data-i="r_rev"></small><b id="rRev">—</b></div>
+      <div class="rbox"><small data-i="r_roas"></small><b id="rRoas">—</b></div>
+    </div>
+    <div class="field">
+      <label for="calcExplain"><span data-i="calc_l"></span><span class="hint" data-i="calc_h"></span></label>
+      <textarea id="calcExplain" name="calcExplain" maxlength="1500" aria-describedby="err-calcExplain"></textarea>
+      <div class="err" id="err-calcExplain"></div>
+    </div>
+  </section>
+
+  <!-- 5. Week one -->
+  <section class="card">
+    <div class="card-head">
+      <div class="step-n" aria-hidden="true">5</div>
+      <div><h2 data-i="s5_t"></h2><p data-i="s5_h"></p></div>
+    </div>
+    <div class="field">
+      <label for="wTest" data-i="w_test"></label>
+      <textarea id="wTest" name="wTest" maxlength="1200" aria-describedby="err-wTest"></textarea>
+      <div class="err" id="err-wTest"></div>
+    </div>
+    <div class="field">
+      <label for="wStop" data-i="w_stop"></label>
+      <textarea id="wStop" name="wStop" maxlength="1200" aria-describedby="err-wStop"></textarea>
+      <div class="err" id="err-wStop"></div>
+    </div>
+    <div class="field">
+      <label for="wScale" data-i="w_scale"></label>
+      <textarea id="wScale" name="wScale" maxlength="1200" aria-describedby="err-wScale"></textarea>
+      <div class="err" id="err-wScale"></div>
+    </div>
+  </section>
+
+  <div class="submit">
+    <button type="submit" class="btn" id="submitBtn" data-i="submit"></button>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+    <div class="note" data-i="autosave"></div>
+  </div>
+</form>
+
+<section class="thanks" id="thanks" tabindex="-1">
+  <div class="tick" aria-hidden="true">✓</div>
+  <h2 data-i="th_t"></h2>
+  <p id="thText"></p>
+</section>
+</main>
+
+<footer>Magmafy · magmafyogp.com</footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ===== Settings ===== */
+  var CONFIG = {
+    // Paste the Apps Script Web App URL here (see Code.gs deployment steps)
+    endpoint: 'https://script.google.com/macros/s/AKfycbz9bigUDDTmyyRjlSwTRwtjE7BYAamQ3gRQFs9oDoe_Lqr88SE504cVwaOk6ZyESzLmKA/exec',
+    budget: 15000,
+    aov: 3000,
+    draftKey: 'mg-case-study-draft-v1',
+    langKey: 'mg-case-study-lang'
+  };
+
+  var PLATFORMS = [
+    { id: 'snapchat', color: '#feda75' },
+    { id: 'meta',     color: '#4f5bd5' },
+    { id: 'tiktok',   color: '#d62976' },
+    { id: 'google',   color: '#fa7e1e' }
+  ];
+  var GOALS = ['awareness', 'chats', 'sales', 'retarget'];
+
+  /* ===== Copy (Arabic / English) ===== */
+  var T = {
+    ar: {
+      pageTitle: 'Magmafy — مهمة تقييم ميديا باير',
+      tagline: 'وكالة نمو لمعارض الأثاث والديكور',
+      eyebrow: 'مهمة تقييم · ميديا باير',
+      title: 'خطة حملة لمتجر أثاث في الرياض',
+      intro: 'متجر أثاث ومفروشات في الرياض بيستقبل الطلبات على واتساب وعلى الموقع. جاوب على الأسئلة تحت بالترتيب، وكل سؤال ليه خانات واضحة.',
+      sar: 'ريال', f_aov: 'متوسط سعر الطلب', f_budget: 'الميزانية الشهرية', f_goal: 'الهدف الشهري', f_goal_u: 'محادثة واتساب جادة',
+      deadline: 'مدة التسليم: ٤٨ ساعة',
+      s0_t: 'بياناتك', s0_h: 'عشان نتواصل معاك.',
+      name_l: 'الاسم', name_ph: 'اسمك الكامل',
+      phone_l: 'رقم الواتساب', phone_h: 'اكتبه مع كود الدولة',
+      s1_t: 'توزيع الميزانية على المنصات', s1_h: 'وزّع الـ 15,000 ريال بالنسبة المئوية على المنصات الأربع. المجموع لازم يكون 100%.',
+      p_snapchat: 'سناب', p_meta: 'ميتا', p_tiktok: 'تيك توك', p_google: 'جوجل',
+      why_l: 'ليه وزّعت الميزانية كده؟', why_h: 'اكتب سبب اختيارك للنسب دي باختصار',
+      s2_t: 'هيكل الحملات', s2_h: 'كام حملة على كل منصة، وإيه الجمهور المستهدف في كل حملة. بتظهر هنا المنصات اللي خصصتلها نسبة.',
+      camp_l: function (p) { return p + ': الحملات والجمهور'; },
+      camp_empty: 'حدد نسب الميزانية في السؤال الأول، وبعدها هتظهر هنا خانة لكل منصة.',
+      s3_t: 'أفكار الإعلانات', s3_h: '٣ أفكار مختلفة، ولكل فكرة هدفها.',
+      idea_n: function (n) { return 'الفكرة ' + n; },
+      idea_l: 'وصف الفكرة', idea_h: 'إيه اللي هيظهر في الإعلان؟',
+      goal_l: 'الهدف من الفكرة', goal_ph: 'اختار الهدف',
+      g_awareness: 'وعي بالمتجر', g_chats: 'رسائل واتساب', g_sales: 'مبيعات مباشرة', g_retarget: 'إعادة استهداف',
+      s4_t: 'الأرقام المتوقعة', s4_h: 'اكتب رقمين، والباقي بيتحسب لوحده على ميزانية 15,000 وسعر طلب 3,000.',
+      cost_l: 'تكلفة المحادثة المتوقعة (ريال)', close_l: 'نسبة الإغلاق: كام % من المحادثات بتبقى مبيعات',
+      r_conv: 'محادثات واتساب', r_sales: 'مبيعات', r_rev: 'إيراد (ريال)', r_roas: 'العائد على الإنفاق',
+      calc_l: 'طريقة الحساب', calc_h: 'اشرح باختصار إزاي وصلت للأرقام دي',
+      s5_t: 'خطة الأسبوع الأول', s5_h: 'ثلاث خانات، اكتب في كل واحدة بوضوح.',
+      w_test: 'إيه اللي هتختبره؟', w_stop: 'متى توقف إعلان؟', w_scale: 'متى تزود الميزانية؟',
+      submit: 'إرسال الإجابات', sending: 'جاري الإرسال...',
+      autosave: 'إجاباتك بتتحفظ تلقائيًا على جهازك لحد ما تبعتها.',
+      e_required: 'الخانة دي مطلوبة', e_name: 'اكتب اسمك', e_phone: 'اكتب رقم واتساب صحيح مع كود الدولة',
+      e_sum: 'مجموع النسب لازم يكون 100%', e_num: 'اكتب رقم صحيح', e_goal: 'اختار الهدف', e_pct: 'اكتب نسبة من 0 إلى 100',
+      sum_ok: function (s) { return 'المجموع ' + s + '% ✓'; },
+      sum_less: function (s) { return 'المجموع ' + s + '% — باقي ' + (100 - s) + '%'; },
+      sum_more: function (s) { return 'المجموع ' + s + '% — زيادة ' + (s - 100) + '%'; },
+      amt: function (v) { return '= ' + v + ' ريال'; },
+      e_send: 'حصلت مشكلة في الإرسال. إجاباتك محفوظة عندك، جرّب تاني.',
+      e_cfg: 'النموذج لسه مش متوصل بالاستلام. كلّم فريق ماجمافاي.',
+      e_fix: 'راجع الخانات الحمرا.',
+      th_t: 'وصلتنا إجاباتك', th_p: function (n) { return 'شكرًا ' + n + '. هنراجع إجاباتك ونتواصل معاك على واتساب.'; },
+      thanks_fallback: 'شكرًا'
+    },
+    en: {
+      pageTitle: 'Magmafy — Media Buyer Assessment',
+      tagline: 'Growth agency for furniture & décor showrooms',
+      eyebrow: 'Media buyer assessment',
+      title: 'Campaign plan for a furniture store in Riyadh',
+      intro: 'A furniture and home-furnishings store in Riyadh that takes orders through WhatsApp and its website. Answer the questions below in order; each one has clear fields.',
+      sar: 'SAR', f_aov: 'Average order value', f_budget: 'Monthly budget', f_goal: 'Monthly goal', f_goal_u: 'qualified WhatsApp conversations',
+      deadline: 'Turnaround: 48 hours',
+      s0_t: 'Your details', s0_h: 'So we can get in touch.',
+      name_l: 'Name', name_ph: 'Your full name',
+      phone_l: 'WhatsApp number', phone_h: 'Include the country code',
+      s1_t: 'Budget split across platforms', s1_h: 'Split the 15,000 SAR as percentages across the four platforms. The total must equal 100%.',
+      p_snapchat: 'Snapchat', p_meta: 'Meta', p_tiktok: 'TikTok', p_google: 'Google',
+      why_l: 'Why this split?', why_h: 'Briefly explain why you chose these shares',
+      s2_t: 'Campaign structure', s2_h: 'How many campaigns on each platform, and the target audience for each one. Platforms you gave a share to appear here.',
+      camp_l: function (p) { return p + ': campaigns & audiences'; },
+      camp_empty: 'Set the budget shares in question 1 first, then a box for each platform will appear here.',
+      s3_t: 'Ad ideas', s3_h: 'Three different ideas, each with its own goal.',
+      idea_n: function (n) { return 'Idea ' + n; },
+      idea_l: 'Describe the idea', idea_h: 'What will the ad show?',
+      goal_l: 'Goal of this idea', goal_ph: 'Choose a goal',
+      g_awareness: 'Store awareness', g_chats: 'WhatsApp messages', g_sales: 'Direct sales', g_retarget: 'Retargeting',
+      s4_t: 'Expected numbers', s4_h: 'Enter two numbers and the rest is calculated for you, using the 15,000 budget and 3,000 order value.',
+      cost_l: 'Expected cost per conversation (SAR)', close_l: 'Close rate: % of conversations that become sales',
+      r_conv: 'WhatsApp conversations', r_sales: 'Sales', r_rev: 'Revenue (SAR)', r_roas: 'Return on ad spend',
+      calc_l: 'How you calculated it', calc_h: 'Briefly explain how you reached these numbers',
+      s5_t: 'Week-one plan', s5_h: 'Three boxes. Write each one clearly.',
+      w_test: 'What will you test?', w_stop: 'When will you pause an ad?', w_scale: 'When will you raise the budget?',
+      submit: 'Submit answers', sending: 'Sending...',
+      autosave: 'Your answers are saved automatically on this device until you submit.',
+      e_required: 'This field is required', e_name: 'Enter your name', e_phone: 'Enter a valid WhatsApp number with country code',
+      e_sum: 'The shares must add up to 100%', e_num: 'Enter a valid number', e_goal: 'Choose a goal', e_pct: 'Enter a percentage from 0 to 100',
+      sum_ok: function (s) { return 'Total ' + s + '% ✓'; },
+      sum_less: function (s) { return 'Total ' + s + '% — ' + (100 - s) + '% left'; },
+      sum_more: function (s) { return 'Total ' + s + '% — ' + (s - 100) + '% over'; },
+      amt: function (v) { return '= ' + v + ' SAR'; },
+      e_send: 'Something went wrong while sending. Your answers are saved here, please try again.',
+      e_cfg: 'The form is not connected to the receiver yet. Please contact the Magmafy team.',
+      e_fix: 'Please check the highlighted fields.',
+      th_t: 'We received your answers', th_p: function (n) { return 'Thank you, ' + n + '. We will review your answers and contact you on WhatsApp.'; },
+      thanks_fallback: 'there'
+    }
+  };
+
+  /* ===== Helpers ===== */
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var lang = 'ar';
+  function t(k) {
+    var v = T[lang][k];
+    if (typeof v === 'function') return v.apply(null, Array.prototype.slice.call(arguments, 1));
+    return v == null ? k : v;
+  }
+  function fmt(n) { return Number(n).toLocaleString('en-US', { maximumFractionDigits: 1 }); }
+  function num(v) { var n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : NaN; }
+  function val(name) { var el = $('[name="' + name + '"]'); return el ? el.value.trim() : ''; }
+
+  /* ===== Build repeated parts ===== */
+  var budgetRows = $('#budgetRows');
+  PLATFORMS.forEach(function (p) {
+    var row = document.createElement('div');
+    row.className = 'prow';
+    row.innerHTML =
+      '<label class="pname" for="pct_' + p.id + '"><span class="dot" style="background:' + p.color + '" aria-hidden="true"></span><span data-i="p_' + p.id + '"></span></label>' +
+      '<div class="pct"><input type="number" id="pct_' + p.id + '" name="pct_' + p.id + '" inputmode="numeric" min="0" max="100" step="1" placeholder="0" aria-describedby="err-budget"></div>' +
+      '<div class="pamt" id="amt_' + p.id + '"></div>';
+    budgetRows.appendChild(row);
+  });
+
+  var campFields = $('#campFields');
+  PLATFORMS.forEach(function (p) {
+    var f = document.createElement('div');
+    f.className = 'field';
+    f.id = 'campWrap_' + p.id;
+    f.hidden = true;
+    f.innerHTML =
+      '<label for="camp_' + p.id + '" id="campL_' + p.id + '"></label>' +
+      '<textarea id="camp_' + p.id + '" name="camp_' + p.id + '" maxlength="1200" aria-describedby="err-camp_' + p.id + '"></textarea>' +
+      '<div class="err" id="err-camp_' + p.id + '"></div>';
+    campFields.appendChild(f);
+  });
+
+  var ideas = $('#ideas');
+  [1, 2, 3].forEach(function (n) {
+    var d = document.createElement('div');
+    d.className = 'idea';
+    var opts = GOALS.map(function (g) { return '<option value="' + g + '" data-i="g_' + g + '"></option>'; }).join('');
+    d.innerHTML =
+      '<h3 id="ideaT_' + n + '"></h3>' +
+      '<div class="field"><label for="idea' + n + '"><span data-i="idea_l"></span><span class="hint" data-i="idea_h"></span></label>' +
+      '<textarea id="idea' + n + '" name="idea' + n + '" maxlength="1200" aria-describedby="err-idea' + n + '"></textarea>' +
+      '<div class="err" id="err-idea' + n + '"></div></div>' +
+      '<div class="field"><label for="goal' + n + '" data-i="goal_l"></label>' +
+      '<select id="goal' + n + '" name="goal' + n + '" aria-describedby="err-goal' + n + '"><option value="" data-i="goal_ph"></option>' + opts + '</select>' +
+      '<div class="err" id="err-goal' + n + '"></div></div>';
+    ideas.appendChild(d);
+  });
+
+  /* ===== Language ===== */
+  function applyLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    document.title = t('pageTitle');
+    $$('[data-i]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i')); });
+    $$('[data-ph]').forEach(function (el) { el.setAttribute('placeholder', t(el.getAttribute('data-ph'))); });
+    $('#langBtn').textContent = l === 'ar' ? 'EN' : 'عربي';
+    PLATFORMS.forEach(function (p) { $('#campL_' + p.id).textContent = t('camp_l', t('p_' + p.id)); });
+    [1, 2, 3].forEach(function (n) { $('#ideaT_' + n).textContent = t('idea_n', n); });
+    try { localStorage.setItem(CONFIG.langKey, l); } catch (e) {}
+    refresh();
+    clearErrors();
+  }
+
+  /* ===== Live calculations ===== */
+  function pctVal(id) { var n = num($('#pct_' + id).value); return isFinite(n) ? n : 0; }
+  function sumPct() { return PLATFORMS.reduce(function (s, p) { return s + pctVal(p.id); }, 0); }
+
+  function refresh() {
+    var s = sumPct();
+    var fill = $('#fill'), msum = $('#msum');
+    fill.style.width = Math.min(s, 100) + '%';
+    fill.className = 'fill' + (s > 100 ? ' over' : '');
+    msum.textContent = s === 100 ? t('sum_ok', s) : (s < 100 ? t('sum_less', s) : t('sum_more', s));
+    msum.className = 'msum ' + (s === 100 ? 'ok' : 'bad');
+    if (s === 0) { msum.className = 'msum'; }
+
+    var any = false;
+    PLATFORMS.forEach(function (p) {
+      var v = pctVal(p.id);
+      $('#amt_' + p.id).textContent = v > 0 ? t('amt', fmt(CONFIG.budget * v / 100)) : '';
+      var show = v > 0;
+      $('#campWrap_' + p.id).hidden = !show;
+      if (show) any = true;
+    });
+    $('#campEmpty').hidden = any;
+
+    var c = num($('#cost').value), cl = num($('#close').value);
+    var conv = '—', sales = '—', rev = '—', roas = '—';
+    if (isFinite(c) && c > 0) {
+      var cv = Math.floor(CONFIG.budget / c);
+      conv = fmt(cv);
+      if (isFinite(cl) && cl >= 0 && cl <= 100) {
+        var sl = Math.round(cv * cl / 100);
+        var rv = sl * CONFIG.aov;
+        sales = fmt(sl); rev = fmt(rv); roas = (rv / CONFIG.budget).toFixed(1) + 'x';
+      }
+    }
+    $('#rConv').textContent = conv; $('#rSales').textContent = sales; $('#rRev').textContent = rev; $('#rRoas').textContent = roas;
+  }
+
+  /* ===== Draft autosave ===== */
+  var saveTimer = null, submitted = false;
+  function saveDraft() {
+    if (submitted) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      var d = {};
+      $$('#form [name]').forEach(function (el) { if (el.name !== 'website') d[el.name] = el.value; });
+      try { localStorage.setItem(CONFIG.draftKey, JSON.stringify(d)); } catch (e) {}
+    }, 250);
+  }
+  function restoreDraft() {
+    try {
+      var raw = localStorage.getItem(CONFIG.draftKey);
+      if (!raw) return;
+      var d = JSON.parse(raw);
+      Object.keys(d).forEach(function (k) {
+        var el = $('#form [name="' + k + '"]');
+        if (el && typeof d[k] === 'string') el.value = d[k];
+      });
+    } catch (e) {}
+  }
+
+  /* ===== Validation ===== */
+  var firstBad = null;
+  function setErr(id, msg, controlSel) {
+    var box = $('#err-' + id);
+    if (box) { box.textContent = msg; box.classList.add('show'); }
+    var ctl = controlSel ? $(controlSel) : $('[name="' + id + '"]');
+    if (ctl) ctl.setAttribute('aria-invalid', 'true');
+    if (!firstBad) firstBad = ctl || box;
+  }
+  function clearErrors() {
+    $$('.err').forEach(function (e) { e.textContent = ''; e.classList.remove('show'); });
+    $$('[aria-invalid]').forEach(function (e) { e.removeAttribute('aria-invalid'); });
+    $('#status').textContent = ''; $('#status').className = 'status';
+  }
+  function needText(name, minLen) {
+    if (val(name).length < (minLen || 2)) { setErr(name, t('e_required')); return false; }
+    return true;
+  }
+
+  function validate() {
+    clearErrors(); firstBad = null;
+    var ok = true;
+
+    if (val('name').length < 2) { setErr('name', t('e_name')); ok = false; }
+    var digits = val('phone').replace(/\D/g, '');
+    if (!/^[+\d][\d\s\-().]{6,}$/.test(val('phone')) || digits.length < 8 || digits.length > 15) { setErr('phone', t('e_phone')); ok = false; }
+
+    var s = sumPct(), badPct = false;
+    PLATFORMS.forEach(function (p) {
+      var raw = $('#pct_' + p.id).value.trim();
+      if (raw !== '') { var n = num(raw); if (!isFinite(n) || n < 0 || n > 100) { badPct = true; $('#pct_' + p.id).setAttribute('aria-invalid', 'true'); } }
+    });
+    if (badPct) { setErr('budget', t('e_pct'), '#pct_snapchat'); ok = false; }
+    else if (s !== 100) { setErr('budget', t('e_sum'), '#pct_snapchat'); ok = false; }
+    if (!needText('budgetWhy', 3)) ok = false;
+
+    PLATFORMS.forEach(function (p) {
+      if (pctVal(p.id) > 0 && !needText('camp_' + p.id, 3)) ok = false;
+    });
+
+    [1, 2, 3].forEach(function (n) {
+      if (!needText('idea' + n, 3)) ok = false;
+      if (!val('goal' + n)) { setErr('goal' + n, t('e_goal')); ok = false; }
+    });
+
+    var c = num(val('cost')), cl = num(val('close'));
+    if (!isFinite(c) || c <= 0) { setErr('cost', t('e_num')); ok = false; }
+    if (!isFinite(cl) || cl < 0 || cl > 100) { setErr('close', t('e_num')); ok = false; }
+    if (!needText('calcExplain', 3)) ok = false;
+
+    ['wTest', 'wStop', 'wScale'].forEach(function (n) { if (!needText(n, 3)) ok = false; });
+
+    if (!ok) {
+      var st = $('#status'); st.textContent = t('e_fix'); st.className = 'status bad';
+      if (firstBad) {
+        try { firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+        if (firstBad.focus) { try { firstBad.focus({ preventScroll: true }); } catch (e) {} }
+      }
+    }
+    return ok;
+  }
+
+  /* ===== Submit ===== */
+  function payload() {
+    var c = num(val('cost')), cl = num(val('close'));
+    var cv = Math.floor(CONFIG.budget / c), sl = Math.round(cv * cl / 100), rv = sl * CONFIG.aov;
+    var camp = {}, bud = {};
+    PLATFORMS.forEach(function (p) { bud[p.id] = pctVal(p.id); camp[p.id] = pctVal(p.id) > 0 ? val('camp_' + p.id) : ''; });
+    var ref = '';
+    try { ref = (new URLSearchParams(location.search).get('c') || '').slice(0, 60); } catch (e) {}
+    return {
+      ref: ref, lang: lang, submittedAt: new Date().toISOString(),
+      name: val('name'), phone: val('phone'),
+      budget: bud, budgetWhy: val('budgetWhy'), campaigns: camp,
+      ideas: [1, 2, 3].map(function (n) { return { text: val('idea' + n), goal: val('goal' + n) }; }),
+      costPerConversation: c, closeRate: cl,
+      calc: { conversations: cv, sales: sl, revenue: rv, roas: Math.round(rv / CONFIG.budget * 100) / 100 },
+      calcExplain: val('calcExplain'),
+      plan: { test: val('wTest'), stop: val('wStop'), scale: val('wScale') },
+      website: val('website')
+    };
+  }
+
+  function showThanks(name) {
+    submitted = true; clearTimeout(saveTimer);
+    try { localStorage.removeItem(CONFIG.draftKey); } catch (e) {}
+    $('#form').style.display = 'none';
+    $$('.hero').forEach(function (h) { h.style.display = 'none'; });
+    $('#thText').textContent = t('th_p', name || t('thanks_fallback'));
+    var th = $('#thanks'); th.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' }); th.focus({ preventScroll: true });
+  }
+
+  var sending = false;
+  $('#form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (sending) return;
+    if (!validate()) return;
+    var st = $('#status'), btn = $('#submitBtn');
+    if (!CONFIG.endpoint || CONFIG.endpoint.indexOf('PASTE_') === 0) { st.textContent = t('e_cfg'); st.className = 'status bad'; return; }
+    sending = true; btn.disabled = true; btn.textContent = t('sending'); st.textContent = ''; st.className = 'status';
+    var data = payload();
+    fetch(CONFIG.endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.ok) { showThanks(data.name); return; }
+        throw new Error((j && j.error) || 'failed');
+      })
+      .catch(function () {
+        st.textContent = t('e_send'); st.className = 'status bad';
+        sending = false; btn.disabled = false; btn.textContent = t('submit');
+      });
+  });
+
+  /* ===== Wire up ===== */
+  $('#langBtn').addEventListener('click', function () { applyLang(lang === 'ar' ? 'en' : 'ar'); });
+  $('#form').addEventListener('input', function (ev) {
+    var el = ev.target;
+    if (el.hasAttribute && el.hasAttribute('aria-invalid')) {
+      el.removeAttribute('aria-invalid');
+      var key = (el.name || el.id);
+      if (key.indexOf('pct_') === 0) {
+        key = 'budget';
+        $$('[id^="pct_"]').forEach(function (x) { x.removeAttribute('aria-invalid'); });
+      }
+      var box = $('#err-' + key); if (box) { box.textContent = ''; box.classList.remove('show'); }
+    }
+    refresh(); saveDraft();
+  });
+  $('#form').addEventListener('change', function () { refresh(); saveDraft(); });
+
+  var start = 'ar';
+  try {
+    var q = new URLSearchParams(location.search).get('lang');
+    var saved = localStorage.getItem(CONFIG.langKey);
+    start = (q === 'en' || q === 'ar') ? q : (saved === 'en' || saved === 'ar' ? saved : 'ar');
+  } catch (e) {}
+  restoreDraft();
+  try {
+    var pp = (new URLSearchParams(location.search).get('p') || '').replace(/[^\d+]/g, '').slice(0, 20);
+    if (pp && !$('#phone').value) $('#phone').value = pp;
+  } catch (e) {}
+  applyLang(start);
+})();
+</script>
+</body>
+</html>
