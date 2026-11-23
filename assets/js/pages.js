@@ -70,18 +70,32 @@ function about() {
           h('span', { class: 'stat__label' }, s.label))))));
 }
 
-function serviceCard(key) {
-  const s = t('services.' + key) || {};
-  return h('li', { class: 'svc-card', 'data-reveal': '', 'data-service': key, 'data-tilt': '' },
-    h('a', { class: 'svc-card__link', href: SERVICE_PAGES[key] },
+// Home offer: two packages (Flow -> content page, Volcano -> websites page), then the add-ons
+// that come after a first result. The service pages and SERVICE_KEYS stay as they are.
+const PACKAGES = [['flow', 'content'], ['volcano', 'websites']];
+
+function packageCard([key, page]) {
+  const p = t('packages.' + key) || {};
+  return h('li', { class: 'pkg-card', 'data-reveal': '', 'data-package': key, 'data-tilt': '' },
+    h('a', { class: 'pkg-card__link', href: SERVICE_PAGES[page] },
       h('span', { class: 'svc-card__glow', 'aria-hidden': 'true' }),
-      h('span', { class: 'svc-card__top' },
-        h('span', { class: 'svc-card__icon' }, icon(key, 26)),
-        h('span', { class: 'svc-card__num' }, s.num)),
-      h('span', { class: 'svc-card__title' }, s.title),
-      h('span', { class: 'svc-card__tagline' }, s.tagline),
-      key === 'content' && t('servicesIntro.flowPrice') ? h('span', { class: 'svc-card__price' }, t('servicesIntro.flowPrice')) : null,
-      h('span', { class: 'svc-card__more' }, t('servicesIntro.more'), icon('arrow', 16))));
+      h('span', { class: 'pkg-card__icon' }, icon(page, 28)),
+      h('span', { class: 'pkg-card__name' }, p.name),
+      h('span', { class: 'pkg-card__tagline' }, p.tagline),
+      p.price ? h('span', { class: 'pkg-card__price' }, p.price) : null,
+      h('span', { class: 'svc-card__more' }, t('packages.cta') || t('servicesIntro.more'), icon('arrow', 16))));
+}
+
+function addonsRow() {
+  const links = [
+    ['research', t('services.research.title')],
+    ['consulting', t('services.consulting.title')],
+    ['websites', t('packages.showroom3d') || t('services.websites.title')]
+  ].filter(([, label]) => label);
+  return h('div', { class: 'addons', 'data-reveal': '' },
+    h('h3', { class: 'addons__title' }, t('packages.addonsTitle')),
+    h('ul', { class: 'addons__list' }, ...links.map(([key, label]) => h('li', {},
+      h('a', { class: 'addons__link', href: SERVICE_PAGES[key] }, icon(key, 18), h('span', {}, label))))));
 }
 
 function services() {
@@ -89,7 +103,8 @@ function services() {
     h('div', { class: 'container' },
       heading({ eyebrow: t('servicesIntro.eyebrow'), title: t('servicesIntro.title') }),
       h('p', { class: 'lead', 'data-reveal': '' }, t('servicesIntro.text')),
-      h('ul', { class: 'svc-grid' }, ...SERVICE_KEYS.map(serviceCard))));
+      h('ul', { class: 'pkg-grid' }, ...PACKAGES.map(packageCard)),
+      addonsRow()));
 }
 
 function journeySection() {

@@ -106,10 +106,19 @@ function schema(lang, p, title, description) {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: lang === 'en' ? 'Services' : 'الخدمات',
-      itemListElement: SERVICES.map((k) => ({
+      itemListElement: [
+        // The two packages lead (Flow -> content page, Volcano -> websites page), then every service.
+        ...[['flow', 'content'], ['volcano', 'websites']].filter(([k]) => d.packages && d.packages[k]).map(([k, page]) => ({
+          '@type': 'Offer',
+          name: d.packages[k].name,
+          description: d.packages[k].tagline + '. ' + d.packages[k].price,
+          url: url(lang, page),
+          itemOffered: { '@type': 'Service', name: d.packages[k].name, description: d.packages[k].tagline, provider: { '@id': SITE + '/#organization' }, areaServed: 'Saudi Arabia' }
+        })),
+        ...SERVICES.map((k) => ({
         '@type': 'Offer',
         itemOffered: { '@type': 'Service', name: d.services[k].title, description: d.services[k].intro, url: url(lang, k), provider: { '@id': SITE + '/#organization' }, areaServed: 'Saudi Arabia' }
-      }))
+      }))]
     }
   };
   const site = { '@type': 'WebSite', '@id': SITE + '/#website', url: SITE + '/', name: brand, inLanguage: ['ar', 'en'], publisher: { '@id': SITE + '/#organization' } };
@@ -195,11 +204,19 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="U
 /* ---------- llms.txt and llms-full.txt (plain-language summaries for AI assistants) ---------- */
 const en = dict('en');
 const ar = dict('ar');
+const pkgLines = (lang) => {
+  const p = dict(lang).packages || {};
+  return [['flow', 'content'], ['volcano', 'websites']].filter(([k]) => p[k]).map(([k, page]) => `- [${p[k].name}](${url(lang, page)}): ${p[k].tagline}. ${p[k].price}`);
+};
 const svcLine = (lang, k) => `- [${dict(lang).services[k].title}](${url(lang, k)}): ${dict(lang).services[k].tagline}.`;
 fs.writeFileSync(path.join(OUT, 'llms.txt'), [
   `# ${brand}`,
   '',
-  `> ${brand} (ماجمافاي) is a growth and marketing agency for furniture, décor and home-goods showrooms, online stores, factories and interior design studios in Saudi Arabia and the Gulf. Services: market research, AI-assisted content and ads, 3D websites and showrooms, and growth consulting. The site is available in English and Arabic.`,
+  `> ${brand} (ماجمافاي) is a growth and marketing agency for furniture, décor and home-goods showrooms, online stores, factories and interior design studios in Saudi Arabia and the Gulf. ${(en.meta && en.meta.desc && en.meta.desc.home) || ''} The site is available in English and Arabic.`,
+  '',
+  '## Packages',
+  ...pkgLines('en'),
+  `- ${(en.packages && en.packages.addonsTitle) || 'Added after your first result'}: market research, consulting and 3D showrooms.`,
   '',
   '## Services',
   ...SERVICES.map((k) => svcLine('en', k)),
@@ -210,6 +227,7 @@ fs.writeFileSync(path.join(OUT, 'llms.txt'), [
   `- [Book a free meeting](${url('en', 'booking')}): free 30-minute meeting on Google Meet or Zoom.`,
   '',
   '## بالعربي',
+  ...pkgLines('ar'),
   ...SERVICES.map((k) => svcLine('ar', k)),
   `- [الرئيسية](${url('ar', '')}): من نحن وكيف نعمل وأجوبة الأسئلة الشائعة.`,
   `- [احجز اجتماعًا](${url('ar', 'booking')}): اجتماع مجاني 30 دقيقة.`,
@@ -224,6 +242,8 @@ const full = [`# ${brand}: full site text`, '', `Contact: ${S.email}${phone ? ' 
 for (const lang of ['en', 'ar']) {
   const d = dict(lang);
   full.push(`# ${lang === 'en' ? 'English' : 'العربية'}`, '', `## ${lang === 'en' ? 'About' : 'من نحن'}`, '', ...(d.about.paragraphs || []).flatMap((x) => [x, '']));
+  if (d.packages) full.push(`## ${(d.servicesIntro && d.servicesIntro.title) || 'Packages'}`, '', ...pkgLines(lang), '');
+  if (d.market && Array.isArray(d.market.items)) full.push(`## ${d.market.title}`, '', ...d.market.items.map((i) => `- ${i.value} ${i.text} (${i.source}${i.url ? ', ' + i.url : ''})`), '', d.market.note || '', '');
   for (const k of SERVICES) {
     const s = d.services[k];
     full.push(`## ${s.title}`, '', `${s.tagline}.`, '', s.intro, '', ...(s.items || []).map((i) => '- ' + i), '', `Page: ${url(lang, k)}`, '');

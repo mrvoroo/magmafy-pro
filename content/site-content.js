@@ -230,12 +230,12 @@ window.MG_CONTENT = {
   "i18n": {
     "ar": {
       "meta": {
-        "homeTitle": "وكالة نمو لمعارض الأثاث والديكور في السعودية",
+        "homeTitle": "إعلانات تتحول إلى محادثات وزيارات لمعارض الأثاث في السعودية",
         "desc": {
-          "home": "دراسة السوق، المحتوى والإعلانات بالذكاء الاصطناعي، مواقع ومعارض ثلاثية الأبعاد، واستشارات نمو لمعارض الأثاث والديكور في السعودية والخليج.",
+          "home": "نشغّل إعلانات سناب شات وتيك توك وميتا لمعارض الأثاث والديكور في السعودية والخليج، ونتابع كل محادثة واتساب حتى تصبح زيارة للمعرض. وإن أردت، نبني الصفحة أو المتجر الذي يستقبل العميل.",
           "research": "تقرير منافسين وأسعار وخريطة فرص لمعرضك في الرياض وجدة والدمام، خلال 2–5 أيام عمل مع خطة 90 يومًا.",
-          "content": "صور وريلز بالذكاء الاصطناعي، تقويم محتوى على مواسم البيع في السعودية، وإعلانات Meta وTikTok وSnapchat تقاس بالاستفسارات والزيارات.",
-          "websites": "مواقع ومتاجر ومعارض ثلاثية الأبعاد بالعربي والإنجليزي، مع حجز زيارة وطلب سعر عبر واتساب.",
+          "content": "باقة تدفّق: إعلانات سناب شات وتيك توك وميتا لمعارض الأثاث، ومتابعة كل محادثة واتساب حتى تصبح زيارة للمعرض، مع محتوى وصور بالذكاء الاصطناعي.",
+          "websites": "باقة بركان: تدفّق مع موقع أو صفحة هبوط أو متجر يستقبل العميل ويحوّل اهتمامه إلى طلب، والمعرض ثلاثي الأبعاد كترقية.",
           "consulting": "استشارات تسويق ونمو وتحديد نطاق المواقع لمعارض الأثاث والديكور.",
           "portfolio": "نماذج حية لمعارض 3D ومحتوى وإعلانات وتقارير من Magmafy.",
           "booking": "احجز اجتماعًا مجانيًا 30 دقيقة على Google Meet أو Zoom: دراسة السوق، نطاق الموقع، أو استشارة عامة.",
@@ -263,11 +263,11 @@ window.MG_CONTENT = {
       },
       "hero": {
         "eyebrow": "Magmafy — وكالة نمو متخصصة في الأثاث والديكور",
-        "title1": "نحوّل متابعيك إلى زوّار،",
-        "title2": "ومحتواك إلى مبيعات.",
+        "title1": "نحوّل إعلاناتك إلى محادثات،",
+        "title2": "ومحادثاتك إلى زيارات للمعرض.",
         "text": "نشغّل إعلاناتك على سناب شات وتيك توك وميتا، ونتابع كل محادثة واتساب حتى تصبح زيارة لمعرضك. وإن أردت، نبني لها الصفحة أو المتجر الذي يستقبل العميل. تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات منفصلة.",
         "cta": "احجز اجتماعًا مجانيًا",
-        "cta2": "استكشف خدماتنا",
+        "cta2": "تعرّف على الباقتين",
         "scroll": "مرّر للأسفل",
         "chips": [
           {
@@ -296,12 +296,12 @@ window.MG_CONTENT = {
         "cta": "ناقش مشروعك معنا",
         "stats": [
           {
-            "value": "4",
-            "label": "خدمات متكاملة تحت سقف واحد"
+            "value": "2",
+            "label": "باقتان واضحتان: تدفّق وبركان"
           },
           {
-            "value": "2–5 أيام",
-            "label": "لتسليم تقرير دراسة السوق"
+            "value": "30 د",
+            "label": "اجتماع أول مجاني"
           },
           {
             "value": "48 س",
@@ -316,11 +316,26 @@ window.MG_CONTENT = {
         "readLess": "عرض أقل"
       },
       "servicesIntro": {
-        "eyebrow": "أربع خدمات، هدف واحد: مبيعات أكثر",
-        "title": "خدماتنا",
-        "text": "اختر خدمة. لكل خدمة عالمها الخاص، وفيها تجارب حية تلعب بها بنفسك.",
-        "more": "افتح الخدمة",
-        "flowPrice": "تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات منفصلة."
+        "eyebrow": "باقتان، هدف واحد: زيارات أكثر لمعرضك",
+        "title": "باقاتنا",
+        "text": "ابدأ بتدفّق، وأضف الفوهة حين تكون جاهزًا.",
+        "more": "افتح الخدمة"
+      },
+      "packages": {
+        "label": "باقتان",
+        "cta": "تفاصيل الباقة",
+        "flow": {
+          "name": "تدفّق",
+          "tagline": "الإعلان يجلب المحادثات، ونتابع كل واحدة حتى تصبح زيارة للمعرض",
+          "price": "تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات منفصلة."
+        },
+        "volcano": {
+          "name": "بركان",
+          "tagline": "تدفّق + الفوهة: موقع أو صفحة هبوط أو متجر يستقبل العميل ويحوّل اهتمامه إلى طلب",
+          "price": "السعر يُحدَّد في المكالمة بعد دراسة حالتك"
+        },
+        "addonsTitle": "تُضاف بعد أول نتيجة",
+        "showroom3d": "المعارض 3D"
       },
       "services": {
         "research": {
@@ -340,8 +355,8 @@ window.MG_CONTENT = {
         "content": {
           "num": "02",
           "title": "المحتوى والإعلانات",
-          "tagline": "محتوى يُحفظ ويُشارك، وإعلانات تصل لمن يجهّز بيته الآن",
-          "intro": "صور وريلز بالذكاء الاصطناعي من صور جوالك، تقويم محتوى على مواسم البيع في السعودية، وحملات مدفوعة نقيسها بالاستفسارات وزيارات المعرض، لا بالإعجابات.",
+          "tagline": "باقة تدفّق: الإعلان يجلب المحادثات، ونتابع كل واحدة حتى تصبح زيارة للمعرض",
+          "intro": "في باقة تدفّق نشغّل إعلاناتك على سناب شات وتيك توك وميتا، ونتابع كل محادثة واتساب حتى تصبح زيارة لمعرضك. الصور والريلز بالذكاء الاصطناعي من صور جوالك تخدم الإعلان، ونقيس النتيجة بالمحادثات وزيارات المعرض، لا بالإعجابات.",
           "items": [
             "صور وريلز بالذكاء الاصطناعي تحافظ على شكل القطعة وخامتها ولونها",
             "تقويم محتوى شهري على المواسم: رمضان، العيد، موسم الزواج، اليوم الوطني، الجمعة البيضاء",
@@ -354,8 +369,8 @@ window.MG_CONTENT = {
         "websites": {
           "num": "03",
           "title": "المواقع والمعارض 3D",
-          "tagline": "اجعل عميلك يُدير القطعة ويختار لونها قبل أن يزور المعرض",
-          "intro": "مواقع ومتاجر سريعة بالعربي والإنجليزي، فيها عرض ثلاثي الأبعاد للقطع، تغيير القماش والألوان، وزر حجز زيارة أو طلب سعر عبر واتساب. وتعمل بسلاسة على الجوال.",
+          "tagline": "باقة بركان: تدفّق + الفوهة، صفحة أو متجر يستقبل العميل ويحوّل اهتمامه إلى طلب",
+          "intro": "في باقة بركان نضيف إلى تدفّق «الفوهة»: موقع أو صفحة هبوط أو متجر سريع بالعربي والإنجليزي يستقبل العميل القادم من الإعلان ويحوّل اهتمامه إلى طلب، مع زر حجز زيارة أو طلب سعر عبر واتساب. وكترقية، نضيف المعرض ثلاثي الأبعاد: اجعل عميلك يُدير القطعة ويختار لونها قبل أن يزور المعرض.",
           "items": [
             "مواقع تعريفية ومعارض أونلاين بالعربي والإنجليزي",
             "عرض 3D و360° للقطع مع تغيير الخامات والألوان",
@@ -887,12 +902,12 @@ window.MG_CONTENT = {
     },
     "en": {
       "meta": {
-        "homeTitle": "Growth agency for furniture & décor showrooms in Saudi Arabia",
+        "homeTitle": "Ads that turn into chats and showroom visits for furniture showrooms in Saudi Arabia",
         "desc": {
-          "home": "Magmafy is a growth agency for furniture and décor showrooms in Saudi Arabia and the Gulf: market research, AI-assisted content and ads, 3D websites and showrooms, and growth consulting.",
+          "home": "We run Snapchat, TikTok and Meta ads for furniture and décor showrooms in Saudi Arabia and the Gulf and follow every WhatsApp chat until it becomes a showroom visit. If you want, we also build the page or store that receives the customer.",
           "research": "A competitor, pricing and opportunity report for your showroom in Riyadh, Jeddah and Dammam, delivered in 2–5 working days with a 90-day plan.",
-          "content": "AI-made photos and reels, a content calendar built around Saudi buying seasons, and Meta, TikTok and Snapchat ads measured by enquiries and visits.",
-          "websites": "Arabic and English websites, stores and 3D showrooms with visit booking and WhatsApp price requests for furniture and décor brands.",
+          "content": "The Flow package: Snapchat, TikTok and Meta ads for furniture showrooms, with every WhatsApp chat followed until it becomes a showroom visit, plus AI photos and content.",
+          "websites": "The Volcano package: Flow plus a website, landing page or store that receives the customer and turns interest into an order, with 3D showrooms as an upgrade.",
           "consulting": "Marketing, growth and website-scoping consulting for furniture and décor showrooms and stores.",
           "portfolio": "Live demos of 3D showrooms, content, ads and reports from Magmafy.",
           "booking": "Book a free 30-minute meeting on Google Meet or Zoom: market research, website scope, or general consulting.",
@@ -920,11 +935,11 @@ window.MG_CONTENT = {
       },
       "hero": {
         "eyebrow": "Magmafy — the growth agency for furniture & décor",
-        "title1": "We turn followers into visitors,",
-        "title2": "and content into sales.",
+        "title1": "We turn your ads into chats,",
+        "title2": "and your chats into showroom visits.",
         "text": "We run your ads on Snapchat, TikTok and Meta and follow every WhatsApp chat until it becomes a showroom visit. If you want, we also build the page or store that receives the customer. Flow starts from $1,000 per month; the ad budget is separate.",
         "cta": "Book a free meeting",
-        "cta2": "Explore our services",
+        "cta2": "See the two packages",
         "scroll": "Scroll",
         "chips": [
           {
@@ -953,12 +968,12 @@ window.MG_CONTENT = {
         "cta": "Talk to us about your project",
         "stats": [
           {
-            "value": "4",
-            "label": "connected services under one roof"
+            "value": "2",
+            "label": "Two clear packages: Flow and Volcano"
           },
           {
-            "value": "2–5 days",
-            "label": "to deliver your market report"
+            "value": "30 min",
+            "label": "free first meeting"
           },
           {
             "value": "48 h",
@@ -973,11 +988,26 @@ window.MG_CONTENT = {
         "readLess": "Show less"
       },
       "servicesIntro": {
-        "eyebrow": "Four services, one goal: more sales",
-        "title": "Services",
-        "text": "Pick a service. Each one has its own world, with live demos you can play with.",
-        "more": "Open service",
-        "flowPrice": "Flow starts from $1,000 per month; the ad budget is separate."
+        "eyebrow": "Two packages, one goal: more visits to your showroom",
+        "title": "Our packages",
+        "text": "Start with Flow, add the crater when you're ready.",
+        "more": "Open service"
+      },
+      "packages": {
+        "label": "Two packages",
+        "cta": "See the package",
+        "flow": {
+          "name": "Flow",
+          "tagline": "Ads bring the chats, and we follow each one until it becomes a showroom visit",
+          "price": "Flow starts from $1,000 per month; the ad budget is separate."
+        },
+        "volcano": {
+          "name": "Volcano",
+          "tagline": "Flow + the crater: a website, landing page or store that receives the customer and turns interest into an order",
+          "price": "Price is set on the call after we study your case"
+        },
+        "addonsTitle": "Added after your first result",
+        "showroom3d": "3D showrooms"
       },
       "services": {
         "research": {
@@ -997,8 +1027,8 @@ window.MG_CONTENT = {
         "content": {
           "num": "02",
           "title": "Content & ads",
-          "tagline": "Content people save and share, ads that reach people furnishing a home now",
-          "intro": "AI photos and reels made from your phone shots, a content calendar built around Saudi buying seasons, and paid campaigns measured in enquiries and showroom visits, not likes.",
+          "tagline": "Flow: ads bring the chats, and we follow each one until it becomes a showroom visit",
+          "intro": "With Flow we run your ads on Snapchat, TikTok and Meta and follow every WhatsApp chat until it becomes a visit to your showroom. AI photos and reels made from your phone shots serve the ads, and we measure results in chats and showroom visits, not likes.",
           "items": [
             "AI photos and reels that keep each piece's shape, material and colour",
             "A monthly calendar around the seasons: Ramadan, Eid, wedding season, National Day, White Friday",
@@ -1011,8 +1041,8 @@ window.MG_CONTENT = {
         "websites": {
           "num": "03",
           "title": "Websites & 3D showrooms",
-          "tagline": "Let customers spin a piece and pick its colour before they visit",
-          "intro": "Fast websites and stores in Arabic and English with 3D product views, fabric and colour switching, and a button to book a visit or ask for a price on WhatsApp. Smooth on every phone.",
+          "tagline": "Volcano: Flow + the crater, a page or store that receives the customer and turns interest into an order",
+          "intro": "Volcano adds the “crater” to Flow: a fast website, landing page or store in Arabic and English that receives the customer from the ad and turns interest into an order, with a button to book a visit or ask for a price on WhatsApp. As an upgrade, we add a 3D showroom: let customers spin a piece and pick its colour before they visit.",
           "items": [
             "Brand websites and online showrooms in Arabic and English",
             "3D and 360° product views with live material and colour changes",
