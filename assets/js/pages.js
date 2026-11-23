@@ -153,6 +153,27 @@ function whySection() {
           h('p', {}, it.text))))));
 }
 
+// Third-party figures, each shown next to its source. Items without a url get the source as text only.
+function marketSection() {
+  const m = t('market') || {};
+  const items = arr(m.items);
+  if (!items.length) return null;
+  return h('section', { class: 'section market', id: 'market', 'data-shape': 'why' },
+    h('div', { class: 'container' },
+      heading({ eyebrow: m.eyebrow, title: m.title }),
+      h('ul', { class: 'market-grid' },
+        ...items.map((it) => {
+          const url = /^https:\/\//.test(str(it.url)) ? it.url : '';
+          return h('li', { class: 'market-card', 'data-reveal': '' },
+            h('span', { class: 'market-card__value', dir: 'ltr' }, it.value),
+            h('p', { class: 'market-card__text' }, it.text),
+            h('p', { class: 'market-card__source' },
+              m.sourceLabel ? m.sourceLabel + ' ' : null,
+              url ? h('a', { href: url, target: '_blank', rel: 'noopener noreferrer' }, it.source) : it.source));
+        })),
+      m.note ? h('p', { class: 'market__note', 'data-reveal': '' }, m.note) : null));
+}
+
 function projectCard(p, i) {
   const loc = (p && p[getLang()]) || {};
   const img = safeImage(p.image);
@@ -340,7 +361,7 @@ export function pageTitle(page) {
 
 export function renderPage(page) {
   switch (page) {
-    case 'home': return [hero(), about(), services(), journeySection(), whySection(), portfolioPreview(), faqSection(), ctaBand()];
+    case 'home': return [hero(), about(), services(), journeySection(), whySection(), marketSection(), portfolioPreview(), faqSection(), ctaBand()];
     case 'portfolio': return portfolioPage();
     case 'contact': return bookingPage();
     case 'terms': return termsPage();

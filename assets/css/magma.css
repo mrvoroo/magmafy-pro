@@ -576,3 +576,14 @@ html[dir='rtl'] .bk-cal__nav.is-prev .icon--arrow { transform: none; }
 .bk-summary > div { display: grid; gap: 2px; }
 .bk-summary small { color: var(--c-faint); font-size: .76rem; }
 @media (max-width: 960px) { html .road__step:not(:last-child)::after { display: none; } }
+
+/* ---------- Numbers from the market (sourced figures) ---------- */
+.market-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.market-card { display: flex; flex-direction: column; gap: 12px; padding: 28px; border-radius: var(--radius); background: var(--c-surface); border: 1px solid var(--c-border); }
+.market-card__value { font: 600 clamp(2.2rem, 4vw, 3rem)/1 var(--f-display); background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; align-self: flex-start; }
+.market-card__text { margin: 0; color: var(--c-text); }
+.market-card__source { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--c-border); font-size: .82rem; color: var(--c-muted); overflow-wrap: anywhere; }
+.market-card__source a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.market-card__source a:hover { color: var(--c-text); }
+.market__note { margin: 22px 0 0; font-size: .86rem; color: var(--c-faint); }
+@media (max-width: 900px) { .market-grid { grid-template-columns: 1fr; } }

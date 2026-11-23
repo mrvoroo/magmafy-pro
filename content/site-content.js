@@ -271,16 +271,16 @@ window.MG_CONTENT = {
         "scroll": "مرّر للأسفل",
         "chips": [
           {
-            "value": "85%",
-            "label": "اقتنعوا بالشراء بعد مشاهدة فيديو"
+            "value": "30 د",
+            "label": "اجتماع أول مجاني"
           },
           {
-            "value": "+94%",
-            "label": "تحويل أعلى مع العرض ثلاثي الأبعاد"
+            "value": "48 س",
+            "label": "لعرض مكتوب بعد الاجتماع"
           },
           {
-            "value": "7x",
-            "label": "فرصة أكبر عند الرد خلال ساعة"
+            "value": "حسابك",
+            "label": "ميزانية الإعلانات تُدفع مباشرة لمنصاتك"
           }
         ]
       },
@@ -289,7 +289,7 @@ window.MG_CONTENT = {
         "title": "تعرّف على",
         "titleAccent": "Magmafy",
         "paragraphs": [
-          "ماجمافاي: وكالة نمو متخصصة في معارض الأثاث والديكور في الخليج. نساعد المعارض يجيبوا 20–60% مبيعات أكثر عن طريق إعلانات الميديا، تطوير المتاجر، وتوليد صور AI.",
+          "ماجمافاي: وكالة نمو متخصصة في معارض الأثاث والديكور في الخليج. نساعد المعارض يجيبوا مبيعات أكثر عن طريق إعلانات الميديا، تطوير المتاجر، وتوليد صور AI.",
           "لذلك نبدأ بدراسة السوق، ثم نبني المحتوى والإعلانات والموقع حول رحلة الشراء الحقيقية: صور وريلز بالذكاء الاصطناعي من صور جوالك، حملات تصل لمن يجهّز بيته الآن، ومعارض ثلاثية الأبعاد يلفّ فيها العميل القطعة ويختار لونها.",
           "نعمل بأدوات حديثة مدعومة بالذكاء الاصطناعي، فننجز في أسابيع ما يأخذ شهورًا، ومعك مدير حساب واحد من أول اجتماع إلى أول طلب. ونقيس النجاح بالاستفسارات وزيارات المعرض والمبيعات، لا بالإعجابات."
         ],
@@ -445,6 +445,32 @@ window.MG_CONTENT = {
             "text": "تقارير بالاستفسارات والزيارات والطلبات، ميزانية الإعلانات من حسابك مباشرة، والتزام بنظام حماية البيانات الشخصية."
           }
         ]
+      },
+      "market": {
+        "eyebrow": "من مصادر منشورة",
+        "title": "أرقام من السوق",
+        "items": [
+          {
+            "value": "85%",
+            "text": "من المشاركين في استبيان ويزول 2026 قالوا إنهم اقتنعوا بالشراء بعد مشاهدة فيديو.",
+            "source": "Wyzowl، State of Video Marketing 2026 (استبيان شمل 266 مشاركًا، أواخر 2025)",
+            "url": "https://wyzowl.com/video-marketing-statistics/"
+          },
+          {
+            "value": "+94%",
+            "text": "متوسط زيادة التحويل الذي تقول شوبيفاي إن تجارها حققوه بعد إضافة محتوى ثلاثي الأبعاد.",
+            "source": "سجل تحديثات Shopify (رقم تعلنه شوبيفاي عن تجارها، 2022)",
+            "url": "https://changelog.shopify.com/posts/shop-adds-3d-and-augmented-reality-ar-previews"
+          },
+          {
+            "value": "7x",
+            "text": "احتمال أكبر بنحو 7 مرات لتأهيل العميل عند التواصل خلال ساعة مقارنة بمن تأخر ساعة إضافية (دراسة هارفارد بزنس ريفيو، 2011، شركات أمريكية).",
+            "source": "Harvard Business Review، «The Short Life of Online Sales Leads» (2011)",
+            "url": ""
+          }
+        ],
+        "sourceLabel": "المصدر:",
+        "note": "أرقام عامة من دراسات وأسواق مختلفة، وليست نتائج ماجمافاي."
       },
       "portfolio": {
         "eyebrow": "أعمال مختارة",
@@ -896,16 +922,16 @@ window.MG_CONTENT = {
         "scroll": "Scroll",
         "chips": [
           {
-            "value": "85%",
-            "label": "bought after watching a video"
+            "value": "30 min",
+            "label": "free first meeting"
           },
           {
-            "value": "+94%",
-            "label": "higher conversion with 3D"
+            "value": "48 h",
+            "label": "to a written proposal after the meeting"
           },
           {
-            "value": "7x",
-            "label": "more likely to qualify when you reply within an hour"
+            "value": "Your account",
+            "label": "ad budget paid straight to the platforms"
           }
         ]
       },
@@ -914,7 +940,7 @@ window.MG_CONTENT = {
         "title": "Meet",
         "titleAccent": "Magmafy",
         "paragraphs": [
-          "Magmafy is a growth agency specialised in furniture and décor showrooms in the Gulf. We help showrooms get 20–60% more sales through social media ads, store development and AI-generated images.",
+          "Magmafy is a growth agency specialised in furniture and décor showrooms in the Gulf. We help showrooms get more sales through social media ads, store development and AI-generated images.",
           "So we start with market research, then build content, ads and your website around the real buying journey: AI photos and reels made from your phone shots, campaigns that reach people furnishing a home right now, and 3D showrooms where customers spin a piece and pick its colour.",
           "We work with modern, AI-assisted tools, so what usually takes months takes weeks, with one account manager from the first meeting to the first order. And we measure success in enquiries, showroom visits and sales, not likes."
         ],
@@ -1070,6 +1096,32 @@ window.MG_CONTENT = {
             "text": "Reports in enquiries, visits and orders, ad budget paid from your own account, and compliance with Saudi Arabia's Personal Data Protection Law."
           }
         ]
+      },
+      "market": {
+        "eyebrow": "From published sources",
+        "title": "Numbers from the market",
+        "items": [
+          {
+            "value": "85%",
+            "text": "of respondents in Wyzowl's 2026 survey said they were convinced to buy after watching a video.",
+            "source": "Wyzowl, State of Video Marketing 2026 (survey of 266 respondents, late 2025)",
+            "url": "https://wyzowl.com/video-marketing-statistics/"
+          },
+          {
+            "value": "+94%",
+            "text": "is the average conversion lift Shopify says its merchants saw after adding 3D content.",
+            "source": "Shopify changelog (Shopify's own figure for its merchants, 2022)",
+            "url": "https://changelog.shopify.com/posts/shop-adds-3d-and-augmented-reality-ar-previews"
+          },
+          {
+            "value": "7x",
+            "text": "roughly 7 times more likely to qualify a lead when contacting it within an hour, compared with waiting one more hour (Harvard Business Review study, 2011, US companies).",
+            "source": "Harvard Business Review, “The Short Life of Online Sales Leads” (2011)",
+            "url": ""
+          }
+        ],
+        "sourceLabel": "Source:",
+        "note": "General figures from different studies and markets, not Magmafy results."
       },
       "portfolio": {
         "eyebrow": "Selected work",
