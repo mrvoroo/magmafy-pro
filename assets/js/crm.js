@@ -56,14 +56,16 @@ async function withTimeout(promise) {
   try { return await Promise.race([promise, timeout]); } finally { clearTimeout(timer); }
 }
 
-/** POST an action to Magmafy OS. Resolves to the JSON reply, or { ok:false } on any failure. */
-export async function crmPost(action, data) {
+/** POST an action to Magmafy OS. Resolves to the JSON reply, or { ok:false } on any failure.
+ *  opts.keepalive lets the request finish even if the visitor leaves the page (e.g. for WhatsApp). */
+export async function crmPost(action, data, opts = {}) {
   const url = crmEndpoint();
   if (!url) return { ok: false, error: 'no_endpoint' };
   try {
     const res = await withTimeout(fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      keepalive: !!opts.keepalive,
       body: JSON.stringify({ action, session: sessionId(), ...data })
     }));
     return await res.json();

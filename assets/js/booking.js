@@ -3,12 +3,12 @@
 //   2. Your showroom  (branches, average piece price, ads tried before)
 //   3. Contact        (name, showroom/brand, optional link, note and best time)
 // A side panel builds a preliminary plan from the answers as they come in. The last button
-// opens WhatsApp with an organised message;
+// saves the lead to Magmafy OS in the background and opens WhatsApp with an organised message;
 // the visitor still has to tap send there. Old links with ?topic=… simply land on step 1.
 import { h, t, str, icon, settings, getLang, splitWords } from './core.js';
 import { socialLinks } from './layout.js';
 import { track } from './analytics.js';
-import { getUtm } from './crm.js';
+import { crmPost, getUtm, getReferrer, getReadiness } from './crm.js';
 import { buildMessage, waDigits, waUrl } from './wa-message.js';
 
 const arr = (v) => (Array.isArray(v) ? v : []);
@@ -196,7 +196,15 @@ export function bookingPage() {
     };
     const msg = buildMessage(b.msg || {}, { ...data, ...labels, page: location.pathname, source: source ? 'utm: ' + source : '' }, digits);
 
-    // WhatsApp, opened inside the click so popup blockers let it through.
+    // 1) Silent backup in Magmafy OS: fired first, never awaited, never blocks WhatsApp.
+    crmPost('lead', {
+      name: data.name, business: data.business, link: data.link, note: data.note, best_time: data.time,
+      problems: st.problems, problem_labels: labels.problems, branches: st.branches, ticket: st.ticket, tried: st.tried,
+      branches_label: labels.branches, ticket_label: labels.ticket, tried_label: labels.tried,
+      message: msg.text, whatsapp_to: digits, language: getLang(), page: location.pathname,
+      utm, referrer: getReferrer(), readiness: getReadiness(), website: ''
+    }, { keepalive: true });
+    // 2) WhatsApp, opened inside the click so popup blockers let it through.
     window.open(msg.url, '_blank', 'noopener');
     lastSent = Date.now();
     track('generate_lead', { method: 'whatsapp', problems: st.problems.join(','), language: getLang() });
