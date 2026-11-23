@@ -107,7 +107,7 @@ function nukhba() {
         h('div', { class: 'ms__book' }, h('h5', {}, L({ ar: 'عرض سعر للشركات', en: 'Business quote' })),
           h('div', { class: 'ms__guests' }, L({ ar: 'عدد الموظفين', en: 'Staff' }), minus, g, plus), dp, book));
     },
-    foot('© Nukhba Office · ' + L({ ar: 'فاتورة ضريبية · ', en: 'VAT invoice · ' }) + L(LEGAL)));
+    foot('© Nukhba Office · ' + L(LEGAL)));
 }
 
 /* 4 · MASKAN – style quiz */

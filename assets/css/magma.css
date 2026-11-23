@@ -587,3 +587,8 @@ html[dir='rtl'] .bk-cal__nav.is-prev .icon--arrow { transform: none; }
 .market-card__source a:hover { color: var(--c-text); }
 .market__note { margin: 22px 0 0; font-size: .86rem; color: var(--c-faint); }
 @media (max-width: 900px) { .market-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Price signal (one price only: Flow, from $1,000 / month) ---------- */
+.svc-card__price, .hero__price { display: inline-block; font-size: .9rem; font-weight: 600; color: var(--c-text); padding: 8px 14px; border-radius: 99px; border: 1px solid var(--c-border); background: rgba(255, 255, 255, .04); }
+.svc-card__price { margin-top: 14px; font-size: .82rem; }
+.hero__price { margin: -24px 0 28px; }

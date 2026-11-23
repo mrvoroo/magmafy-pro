@@ -346,6 +346,7 @@ export function bookingPage() {
         h('p', { class: 'eyebrow hero__eyebrow' }, b.eyebrow),
         h('h1', { class: 'hero__title', id: 'bk-title' }, h('span', { class: 'hero__line' }, ...splitWords(b.title))),
         h('p', { class: 'hero__text' }, b.text),
+        b.price ? h('p', { class: 'hero__price' }, b.price) : null,
         h('ul', { class: 'hero__chips' }, ...arr(b.chips).map((c) => h('li', {}, h('b', {}, c.value), h('span', {}, c.label)))))),
     h('section', { class: 'section booking', 'data-shape': 'contact' },
       h('div', { class: 'container booking__grid' },

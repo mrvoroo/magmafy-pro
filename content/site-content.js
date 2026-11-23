@@ -265,7 +265,7 @@ window.MG_CONTENT = {
         "eyebrow": "Magmafy — وكالة نمو متخصصة في الأثاث والديكور",
         "title1": "نحوّل متابعيك إلى زوّار،",
         "title2": "ومحتواك إلى مبيعات.",
-        "text": "دراسة سوق، محتوى وإعلانات بالذكاء الاصطناعي، مواقع ومعارض ثلاثية الأبعاد، واستشارات نمو. كل شيء لهدف واحد: مبيعات أكثر لمعرضك في السعودية والخليج.",
+        "text": "نشغّل إعلاناتك على سناب شات وتيك توك وميتا، ونتابع كل محادثة واتساب حتى تصبح زيارة لمعرضك. وإن أردت، نبني لها الصفحة أو المتجر الذي يستقبل العميل. تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات منفصلة.",
         "cta": "احجز اجتماعًا مجانيًا",
         "cta2": "استكشف خدماتنا",
         "scroll": "مرّر للأسفل",
@@ -319,7 +319,8 @@ window.MG_CONTENT = {
         "eyebrow": "أربع خدمات، هدف واحد: مبيعات أكثر",
         "title": "خدماتنا",
         "text": "اختر خدمة. لكل خدمة عالمها الخاص، وفيها تجارب حية تلعب بها بنفسك.",
-        "more": "افتح الخدمة"
+        "more": "افتح الخدمة",
+        "flowPrice": "تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات منفصلة."
       },
       "services": {
         "research": {
@@ -505,6 +506,10 @@ window.MG_CONTENT = {
             "a": "لا. ميزانية الإعلانات تُدفع مباشرة للمنصات من حسابك الإعلاني، وأتعابنا تغطي التخطيط والإبداع وإدارة الحملات وتحسينها. هكذا تبقى مصاريفك شفافة."
           },
           {
+            "q": "كم تبدأ الأسعار؟",
+            "a": "تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات تُدفع مباشرة للمنصات من حسابك وتُحسب بشكل منفصل. أما السعر النهائي لحالتك فنحدده بعد الاجتماع المجاني ودراسة وضعك، ونخبرك بصراحة إن كنا الأنسب لك."
+          },
+          {
             "q": "كيف يتم الاجتماع الأول؟",
             "a": "اجتماع مجاني مدته 30 دقيقة على Google Meet أو Zoom، من السبت إلى الخميس بتوقيت السعودية (الجمعة إجازة). تختار نوعه: دراسة السوق، أو نطاق الموقع، أو استشارة عامة، وتستلم عرضًا مخصصًا خلال 48 ساعة عمل."
           },
@@ -531,6 +536,7 @@ window.MG_CONTENT = {
         "eyebrow": "احجز اجتماعك",
         "title": "اختر اليوم والوقت، ونحن نجهّز الباقي",
         "text": "اجتماع مجاني 30 دقيقة على Google Meet أو Zoom، من السبت إلى الخميس بتوقيت السعودية، والجمعة إجازة.",
+        "price": "تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات منفصلة.",
         "chips": [
           {
             "value": "30 د",
@@ -722,12 +728,12 @@ window.MG_CONTENT = {
         "fields": {
           "company": "الاسم التجاري",
           "crNumber": "رقم السجل التجاري",
-          "vatNumber": "الرقم الضريبي",
+          "vatNumber": "",
           "address": "العنوان",
           "email": "البريد الإلكتروني",
           "phone": "الهاتف"
         },
-        "pendingNote": "سيتم استكمال بيانات السجل التجاري والرقم الضريبي قريبًا.",
+        "pendingNote": "سيتم استكمال بيانات السجل التجاري قريبًا.",
         "privacyTitle": "سياسة الخصوصية",
         "accessibilityTitle": "إمكانية الوصول",
         "updated": "آخر تحديث",
@@ -825,7 +831,7 @@ window.MG_CONTENT = {
         {
           "h": "5. الدفع والإلغاء",
           "p": [
-            "تُحدَّد مواعيد الدفع وشروط الإلغاء في العرض المتفق عليه. الأسعار بالريال السعودي وتُضاف إليها ضريبة القيمة المضافة حسب الأنظمة المعمول بها."
+            "تُحدَّد مواعيد الدفع وشروط الإلغاء في العرض المتفق عليه. الأسعار بالدولار الأمريكي."
           ]
         },
         {
@@ -916,7 +922,7 @@ window.MG_CONTENT = {
         "eyebrow": "Magmafy — the growth agency for furniture & décor",
         "title1": "We turn followers into visitors,",
         "title2": "and content into sales.",
-        "text": "Market research, AI-powered content and ads, 3D websites and showrooms, and growth consulting. All for one goal: more sales for your showroom in Saudi Arabia and the Gulf.",
+        "text": "We run your ads on Snapchat, TikTok and Meta and follow every WhatsApp chat until it becomes a showroom visit. If you want, we also build the page or store that receives the customer. Flow starts from $1,000 per month; the ad budget is separate.",
         "cta": "Book a free meeting",
         "cta2": "Explore our services",
         "scroll": "Scroll",
@@ -970,7 +976,8 @@ window.MG_CONTENT = {
         "eyebrow": "Four services, one goal: more sales",
         "title": "Services",
         "text": "Pick a service. Each one has its own world, with live demos you can play with.",
-        "more": "Open service"
+        "more": "Open service",
+        "flowPrice": "Flow starts from $1,000 per month; the ad budget is separate."
       },
       "services": {
         "research": {
@@ -1156,6 +1163,10 @@ window.MG_CONTENT = {
             "a": "No. Ad budget is paid directly to the platforms from your own ad account; our fee covers planning, creative, campaign management and optimisation. That keeps your spend transparent."
           },
           {
+            "q": "Where do prices start?",
+            "a": "Flow starts from $1,000 per month. The ad budget is paid directly to the platforms from your own account and is counted separately. We set the final price for your case after the free meeting and a look at where you stand, and we tell you honestly whether we are the right fit for you."
+          },
+          {
             "q": "How does the first meeting work?",
             "a": "A free 30-minute call on Google Meet or Zoom, Saturday to Thursday, Saudi time (Friday off). Choose the topic: market research, website scope or a general consultation, and get a tailored proposal within 48 working hours."
           },
@@ -1182,6 +1193,7 @@ window.MG_CONTENT = {
         "eyebrow": "Book your meeting",
         "title": "Pick a day and time, we'll prepare the rest",
         "text": "A free 30-minute meeting on Google Meet or Zoom, Saturday to Thursday, Saudi time. Friday is off.",
+        "price": "Flow starts from $1,000 per month; the ad budget is separate.",
         "chips": [
           {
             "value": "30 min",
@@ -1373,12 +1385,12 @@ window.MG_CONTENT = {
         "fields": {
           "company": "Trade name",
           "crNumber": "Commercial registration (CR) no.",
-          "vatNumber": "VAT number",
+          "vatNumber": "",
           "address": "Address",
           "email": "Email",
           "phone": "Phone"
         },
-        "pendingNote": "Commercial registration and VAT details will be added shortly.",
+        "pendingNote": "Commercial registration details will be added shortly.",
         "privacyTitle": "Privacy policy",
         "accessibilityTitle": "Accessibility",
         "updated": "Last updated",
@@ -1476,7 +1488,7 @@ window.MG_CONTENT = {
         {
           "h": "5. Payment and cancellation",
           "p": [
-            "Payment dates and cancellation terms are set out in the agreed proposal. Prices are in Saudi riyals, plus VAT where applicable."
+            "Payment dates and cancellation terms are set out in the agreed proposal. Prices are in US dollars."
           ]
         },
         {

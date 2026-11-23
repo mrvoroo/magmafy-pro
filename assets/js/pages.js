@@ -80,6 +80,7 @@ function serviceCard(key) {
         h('span', { class: 'svc-card__num' }, s.num)),
       h('span', { class: 'svc-card__title' }, s.title),
       h('span', { class: 'svc-card__tagline' }, s.tagline),
+      key === 'content' && t('servicesIntro.flowPrice') ? h('span', { class: 'svc-card__price' }, t('servicesIntro.flowPrice')) : null,
       h('span', { class: 'svc-card__more' }, t('servicesIntro.more'), icon('arrow', 16))));
 }
 
@@ -297,11 +298,11 @@ function sections(list) {
     h('h2', {}, s.h), ...arr(s.p).map((p) => h('p', {}, p))));
 }
 
-// Company details block (Saudi e-commerce rules: trade name, CR number, VAT number, contact).
+// Company details block (Saudi e-commerce rules: trade name, CR number, contact).
 function companyBlock() {
   const L = (k) => str(legal[k]).trim();
   const rows = [
-    ['company', L('company')], ['crNumber', L('crNumber')], ['vatNumber', L('vatNumber')],
+    ['company', L('company')], ['crNumber', L('crNumber')],
     ['address', [L('street'), L('city'), L('country')].filter(Boolean).join('، ')],
     ['email', L('email')], ['phone', L('phone')]
   ].filter(([, v]) => v);
