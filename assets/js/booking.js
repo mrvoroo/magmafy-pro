@@ -2,14 +2,20 @@
 //   1. Your problem   (pick one or more pain points; we choose the service, not the visitor)
 //   2. Your showroom  (branches, average piece price, ads tried before)
 //   3. Contact        (name, showroom/brand, optional link, note and best time)
-// A side panel builds a preliminary plan from the answers as they come in. Old links with ?topic=… simply land on step 1.
+// A side panel builds a preliminary plan from the answers as they come in. The last button
+// opens WhatsApp with an organised message;
+// the visitor still has to tap send there. Old links with ?topic=… simply land on step 1.
 import { h, t, str, icon, settings, getLang, splitWords } from './core.js';
 import { socialLinks } from './layout.js';
+import { track } from './analytics.js';
+import { getUtm } from './crm.js';
+import { buildMessage, waDigits, waUrl } from './wa-message.js';
 
 const arr = (v) => (Array.isArray(v) ? v : []);
 const LIMITS = { name: 50, business: 60, link: 200, note: 300, time: 80 };
 const clean = (v) => str(v).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').replace(/\s+/g, ' ').trim();
 const fill = (s, vars) => str(s).replace(/\{(\w+)\}/g, (_, k) => (k in vars ? vars[k] : ''));
+const RATE_MS = 30000;
 
 export function bookingPage() {
   const b = t('booking') || {};
@@ -166,17 +172,69 @@ export function bookingPage() {
     return { data, first: Object.keys(errors)[0] };
   }
 
+  let lastSent = 0;
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const bad = stepError();
     if (bad) { status.textContent = bad[0]; bad[1]?.focus(); return; }
     if (st.step < TOTAL - 1) { go(st.step + 1); return; }
 
-    const { first } = readContact();
+    const { data, first } = readContact();
     if (first) { status.textContent = ''; form.querySelector('#bk-' + first).focus(); return; }
     if (form.querySelector('#bk-website').value) return; // a bot filled the honeypot
-    status.textContent = '';
+    if (Date.now() - lastSent < RATE_MS) { status.textContent = err.wait; return; }
+    const digits = waDigits(settings.whatsapp);
+    if (!waUrl(digits, '')) { status.textContent = err.noWhatsapp; return; }
+
+    const utm = getUtm();
+    const source = [utm.source, utm.medium, utm.campaign].filter(Boolean).join('/');
+    const labels = {
+      problems: problems.filter((p) => st.problems.includes(p.id)).map((p) => p.short || p.title),
+      branches: (byId(branches, st.branches) || {}).label || '',
+      ticket: (byId(tickets, st.ticket) || {}).label || '',
+      tried: (byId(tried, st.tried) || {}).label || ''
+    };
+    const msg = buildMessage(b.msg || {}, { ...data, ...labels, page: location.pathname, source: source ? 'utm: ' + source : '' }, digits);
+
+    // WhatsApp, opened inside the click so popup blockers let it through.
+    window.open(msg.url, '_blank', 'noopener');
+    lastSent = Date.now();
+    track('generate_lead', { method: 'whatsapp', problems: st.problems.join(','), language: getLang() });
+    showDone(msg);
   });
+
+  function showDone(msg) {
+    const text = h('textarea', { class: 'bk-done__text', readonly: true, rows: '8', dir: 'auto', 'aria-label': b.preview });
+    text.value = msg.text;
+    const copyState = h('p', { class: 'bk-done__copied', role: 'status' });
+    const copy = h('button', { type: 'button', class: 'btn btn--ghost' }, icon('copy', 18), h('span', { class: 'btn__label' }, b.copy));
+    copy.addEventListener('click', async () => {
+      let ok = false;
+      try { await navigator.clipboard.writeText(msg.text); ok = true; } catch (_) {
+        text.focus(); text.select();
+        try { ok = document.execCommand('copy'); } catch (__) { ok = false; }
+      }
+      copyState.textContent = ok ? b.copied : b.copyFail;
+      if (!ok) { text.focus(); text.select(); }
+    });
+    const again = h('button', { type: 'button', class: 'btn btn--ghost' }, h('span', { class: 'btn__label' }, b.again));
+    again.addEventListener('click', reset);
+    const number = str(settings.whatsapp);
+    done.replaceChildren(
+      h('span', { class: 'bk-done__ok' }, icon('whatsapp', 34)),
+      h('h2', {}, b.doneTitle),
+      h('p', {}, b.doneText),
+      h('div', { class: 'bk-done__actions' },
+        h('a', { class: 'btn btn--primary', href: msg.url, target: '_blank', rel: 'noopener noreferrer' }, icon('whatsapp', 18), h('span', { class: 'btn__label' }, b.reopen)),
+        copy, again),
+      copyState,
+      h('p', { class: 'bk-done__help' }, b.doneHelp, ' ', h('a', { href: waUrl(waDigits(number), ''), dir: 'ltr', target: '_blank', rel: 'noopener noreferrer' }, number)),
+      h('details', { class: 'bk-done__preview' }, h('summary', {}, b.preview), text));
+    form.hidden = true;
+    done.hidden = false;
+    done.focus({ preventScroll: true });
+    done.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
 
   function reset() {
     form.reset();
@@ -193,7 +251,7 @@ export function bookingPage() {
 
   const info = [
     ['emailLabel', 'mail', settings.email, settings.email ? 'mailto:' + settings.email : ''],
-    ['whatsappLabel', 'whatsapp', settings.whatsapp, settings.whatsapp ? 'https://wa.me/' + String(settings.whatsapp).replace(/[^\d]/g, '') : ''],
+    ['whatsappLabel', 'whatsapp', settings.whatsapp, waUrl(waDigits(settings.whatsapp), '')],
     ['addressLabel', 'pin', settings.address || t('contact.addressValue'), '']
   ];
 

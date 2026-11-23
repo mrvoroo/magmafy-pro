@@ -579,6 +579,7 @@ window.MG_CONTENT = {
             "id": "visits",
             "title": "متابعون كثير وزيارات قليلة",
             "sub": "الحساب نشيط، لكن المعرض هادئ",
+            "short": "زيارات قليلة رغم المتابعين",
             "help": [
               "حملة موجّهة لمنطقة معرضك هدفها الزيارة، لا المشاهدة فقط",
               "مسار بسيط: إعلان ثم محادثة واتساب ثم موعد زيارة",
@@ -589,6 +590,7 @@ window.MG_CONTENT = {
             "id": "convert",
             "title": "المحادثات لا تتحول إلى مبيعات",
             "sub": "يسألون عن السعر ثم يختفون",
+            "short": "محادثات بلا مبيعات",
             "help": [
               "نراجع أول الردود في المحادثة ونعيد صياغتها",
               "ردود جاهزة للأسئلة المتكررة: التوصيل والضمان والمقاسات",
@@ -599,6 +601,7 @@ window.MG_CONTENT = {
             "id": "adspend",
             "title": "أصرف على إعلانات بلا نتيجة واضحة",
             "sub": "الميزانية تُصرف والنتيجة غير واضحة",
+            "short": "إعلانات بلا نتيجة واضحة",
             "help": [
               "نشخّص حملتك الحالية: الاستهداف والمحتوى والعرض",
               "نضبط القياس حتى تعرف أين يذهب كل ريال",
@@ -609,6 +612,7 @@ window.MG_CONTENT = {
             "id": "visibility",
             "title": "منتجاتي غير ظاهرة أونلاين",
             "sub": "العملاء يبحثون ولا يجدونني",
+            "short": "غير ظاهر أونلاين",
             "help": [
               "صفحة منتجات أو متجر يظهر في نتائج البحث",
               "عرض المنتج بطريقة تجيب عن أسئلة العميل قبل الزيارة",
@@ -619,6 +623,7 @@ window.MG_CONTENT = {
             "id": "market",
             "title": "لا أعرف السوق والمنافسين جيدًا",
             "sub": "لماذا يبيع المنافس أكثر مني؟",
+            "short": "لا أعرف السوق والمنافسين",
             "help": [
               "نقرأ إعلانات المنافسين النشطة من مكتبة إعلانات Meta",
               "نحلل تقييمات العملاء: أكثر شكوى وأكثر مدح في السوق",
@@ -629,6 +634,7 @@ window.MG_CONTENT = {
             "id": "content",
             "title": "المحتوى يأخذ وقتًا وجهدًا",
             "sub": "صعب أنشر بانتظام",
+            "short": "المحتوى يأخذ وقتًا",
             "help": [
               "نظام محتوى شهري مبني على المنتجات المتوفرة",
               "صور ومقاطع من مخزونك الحالي بدون تصوير جديد كل مرة",
@@ -735,7 +741,9 @@ window.MG_CONTENT = {
           "required": "هذا الحقل مطلوب.",
           "length": "النص طويل جدًا.",
           "problems": "اختر مشكلة واحدة على الأقل.",
-          "showroom": "اختر عدد الفروع ومتوسط سعر القطعة."
+          "showroom": "اختر عدد الفروع ومتوسط سعر القطعة.",
+          "wait": "أرسلت طلبًا قبل قليل. انتظر نصف دقيقة ثم حاول مرة أخرى.",
+          "noWhatsapp": "رقم واتساب غير مضبوط حاليًا. راسلنا على البريد الإلكتروني."
         },
         "planTitle": "كيف نساعدك",
         "planNote": "اتجاه مبدئي يتشكّل مع إجاباتك، وليس وعدًا. نؤكده معك بعد أن نفهم وضعك في المكالمة.",
@@ -756,7 +764,30 @@ window.MG_CONTENT = {
             "title": "عرض مكتوب خلال 48 ساعة",
             "text": "خطة ونطاق واضحان، بدون أي التزام. ميزانية الإعلانات تُدفع للمنصات مباشرة."
           }
-        ]
+        ],
+        "doneTitle": "طلبك جاهز — اضغط إرسال في واتساب",
+        "doneText": "فتحنا لك واتساب والرسالة مكتوبة. لن تصلنا إلا بعد أن تضغط «إرسال» هناك.",
+        "doneHelp": "لم يفتح واتساب؟ افتحه من الزر، أو انسخ الرسالة وأرسلها لنا على الرقم:",
+        "reopen": "افتح واتساب مرة أخرى",
+        "copy": "انسخ الرسالة",
+        "copied": "تم النسخ ✓",
+        "copyFail": "تعذّر النسخ. حدّد النص أدناه وانسخه يدويًا.",
+        "preview": "نص الرسالة",
+        "again": "ابدأ طلبًا جديدًا",
+        "msg": {
+          "title": "طلب استشارة جديد — Magmafy",
+          "name": "الاسم",
+          "business": "المعرض/العلامة",
+          "link": "الرابط",
+          "problems": "المشكلة",
+          "branches": "الفروع",
+          "ticket": "متوسط سعر القطعة",
+          "tried": "جرّبوا",
+          "note": "ملاحظة",
+          "time": "أفضل وقت للتواصل",
+          "page": "الصفحة",
+          "closing": "هل نحدد وقتًا لمكالمة قصيرة؟"
+        }
       },
       "footer": {
         "tagline": "وكالة نمو متخصصة في الأثاث والديكور. نحوّل المتابعين إلى زوّار، والزوّار إلى عملاء.",
@@ -1313,6 +1344,7 @@ window.MG_CONTENT = {
             "id": "visits",
             "title": "Lots of followers, few visits",
             "sub": "The account is active, the showroom is quiet",
+            "short": "Few visits despite followers",
             "help": [
               "A campaign aimed at your showroom's area, built for visits, not just views",
               "A simple path: ad, then a WhatsApp chat, then a visit booking",
@@ -1323,6 +1355,7 @@ window.MG_CONTENT = {
             "id": "convert",
             "title": "Chats don't turn into sales",
             "sub": "They ask for the price, then disappear",
+            "short": "Chats without sales",
             "help": [
               "We review the first replies in your chats and rewrite them",
               "Ready answers for repeat questions: delivery, warranty, sizes",
@@ -1333,6 +1366,7 @@ window.MG_CONTENT = {
             "id": "adspend",
             "title": "I spend on ads without clear results",
             "sub": "The budget goes out, the result is unclear",
+            "short": "Ads without clear results",
             "help": [
               "We diagnose your current campaign: targeting, content and offer",
               "We set up tracking so you know where every riyal goes",
@@ -1343,6 +1377,7 @@ window.MG_CONTENT = {
             "id": "visibility",
             "title": "My products aren't visible online",
             "sub": "People search and don't find me",
+            "short": "Not visible online",
             "help": [
               "A product page or store that shows up in search",
               "Product presentation that answers buyers' questions before they visit",
@@ -1353,6 +1388,7 @@ window.MG_CONTENT = {
             "id": "market",
             "title": "I don't know my market and competitors well",
             "sub": "Why does a competitor sell more than me?",
+            "short": "Unclear market and competitors",
             "help": [
               "We read competitors' live ads in the Meta Ad Library",
               "We analyse customer reviews: the top complaint and top praise in your market",
@@ -1363,6 +1399,7 @@ window.MG_CONTENT = {
             "id": "content",
             "title": "Content takes too much time and effort",
             "sub": "Hard to post regularly",
+            "short": "Content takes too much time",
             "help": [
               "A monthly content system built on the products you have",
               "Photos and clips from your current stock, without a new shoot each time",
@@ -1469,7 +1506,9 @@ window.MG_CONTENT = {
           "required": "This field is required.",
           "length": "This text is too long.",
           "problems": "Pick at least one problem.",
-          "showroom": "Pick the number of branches and the average piece price."
+          "showroom": "Pick the number of branches and the average piece price.",
+          "wait": "You just sent a request. Please wait half a minute and try again.",
+          "noWhatsapp": "Our WhatsApp number isn't set right now. Please email us instead."
         },
         "planTitle": "How we'd help",
         "planNote": "A preliminary direction that builds as you answer, not a promise. We confirm it with you once we understand your situation on the call.",
@@ -1490,7 +1529,30 @@ window.MG_CONTENT = {
             "title": "Written proposal within 48 hours",
             "text": "A clear plan and scope, no commitment. The ad budget is paid straight to the platforms."
           }
-        ]
+        ],
+        "doneTitle": "Your request is ready — tap send in WhatsApp",
+        "doneText": "We opened WhatsApp with the message written for you. It only reaches us after you tap \"Send\" there.",
+        "doneHelp": "WhatsApp didn't open? Use the button, or copy the message and send it to us at:",
+        "reopen": "Open WhatsApp again",
+        "copy": "Copy message",
+        "copied": "Copied ✓",
+        "copyFail": "Couldn't copy. Select the text below and copy it yourself.",
+        "preview": "Message text",
+        "again": "Start a new request",
+        "msg": {
+          "title": "New consultation request — Magmafy",
+          "name": "Name",
+          "business": "Showroom/brand",
+          "link": "Link",
+          "problems": "Problem",
+          "branches": "Branches",
+          "ticket": "Average piece price",
+          "tried": "Tried",
+          "note": "Note",
+          "time": "Best time to chat",
+          "page": "Page",
+          "closing": "Can we set a time for a short call?"
+        }
       },
       "footer": {
         "tagline": "The growth agency for furniture and décor. We turn followers into visitors, and visitors into customers.",
