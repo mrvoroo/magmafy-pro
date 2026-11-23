@@ -608,3 +608,6 @@ html[dir='rtl'] .bk-cal__nav.is-prev .icon--arrow { transform: none; }
 .addons__link:hover { border-color: rgba(255, 255, 255, .25); }
 @media (max-width: 900px) { .pkg-grid { grid-template-columns: 1fr; } }
 .pkg-card__link:hover .svc-card__glow { opacity: 1; }
+
+/* Home hero on phones: room for the scroll cue under the chips. */
+@media (max-width: 600px) { #hero.hero { padding-bottom: 140px; } }
