@@ -7,11 +7,11 @@ const T = {
   demo: { ar: 'تجربة حية · تعمل في متصفحك', en: 'Live demo · runs in your browser' },
   cfg: {
     eyebrow: { ar: 'معرض ثلاثي الأبعاد', en: '3D showroom' },
-    title: { ar: 'لفّ الكنبة، غيّر القماش، وشوفها في صالتك.', en: 'Spin the sofa, change the fabric, see it in a room.' },
+    title: { ar: 'أدِر الكنبة، غيّر القماش، وشاهدها في صالتك.', en: 'Spin the sofa, change the fabric, see it in a room.' },
     text: { ar: 'نموذج 3D حقيقي يعمل على الجوال والكمبيوتر. هذا ما يراه عميلك في موقعك قبل أن يزور المعرض.', en: 'A real 3D model that runs on phones and computers. This is what your customer sees on your site before visiting the showroom.' },
     name: { ar: 'كنبة «فرانكي» المخمل', en: '“Frankie” velvet sofa' },
     brand: { ar: 'dar.living · مجموعة المخمل', en: 'dar.living · Velvet collection' },
-    sub: { ar: 'قماش مخمل ناعم بلمعة حقيقية، أرجل معدنية، وتتحول لسرير. جرّب الألوان وشوفها في صالة حقيقية بالنهار وبالليل.', en: 'Soft velvet with a real sheen, metal legs, converts into a bed. Try the colours and see it in a real room by day and by night.' },
+    sub: { ar: 'قماش مخمل ناعم بلمعة حقيقية، أرجل معدنية، وتتحول لسرير. جرّب الألوان وشاهدها في صالة حقيقية بالنهار وبالليل.', en: 'Soft velvet with a real sheen, metal legs, converts into a bed. Try the colours and see it in a real room by day and by night.' },
     fabric: { ar: 'القماش', en: 'Fabric' }, legs: { ar: 'الأرجل', en: 'Legs' },
     rooms: { ar: ['استوديو', '☀ صالة نهارًا', '☾ صالة ليلًا'], en: ['Studio', '☀ Day room', '☾ Night room'] },
     roomLabel: { ar: 'خلفية العرض', en: 'Backdrop' },
@@ -30,7 +30,7 @@ const T = {
   design: {
     eyebrow: { ar: 'تصميم المواقع', en: 'Web design' },
     title: { ar: 'خمس علامات. خمسة مواقع جرّبها بنفسك.', en: 'Five brands. Five websites to try yourself.' },
-    text: { ar: 'لفّ العرض وجرّب كل موقع هنا: مرّر، فلتر، اختر القماش، أضف للسلة، أو اطلب عرض سعر.', en: 'Spin the carousel and try each site right here: scroll, filter, pick a fabric, add to cart or request a quote.' },
+    text: { ar: 'حرّك العرض وجرّب كل موقع هنا: مرّر، فلتر، اختر القماش، أضف للسلة، أو اطلب عرض سعر.', en: 'Spin the carousel and try each site right here: scroll, filter, pick a fabric, add to cart or request a quote.' },
     prev: { ar: 'التصميم السابق', en: 'Previous design' },
     next: { ar: 'التصميم التالي', en: 'Next design' }
   },

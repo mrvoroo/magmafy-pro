@@ -83,7 +83,7 @@ window.addEventListener('mg:scene', (e) => { if (world && e.detail) world.morph(
 // Home hero: click / tap anywhere that is not a control and the particles
 // burst ("boom") and re-form as the next shape.
 const PLAY_SHAPES = ['websites', 'research', 'globe', 'galaxy', 'saturn', 'volcano'];
-const TAP_HINT = { ar: '✦ اضغط على البركان وشوف التحوّل', en: '✦ Click the volcano – watch it transform' };
+const TAP_HINT = { ar: '✦ اضغط على البركان وشاهد التحوّل', en: '✦ Click the volcano – watch it transform' };
 let playIndex = -1;
 document.addEventListener('click', (e) => {
   if (page !== 'home' || !world) return;
