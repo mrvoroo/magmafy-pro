@@ -10,7 +10,7 @@ const T = {
   types: {
     eyebrow: { ar: 'أنواع الاجتماعات', en: 'Meeting types' },
     title: { ar: 'اختر الاجتماع المناسب، والباقي علينا.', en: 'Pick the right meeting; we handle the rest.' },
-    text: { ar: 'كل الاجتماعات على Google Meet أو Zoom، من السبت إلى الخميس. تختار اليوم والوقت بنفسك.', en: 'All meetings run on Google Meet or Zoom, Saturday to Thursday. You choose the day and time.' },
+    text: { ar: 'كل الاجتماعات على Google Meet أو Zoom، من السبت إلى الخميس. نتفق معك على الموعد عبر واتساب.', en: 'All meetings run on Google Meet or Zoom, Saturday to Thursday. We agree the time with you on WhatsApp.' },
     items: [
       { topic: 'research', i: 'research', ar: ['دراسة السوق', '30 دقيقة', ['نفهم نشاطك ومدينتك ومنافسيك', 'نحدد أسئلة الدراسة', 'تستلم عرضًا خلال 48 ساعة']], en: ['Market research', '30 minutes', ['We learn your business, city and competitors', 'We define the research questions', 'You get a proposal within 48 hours']] },
       { topic: 'website', i: 'websites', ar: ['نطاق الموقع', '30 دقيقة', ['نراجع الصفحات والمزايا معك', 'نقرر: 3D، متجر، حجز زيارة', 'تستلم نطاقًا وجدولًا زمنيًا مكتوبًا']], en: ['Website scope', '30 minutes', ['We go through pages and features together', 'We decide: 3D, store, visit booking', 'You get a written scope and timeline']] },

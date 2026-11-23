@@ -238,7 +238,7 @@ window.MG_CONTENT = {
           "websites": "باقة بركان: تدفّق مع موقع أو صفحة هبوط أو متجر يستقبل العميل ويحوّل اهتمامه إلى طلب، والمعرض ثلاثي الأبعاد كترقية.",
           "consulting": "استشارات تسويق ونمو وتحديد نطاق المواقع لمعارض الأثاث والديكور.",
           "portfolio": "نماذج حية لمعارض 3D ومحتوى وإعلانات وتقارير من Magmafy.",
-          "booking": "احجز اجتماعًا مجانيًا 30 دقيقة على Google Meet أو Zoom: دراسة السوق، نطاق الموقع، أو استشارة عامة.",
+          "booking": "احجز استشارة مجانية: أخبرنا بمشكلة معرضك في ثلاث خطوات قصيرة، ونكمل معك على واتساب.",
           "privacy": "كيف تتعامل Magmafy مع بياناتك وفق نظام حماية البيانات الشخصية.",
           "terms": "شروط استخدام موقع Magmafy وخدماتها وبيانات المنشأة.",
           "accessibility": "التزام Magmafy بإمكانية الوصول."
@@ -526,7 +526,7 @@ window.MG_CONTENT = {
           },
           {
             "q": "كيف يتم الاجتماع الأول؟",
-            "a": "اجتماع مجاني مدته 30 دقيقة على Google Meet أو Zoom، من السبت إلى الخميس بتوقيت السعودية (الجمعة إجازة). تختار نوعه: دراسة السوق، أو نطاق الموقع، أو استشارة عامة، وتستلم عرضًا مخصصًا خلال 48 ساعة عمل."
+            "a": "تخبرنا في صفحة الحجز بمشكلة معرضك في ثلاث خطوات قصيرة، ثم نكمل معك على واتساب ونتفق على مكالمة مجانية مدتها 30 دقيقة. بعدها تستلم عرضًا مكتوبًا خلال 48 ساعة عمل."
           },
           {
             "q": "هل هناك عقد طويل الأمد؟",
@@ -548,151 +548,213 @@ window.MG_CONTENT = {
         "soon": "قريبًا"
       },
       "booking": {
-        "eyebrow": "احجز اجتماعك",
-        "title": "اختر اليوم والوقت، ونحن نجهّز الباقي",
-        "text": "اجتماع مجاني 30 دقيقة على Google Meet أو Zoom، من السبت إلى الخميس بتوقيت السعودية، والجمعة إجازة.",
+        "eyebrow": "احجز استشارتك",
+        "title": "أخبرنا بما يضايقك، ونقترح لك الطريق",
+        "text": "ثلاث خطوات قصيرة: مشكلتك، ثم معرضك، ثم طريقة التواصل. بعدها نكمل معك على واتساب ونتفق على مكالمة مجانية مدتها 30 دقيقة.",
         "price": "تبدأ باقة تدفّق من 1,000 دولار شهريًا، وميزانية الإعلانات منفصلة.",
         "chips": [
           {
-            "value": "30 د",
-            "label": "مدة الاجتماع"
+            "value": "3",
+            "label": "خطوات قصيرة"
           },
           {
             "value": "مجانًا",
             "label": "بدون أي التزام"
           },
           {
-            "value": "48 س",
-            "label": "عرض مخصص بعد الاجتماع"
+            "value": "واتساب",
+            "label": "نكمل معك هناك"
           }
         ],
         "steps": [
-          "نوع الاجتماع",
-          "اليوم",
-          "الوقت",
-          "بياناتك"
+          "وجعك",
+          "معرضك",
+          "تواصلك"
         ],
-        "typeHead": "ما موضوع الاجتماع؟",
-        "whenHead": "اختر اليوم والوقت",
-        "detailsHead": "بياناتك",
-        "types": [
+        "stepOf": "الخطوة {n} من {total}",
+        "problemsHead": "ما أكثر شيء يضايقك في معرضك الآن؟",
+        "problemsHint": "اختر كل ما ينطبق عليك. لا تحتاج أن تعرف الحل، فهذا دورنا.",
+        "problems": [
           {
-            "id": "research",
-            "icon": "research",
-            "title": "دراسة السوق",
-            "text": "نراجع سوقك ومنافسيك ونحدد ما يحتاجه التقرير.",
-            "duration": "30 د"
+            "id": "visits",
+            "title": "متابعون كثير وزيارات قليلة",
+            "sub": "الحساب نشيط، لكن المعرض هادئ",
+            "help": [
+              "حملة موجّهة لمنطقة معرضك هدفها الزيارة، لا المشاهدة فقط",
+              "مسار بسيط: إعلان ثم محادثة واتساب ثم موعد زيارة",
+              "نقيس الزيارات المؤكدة، لا التفاعل فقط"
+            ]
           },
           {
-            "id": "website",
-            "icon": "websites",
-            "title": "نطاق الموقع",
-            "text": "نحدد الصفحات والمزايا والعرض ثلاثي الأبعاد والجدول الزمني.",
-            "duration": "30 د"
+            "id": "convert",
+            "title": "المحادثات لا تتحول إلى مبيعات",
+            "sub": "يسألون عن السعر ثم يختفون",
+            "help": [
+              "نراجع أول الردود في المحادثة ونعيد صياغتها",
+              "ردود جاهزة للأسئلة المتكررة: التوصيل والضمان والمقاسات",
+              "عرض واضح ينقل المحادثة إلى موعد في المعرض"
+            ]
           },
           {
-            "id": "general",
-            "icon": "consulting",
-            "title": "استشارة عامة",
-            "text": "تسويق، إعلانات، محتوى أو أي سؤال عن نمو معرضك.",
-            "duration": "30 د"
+            "id": "adspend",
+            "title": "أصرف على إعلانات بلا نتيجة واضحة",
+            "sub": "الميزانية تُصرف والنتيجة غير واضحة",
+            "help": [
+              "نشخّص حملتك الحالية: الاستهداف والمحتوى والعرض",
+              "نضبط القياس حتى تعرف أين يذهب كل ريال",
+              "نعيد بناء الحملة على هدف واحد قابل للقياس"
+            ]
+          },
+          {
+            "id": "visibility",
+            "title": "منتجاتي غير ظاهرة أونلاين",
+            "sub": "العملاء يبحثون ولا يجدونني",
+            "help": [
+              "صفحة منتجات أو متجر يظهر في نتائج البحث",
+              "عرض المنتج بطريقة تجيب عن أسئلة العميل قبل الزيارة",
+              "تجهيز ملف معرضك على خرائط Google وربطه بالمعرض"
+            ]
+          },
+          {
+            "id": "market",
+            "title": "لا أعرف السوق والمنافسين جيدًا",
+            "sub": "لماذا يبيع المنافس أكثر مني؟",
+            "help": [
+              "نقرأ إعلانات المنافسين النشطة من مكتبة إعلانات Meta",
+              "نحلل تقييمات العملاء: أكثر شكوى وأكثر مدح في السوق",
+              "نحدد ميزة تملكها بدل المنافسة على السعر"
+            ]
+          },
+          {
+            "id": "content",
+            "title": "المحتوى يأخذ وقتًا وجهدًا",
+            "sub": "صعب أنشر بانتظام",
+            "help": [
+              "نظام محتوى شهري مبني على المنتجات المتوفرة",
+              "صور ومقاطع من مخزونك الحالي بدون تصوير جديد كل مرة",
+              "تقويم نشر مرتبط بمواسم الشراء"
+            ]
           }
         ],
-        "months": [
-          "يناير",
-          "فبراير",
-          "مارس",
-          "أبريل",
-          "مايو",
-          "يونيو",
-          "يوليو",
-          "أغسطس",
-          "سبتمبر",
-          "أكتوبر",
-          "نوفمبر",
-          "ديسمبر"
+        "branchesHead": "كم فرعًا لمعرضك؟",
+        "branchesHint": "يحدد هل نستهدف منطقة واحدة أو أكثر.",
+        "branches": [
+          {
+            "id": "one",
+            "label": "معرض واحد",
+            "plan": "نركّز على منطقة معرضك حتى يصل الإعلان لمن يستطيع زيارتك فعلًا."
+          },
+          {
+            "id": "two-three",
+            "label": "من فرعين إلى ثلاثة",
+            "plan": "نقسّم الحملة حسب كل فرع ومنطقته، ونقارن أداء الفروع."
+          },
+          {
+            "id": "many",
+            "label": "أكثر من ثلاثة فروع",
+            "plan": "نبدأ بفرع واحد كتجربة، وإذا ثبتت النتيجة نطبّقها على بقية الفروع."
+          },
+          {
+            "id": "online",
+            "label": "أونلاين بدون معرض",
+            "plan": "نبني مسار بيع كامل أونلاين، وهنا يفيد عرض المنتج ثلاثي الأبعاد."
+          }
         ],
-        "dayNames": [
-          "الأحد",
-          "الإثنين",
-          "الثلاثاء",
-          "الأربعاء",
-          "الخميس",
-          "الجمعة",
-          "السبت"
+        "ticketHead": "كم متوسط سعر القطعة أو الطلب عندك؟",
+        "ticketHint": "يساعدنا نفهم نوع عميلك وميزانية الإعلان المناسبة.",
+        "tickets": [
+          {
+            "id": "low",
+            "label": "أقل من 1,500 ريال",
+            "plan": "سعر القطعة منخفض، فالأهم عدد الطلبات. نبدأ بعروض مبنية على الكمية والمواسم."
+          },
+          {
+            "id": "mid",
+            "label": "من 1,500 إلى 5,000 ريال",
+            "plan": "سعر القطعة متوسط، فنركّز على المحادثات الجادة لا على عدد المشاهدات."
+          },
+          {
+            "id": "high",
+            "label": "من 5,000 إلى 15,000 ريال",
+            "plan": "سعر القطعة مرتفع، فجودة الزيارة أهم من عددها."
+          },
+          {
+            "id": "premium",
+            "label": "أكثر من 15,000 ريال",
+            "plan": "القطعة فاخرة، فالمعاينة والثقة أهم من السعر. نبني محتوى يعزز الثقة قبل الزيارة."
+          },
+          {
+            "id": "unsure",
+            "label": "غير متأكد / أخرى",
+            "plan": "نحدد معك متوسط السعر في المكالمة، لأنه يحدد شكل الحملة."
+          }
         ],
-        "weekdays": [
-          "أحد",
-          "إثنين",
-          "ثلاثاء",
-          "أربعاء",
-          "خميس",
-          "جمعة",
-          "سبت"
+        "triedHead": "هل جرّبت الإعلانات من قبل؟ (اختياري)",
+        "tried": [
+          {
+            "id": "nothing",
+            "label": "لم أجرّبها من قبل",
+            "plan": "بما أنك لم تجرّب من قبل، نبدأ بميزانية اختبار صغيرة وهدف واحد واضح."
+          },
+          {
+            "id": "self",
+            "label": "أعلن بنفسي",
+            "plan": "نقرأ حملاتك الحالية أولًا، فقد نجد فيها تحسينات بدون زيادة الميزانية."
+          },
+          {
+            "id": "freelancer",
+            "label": "جرّبت مستقلًا",
+            "plan": "نفهم ما الذي لم ينجح سابقًا حتى لا نكرره."
+          },
+          {
+            "id": "agency",
+            "label": "جرّبت وكالة",
+            "plan": "تعرف هذا المجال جيدًا، فيُبنى العرض على أرقامك ومسؤوليات واضحة، لا على وعود."
+          }
         ],
-        "pickDay": "اختر يوم الاجتماع",
-        "prevMonth": "الشهر السابق",
-        "nextMonth": "الشهر التالي",
-        "friday": "الجمعة إجازة",
-        "unavailable": "غير متاح",
-        "tzNote": "بتوقيت السعودية (GMT+3) · من السبت إلى الخميس، والجمعة إجازة",
-        "pickTime": "اختر الوقت",
-        "pickDayFirst": "اختر يومًا من التقويم لتظهر الأوقات المتاحة",
-        "timesFor": "المواعيد المتاحة يوم",
-        "taken": "محجوز",
-        "yourTime": "بتوقيتك المحلي",
-        "platformHead": "منصة الاجتماع",
+        "contactHead": "كيف نتواصل معك؟",
+        "contactHint": "نكمل معك على واتساب، فلا نحتاج بريدك الإلكتروني.",
         "fields": {
-          "name": "الاسم *",
-          "email": "البريد الإلكتروني *",
-          "phone": "رقم الجوال / واتساب *",
-          "business": "اسم النشاط والمدينة *",
+          "name": "اسمك *",
+          "business": "اسم المعرض أو العلامة *",
           "link": "رابط الموقع أو حساب إنستجرام (اختياري)",
-          "notes": "ماذا تريد أن نناقش؟ (اختياري)",
-          "type": "نوع الاجتماع",
-          "when": "الموعد",
-          "platform": "المنصة"
+          "note": "ملاحظة قصيرة (اختياري)",
+          "notePlaceholder": "مثال: عندنا عرض موسمي ونريد التجهيز له",
+          "time": "أفضل وقت للتواصل (اختياري)",
+          "timePlaceholder": "مثال: بعد العصر، أو الأحد صباحًا"
         },
-        "consentBefore": "قرأت",
+        "consentBefore": "بالضغط على الزر توافق على",
         "consentLink": "سياسة الخصوصية",
-        "consentAfter": "وأوافق على استخدام بياناتي لتنظيم هذا الاجتماع والتواصل معي بخصوصه. *",
-        "summary": "موعدك",
-        "noSlotYet": "لم يتم اختيار الموعد بعد",
-        "ksa": "(بتوقيت السعودية)",
-        "confirm": "أكّد الموعد",
-        "sending": "جارٍ تأكيد الموعد…",
-        "note": "لا نشارك بياناتك مع أي طرف لأغراض تسويقية. يمكنك إلغاء الموعد أو تغييره بالرد على رسالة التأكيد.",
-        "mailSubject": "حجز اجتماع",
-        "doneTitle": "تم استلام حجزك ✓",
-        "doneText": "أرسلنا التفاصيل لفريقنا، وسيصلك تأكيد الموعد ورابط الاجتماع على {email} قبل الموعد.",
-        "almostTitle": "خطوة أخيرة لتأكيد حجزك",
-        "mailText": "اضغط «أرسل الحجز بالبريد» لإرسال التفاصيل من بريدك، وسنؤكد الموعد في أقرب وقت خلال ساعات العمل.",
-        "mailCta": "أرسل الحجز بالبريد",
-        "gcal": "أضف إلى Google Calendar",
-        "ics": "تنزيل ملف التقويم",
-        "again": "حجز موعد آخر",
+        "consentAfter": "واستخدام بياناتك للتواصل معك بخصوص طلبك.",
+        "back": "رجوع",
+        "next": "التالي",
+        "restart": "ابدأ من جديد",
+        "finish": "كمّل على واتساب",
+        "note": "لا نشارك بياناتك مع أي طرف لأغراض تسويقية.",
         "errors": {
           "required": "هذا الحقل مطلوب.",
-          "email": "أدخل بريدًا إلكترونيًا صحيحًا.",
-          "phone": "أدخل رقم جوال صحيحًا، مثل ‎+966 5X XXX XXXX.",
-          "consent": "يرجى الموافقة على سياسة الخصوصية.",
           "length": "النص طويل جدًا.",
-          "slot": "اختر اليوم والوقت أولًا.",
-          "noEmail": "لم يتم إعداد بريد الحجوزات بعد. تواصل معنا عبر واتساب أو البريد."
+          "problems": "اختر مشكلة واحدة على الأقل.",
+          "showroom": "اختر عدد الفروع ومتوسط سعر القطعة."
         },
-        "nextHead": "ماذا يحدث بعد الحجز؟",
+        "planTitle": "كيف نساعدك",
+        "planNote": "اتجاه مبدئي يتشكّل مع إجاباتك، وليس وعدًا. نؤكده معك بعد أن نفهم وضعك في المكالمة.",
+        "planEmpty": "اختر أول مشكلة من القائمة، وستظهر هنا خطة مبدئية لمعرضك.",
+        "planDo": "ما سنعمل عليه",
+        "planFit": "كيف نضبطها على معرضك",
+        "planNext": "الخطوة التالية",
         "nextSteps": [
           {
-            "title": "تأكيد خلال ساعات العمل",
-            "text": "يصلك رابط Google Meet أو Zoom على بريدك، ورسالة تذكير قبل الموعد."
+            "title": "رد على واتساب",
+            "text": "نرد عليك خلال ساعات العمل ونتفق على وقت المكالمة."
           },
           {
-            "title": "اجتماع 30 دقيقة",
-            "text": "نفهم نشاطك وهدفك ونجاوب على أسئلتك بصراحة."
+            "title": "مكالمة مجانية 30 دقيقة",
+            "text": "نفهم معرضك وهدفك ونجيب عن أسئلتك بصراحة."
           },
           {
-            "title": "عرض مخصص خلال 48 ساعة",
-            "text": "خطة ونطاق وتكلفة واضحة، بدون أي التزام."
+            "title": "عرض مكتوب خلال 48 ساعة",
+            "text": "خطة ونطاق واضحان، بدون أي التزام. ميزانية الإعلانات تُدفع للمنصات مباشرة."
           }
         ]
       },
@@ -765,14 +827,14 @@ window.MG_CONTENT = {
         {
           "h": "2. ما البيانات التي نجمعها؟",
           "p": [
-            "عند حجز اجتماع: الاسم، البريد الإلكتروني، رقم الجوال، اسم النشاط والمدينة، الرابط الذي تشاركه (اختياري)، ملاحظاتك، ونوع الاجتماع وموعده والمنصة التي اخترتها.",
+            "عند طلب استشارة: اسمك، اسم المعرض أو العلامة، المشكلات التي تختارها، عدد الفروع ومتوسط سعر القطعة، تجربتك السابقة مع الإعلانات (اختياري)، الرابط الذي تشاركه وملاحظتك وأفضل وقت للتواصل (اختياري)، والصفحة التي جئت منها. وعند إرسالك الرسالة على واتساب يصلنا رقمك هناك.",
             "عند تصفح الموقع: البيانات التقنية التي يسجلها مزود الاستضافة تلقائيًا (عنوان IP، الوقت، الصفحة، نوع المتصفح) لتشغيل الموقع وحمايته. وإذا وافقت على فئة الإحصاء: بيانات استخدام لا تحدد هويتك (الصفحات التي تزورها، نوع الجهاز والمتصفح، المصدر الذي جئت منه، وكيفية تفاعلك مع الصفحة) عبر Google Analytics وMicrosoft Clarity. ولا نستخدم أدوات إعلانية حاليًا."
           ]
         },
         {
           "h": "3. لماذا نستخدمها؟",
           "p": [
-            "لتنظيم الاجتماع وإرسال رابط Google Meet أو Zoom والتذكير، وللرد على استفسارك وإعداد عرض مخصص لك. لا نستخدم بياناتك لأي غرض آخر دون موافقتك، ولا نبيعها لأي طرف."
+            "للرد على طلبك على واتساب، وتنظيم المكالمة، وإعداد عرض مخصص لك. لا نستخدم بياناتك لأي غرض آخر دون موافقتك، ولا نبيعها لأي طرف."
           ]
         },
         {
@@ -784,7 +846,7 @@ window.MG_CONTENT = {
         {
           "h": "5. مع من نشاركها؟",
           "p": [
-            "تُرسل بيانات نموذج الحجز مشفّرة عبر الاتصال الآمن (HTTPS) وتصلنا كرسالة بريد إلكتروني، ونستخدم Google Meet أو Zoom لعقد الاجتماع حسب اختيارك. قد يعالج هؤلاء المزودون البيانات خارج المملكة، ونحرص على أن يكون ذلك بالقدر اللازم فقط ووفق الضمانات التي يتطلبها النظام. وإذا فعّلت فئة الإحصاء فتُعالَج بيانات الاستخدام لدى Google (Google Analytics) وMicrosoft (Clarity)، وقد يكون ذلك خارج المملكة."
+            "تُرسل بيانات نموذج الحجز مشفّرة عبر الاتصال الآمن (HTTPS) وتُحفظ في سجلاتنا لدى Google (Google Sheets)، ثم تكمل التواصل معنا على واتساب (Meta) بعد أن تضغط «إرسال» بنفسك. قد يعالج هؤلاء المزودون البيانات خارج المملكة، ونحرص على أن يكون ذلك بالقدر اللازم فقط ووفق الضمانات التي يتطلبها النظام. وإذا فعّلت فئة الإحصاء فتُعالَج بيانات الاستخدام لدى Google (Google Analytics) وMicrosoft (Clarity)، وقد يكون ذلك خارج المملكة."
           ]
         },
         {
@@ -910,7 +972,7 @@ window.MG_CONTENT = {
           "websites": "The Volcano package: Flow plus a website, landing page or store that receives the customer and turns interest into an order, with 3D showrooms as an upgrade.",
           "consulting": "Marketing, growth and website-scoping consulting for furniture and décor showrooms and stores.",
           "portfolio": "Live demos of 3D showrooms, content, ads and reports from Magmafy.",
-          "booking": "Book a free 30-minute meeting on Google Meet or Zoom: market research, website scope, or general consulting.",
+          "booking": "Book a free consultation: tell us your showroom's problem in three short steps, and we continue with you on WhatsApp.",
           "privacy": "How Magmafy handles your data under the Personal Data Protection Law.",
           "terms": "Terms of use for the Magmafy website and services, and company details.",
           "accessibility": "Magmafy's commitment to accessibility."
@@ -1198,7 +1260,7 @@ window.MG_CONTENT = {
           },
           {
             "q": "How does the first meeting work?",
-            "a": "A free 30-minute call on Google Meet or Zoom, Saturday to Thursday, Saudi time (Friday off). Choose the topic: market research, website scope or a general consultation, and get a tailored proposal within 48 working hours."
+            "a": "On the booking page you tell us your showroom's problem in three short steps, then we continue with you on WhatsApp and agree on a free 30-minute call. You then get a written proposal within 48 working hours."
           },
           {
             "q": "Is there a long-term contract?",
@@ -1220,151 +1282,213 @@ window.MG_CONTENT = {
         "soon": "coming soon"
       },
       "booking": {
-        "eyebrow": "Book your meeting",
-        "title": "Pick a day and time, we'll prepare the rest",
-        "text": "A free 30-minute meeting on Google Meet or Zoom, Saturday to Thursday, Saudi time. Friday is off.",
+        "eyebrow": "Book your consultation",
+        "title": "Tell us what's holding you back, and we'll suggest the way",
+        "text": "Three short steps: your problem, your showroom, then how to reach you. We then continue with you on WhatsApp and agree on a free 30-minute call.",
         "price": "Flow starts from $1,000 per month; the ad budget is separate.",
         "chips": [
           {
-            "value": "30 min",
-            "label": "meeting length"
+            "value": "3",
+            "label": "short steps"
           },
           {
             "value": "Free",
             "label": "no commitment"
           },
           {
-            "value": "48 h",
-            "label": "tailored proposal afterwards"
+            "value": "WhatsApp",
+            "label": "we continue there"
           }
         ],
         "steps": [
-          "Meeting type",
-          "Day",
-          "Time",
-          "Your details"
+          "Your problem",
+          "Your showroom",
+          "Contact"
         ],
-        "typeHead": "What should we talk about?",
-        "whenHead": "Pick a day and time",
-        "detailsHead": "Your details",
-        "types": [
+        "stepOf": "Step {n} of {total}",
+        "problemsHead": "What bothers you most about your showroom right now?",
+        "problemsHint": "Pick everything that applies. You don't need to know the fix, that's our job.",
+        "problems": [
           {
-            "id": "research",
-            "icon": "research",
-            "title": "Market research",
-            "text": "We review your market and competitors and scope the report.",
-            "duration": "30 min"
+            "id": "visits",
+            "title": "Lots of followers, few visits",
+            "sub": "The account is active, the showroom is quiet",
+            "help": [
+              "A campaign aimed at your showroom's area, built for visits, not just views",
+              "A simple path: ad, then a WhatsApp chat, then a visit booking",
+              "We measure confirmed visits, not just engagement"
+            ]
           },
           {
-            "id": "website",
-            "icon": "websites",
-            "title": "Website scope",
-            "text": "We define pages, features, 3D views and the timeline.",
-            "duration": "30 min"
+            "id": "convert",
+            "title": "Chats don't turn into sales",
+            "sub": "They ask for the price, then disappear",
+            "help": [
+              "We review the first replies in your chats and rewrite them",
+              "Ready answers for repeat questions: delivery, warranty, sizes",
+              "A clear offer that moves the chat to a showroom visit"
+            ]
           },
           {
-            "id": "general",
-            "icon": "consulting",
-            "title": "General consultation",
-            "text": "Marketing, ads, content or any question about growing your showroom.",
-            "duration": "30 min"
+            "id": "adspend",
+            "title": "I spend on ads without clear results",
+            "sub": "The budget goes out, the result is unclear",
+            "help": [
+              "We diagnose your current campaign: targeting, content and offer",
+              "We set up tracking so you know where every riyal goes",
+              "We rebuild the campaign around one measurable goal"
+            ]
+          },
+          {
+            "id": "visibility",
+            "title": "My products aren't visible online",
+            "sub": "People search and don't find me",
+            "help": [
+              "A product page or store that shows up in search",
+              "Product presentation that answers buyers' questions before they visit",
+              "Setting up your showroom on Google Maps and linking it"
+            ]
+          },
+          {
+            "id": "market",
+            "title": "I don't know my market and competitors well",
+            "sub": "Why does a competitor sell more than me?",
+            "help": [
+              "We read competitors' live ads in the Meta Ad Library",
+              "We analyse customer reviews: the top complaint and top praise in your market",
+              "We find an edge you can own instead of competing on price"
+            ]
+          },
+          {
+            "id": "content",
+            "title": "Content takes too much time and effort",
+            "sub": "Hard to post regularly",
+            "help": [
+              "A monthly content system built on the products you have",
+              "Photos and clips from your current stock, without a new shoot each time",
+              "A posting calendar tied to buying seasons"
+            ]
           }
         ],
-        "months": [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
+        "branchesHead": "How many branches does your showroom have?",
+        "branchesHint": "It tells us whether to target one area or several.",
+        "branches": [
+          {
+            "id": "one",
+            "label": "One showroom",
+            "plan": "We focus on your showroom's area so ads reach people who can actually visit."
+          },
+          {
+            "id": "two-three",
+            "label": "Two to three",
+            "plan": "We split the campaign by branch and area, and compare how branches perform."
+          },
+          {
+            "id": "many",
+            "label": "More than three",
+            "plan": "We start with one branch as a test, and if it works we roll it out to the rest."
+          },
+          {
+            "id": "online",
+            "label": "Online, no showroom",
+            "plan": "We build a full online sales path, where a 3D product view really helps."
+          }
         ],
-        "dayNames": [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
+        "ticketHead": "What's your average price per piece or order?",
+        "ticketHint": "It helps us understand your buyer and a sensible ad budget.",
+        "tickets": [
+          {
+            "id": "low",
+            "label": "Under SAR 1,500",
+            "plan": "A lower piece price means order volume matters most. We start with offers built on volume and seasons."
+          },
+          {
+            "id": "mid",
+            "label": "SAR 1,500 – 5,000",
+            "plan": "A mid-range piece price, so we focus on serious chats, not view counts."
+          },
+          {
+            "id": "high",
+            "label": "SAR 5,000 – 15,000",
+            "plan": "A high piece price, so the quality of each visit matters more than the number."
+          },
+          {
+            "id": "premium",
+            "label": "Over SAR 15,000",
+            "plan": "A premium piece, so seeing it and trust matter more than price. We build content that earns trust before the visit."
+          },
+          {
+            "id": "unsure",
+            "label": "Not sure / other",
+            "plan": "We'll work out your average price together on the call, since it shapes the campaign."
+          }
         ],
-        "weekdays": [
-          "Sun",
-          "Mon",
-          "Tue",
-          "Wed",
-          "Thu",
-          "Fri",
-          "Sat"
+        "triedHead": "Have you tried ads before? (optional)",
+        "tried": [
+          {
+            "id": "nothing",
+            "label": "Not yet",
+            "plan": "Since you haven't tried ads yet, we start with a small test budget and one clear goal."
+          },
+          {
+            "id": "self",
+            "label": "I run them myself",
+            "plan": "We read your current campaigns first; there may be improvements without a bigger budget."
+          },
+          {
+            "id": "freelancer",
+            "label": "I tried a freelancer",
+            "plan": "We find out what didn't work before so we don't repeat it."
+          },
+          {
+            "id": "agency",
+            "label": "I tried an agency",
+            "plan": "You know this field, so the proposal is built on your numbers and clear responsibilities, not promises."
+          }
         ],
-        "pickDay": "Choose the meeting day",
-        "prevMonth": "Previous month",
-        "nextMonth": "Next month",
-        "friday": "Friday off",
-        "unavailable": "unavailable",
-        "tzNote": "Saudi time (GMT+3) · Saturday to Thursday, Friday off",
-        "pickTime": "Choose a time",
-        "pickDayFirst": "Pick a day in the calendar to see available times",
-        "timesFor": "Available times on",
-        "taken": "booked",
-        "yourTime": "Your local time",
-        "platformHead": "Meeting platform",
+        "contactHead": "How do we reach you?",
+        "contactHint": "We continue on WhatsApp, so we don't need your email.",
         "fields": {
-          "name": "Name *",
-          "email": "Email *",
-          "phone": "Mobile / WhatsApp *",
-          "business": "Business name and city *",
+          "name": "Your name *",
+          "business": "Showroom or brand name *",
           "link": "Website or Instagram link (optional)",
-          "notes": "What would you like to discuss? (optional)",
-          "type": "Meeting type",
-          "when": "Time",
-          "platform": "Platform"
+          "note": "Short note (optional)",
+          "notePlaceholder": "e.g. We have a seasonal sale coming and want to prepare for it",
+          "time": "Best time to chat (optional)",
+          "timePlaceholder": "e.g. after 4 pm, or Sunday morning"
         },
-        "consentBefore": "I have read the",
+        "consentBefore": "By tapping the button you agree to the",
         "consentLink": "privacy policy",
-        "consentAfter": "and agree that my details are used to arrange this meeting and contact me about it. *",
-        "summary": "Your meeting",
-        "noSlotYet": "No time selected yet",
-        "ksa": "(Saudi time)",
-        "confirm": "Confirm meeting",
-        "sending": "Confirming your meeting…",
-        "note": "We never share your details for marketing. Reply to the confirmation email to cancel or move your meeting.",
-        "mailSubject": "Meeting request",
-        "doneTitle": "Your booking is in ✓",
-        "doneText": "We've passed the details to our team. Your confirmation and meeting link will arrive at {email} before the meeting.",
-        "almostTitle": "One last step to confirm",
-        "mailText": "Press “Send booking by email” to send us the details from your mail app, and we'll confirm during working hours.",
-        "mailCta": "Send booking by email",
-        "gcal": "Add to Google Calendar",
-        "ics": "Download calendar file",
-        "again": "Book another meeting",
+        "consentAfter": "and to us using your details to contact you about this request.",
+        "back": "Back",
+        "next": "Next",
+        "restart": "Start over",
+        "finish": "Continue on WhatsApp",
+        "note": "We never share your details with anyone for marketing.",
         "errors": {
           "required": "This field is required.",
-          "email": "Please enter a valid email address.",
-          "phone": "Please enter a valid mobile number, e.g. +966 5X XXX XXXX.",
-          "consent": "Please accept the privacy policy.",
           "length": "This text is too long.",
-          "slot": "Please choose a day and time first.",
-          "noEmail": "The booking email isn't set up yet. Please reach us on WhatsApp or by email."
+          "problems": "Pick at least one problem.",
+          "showroom": "Pick the number of branches and the average piece price."
         },
-        "nextHead": "What happens next?",
+        "planTitle": "How we'd help",
+        "planNote": "A preliminary direction that builds as you answer, not a promise. We confirm it with you once we understand your situation on the call.",
+        "planEmpty": "Pick your first problem from the list and a starting plan for your showroom appears here.",
+        "planDo": "What we'd work on",
+        "planFit": "How we'd fit it to your showroom",
+        "planNext": "Next step",
         "nextSteps": [
           {
-            "title": "Confirmation in working hours",
-            "text": "Your Google Meet or Zoom link arrives by email, with a reminder before the meeting."
+            "title": "A reply on WhatsApp",
+            "text": "We reply during working hours and agree on a time for the call."
           },
           {
-            "title": "A 30-minute call",
-            "text": "We get to know your business and goals and answer your questions honestly."
+            "title": "Free 30-minute call",
+            "text": "We get to know your showroom and goal, and answer your questions honestly."
           },
           {
-            "title": "A tailored proposal within 48 h",
-            "text": "Plan, scope and a clear price, with no commitment."
+            "title": "Written proposal within 48 hours",
+            "text": "A clear plan and scope, no commitment. The ad budget is paid straight to the platforms."
           }
         ]
       },
@@ -1437,14 +1561,14 @@ window.MG_CONTENT = {
         {
           "h": "2. What we collect",
           "p": [
-            "When you book a meeting: name, email, mobile number, business name and city, a link you share (optional), your notes, and the meeting type, time and platform you chose.",
+            "When you request a consultation: your name, showroom or brand name, the problems you pick, number of branches and average piece price, your past experience with ads (optional), a link, note and best time to chat (optional), and the page you came from. When you send the message on WhatsApp, we also receive your number there.",
             "When you browse: technical data our hosting provider logs automatically (IP address, time, page, browser type) to run and protect the website. If you accept the statistics category: usage data that doesn't identify you (pages visited, device and browser type, the source you came from, and how you interact with a page) through Google Analytics and Microsoft Clarity. We currently use no ad tools."
           ]
         },
         {
           "h": "3. Why we use it",
           "p": [
-            "To arrange the meeting, send the Google Meet or Zoom link and reminders, answer your request and prepare a tailored proposal. We don't use your data for anything else without your consent, and we never sell it."
+            "To reply to your request on WhatsApp, arrange the call and prepare a tailored proposal. We don't use your data for anything else without your consent, and we never sell it."
           ]
         },
         {
@@ -1456,7 +1580,7 @@ window.MG_CONTENT = {
         {
           "h": "5. Who we share it with",
           "p": [
-            "Booking-form data is sent over a secure connection (HTTPS) and reaches us by email, and we use Google Meet or Zoom for the meeting, as you choose. These providers may process data outside the Kingdom; we keep this to what is necessary and apply the safeguards the PDPL requires. If you enable the statistics category, usage data is also processed by Google (Google Analytics) and Microsoft (Clarity), possibly outside the Kingdom."
+            "Booking-form data is sent over a secure connection (HTTPS) and kept in our records with Google (Google Sheets); you then continue with us on WhatsApp (Meta) once you tap \"Send\" yourself. These providers may process data outside the Kingdom; we keep this to what is necessary and apply the safeguards the PDPL requires. If you enable the statistics category, usage data is also processed by Google (Google Analytics) and Microsoft (Clarity), possibly outside the Kingdom."
           ]
         },
         {

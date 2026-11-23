@@ -27,7 +27,7 @@ Don't double-click index.html; ES modules and the 3D models need a local server.
 | websites.html | المواقع: كنبة 3D قابلة للتخصيص، مواقع مصغرة، حاسبة النطاق / Websites |
 | consulting.html | الاستشارات: اختبار الجاهزية، تسرب العملاء / Consulting |
 | portfolio.html | الأعمال: 9 مشاريع تفاعلية / Portfolio |
-| booking.html | حجز موعد: Google Meet أو Zoom، السبت متاح والجمعة إجازة / Booking |
+| booking.html | طلب استشارة: فورم 3 خطوات (المشكلة، المعرض، التواصل) ثم واتساب / Consultation wizard → WhatsApp |
 | privacy.html, terms.html, accessibility.html | الخصوصية (PDPL) والشروط وسهولة الوصول / Policies |
 
 ## تعديل المحتوى / Editing content

@@ -71,16 +71,3 @@ export async function crmPost(action, data) {
     return { ok: false, error: 'network' };
   }
 }
-
-/** Busy slots (UTC ISO strings) from the sheet and the team calendar. */
-export async function crmBusySlots() {
-  const url = crmEndpoint();
-  if (!url) return null;
-  try {
-    const res = await withTimeout(fetch(url + '?action=slots'));
-    const out = await res.json();
-    return out && out.ok && Array.isArray(out.busy) ? new Set(out.busy) : null;
-  } catch (_) {
-    return null;
-  }
-}
