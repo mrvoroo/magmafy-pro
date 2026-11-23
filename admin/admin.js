@@ -129,7 +129,7 @@ function clean(v) {
 const LABELS = {
   settings: 'الإعدادات والتواصل', legal: 'بيانات المنشأة', projects: 'مشاريع الأعمال',
   'i18n.ar': 'النصوص · العربية', 'i18n.en': 'النصوص · English',
-  brand: 'اسم العلامة', brandSuffix: 'إضافة للاسم', defaultLang: 'اللغة الافتراضية (ar / en)', email: 'البريد الإلكتروني', bookingEmail: 'بريد استلام الحجوزات', phone: 'الجوال', whatsapp: 'واتساب (بالصيغة الدولية 9665…)', address: 'العنوان',
+  brand: 'اسم العلامة', brandSuffix: 'إضافة للاسم', defaultLang: 'اللغة الافتراضية (ar / en)', email: 'البريد الإلكتروني', bookingEmail: 'بريد استلام الحجوزات', phone: 'الجوال', whatsapp: 'رقم واتساب (استقبال طلبات الفورم + التواصل)', address: 'العنوان',
   analytics: 'أدوات التتبع (تعمل بعد موافقة الزائر)', ga4: 'Google Analytics 4 — Measurement ID (G-XXXXXXXXXX)', clarity: 'Microsoft Clarity — Project ID',
   social: 'روابط التواصل الاجتماعي (https://…)', form: 'نموذج الحجز', accessKey: 'Web3Forms Access Key', endpoint: 'رابط إرسال النموذج (Magmafy OS · Apps Script /exec)', provider: 'المزود',
   name: 'الاسم', company: 'الاسم التجاري', crNumber: 'رقم السجل التجاري', vatNumber: 'الرقم الضريبي (VAT)', street: 'الشارع', zip: 'الرمز البريدي', city: 'المدينة', country: 'الدولة', hosting: 'مزود الاستضافة',
@@ -356,7 +356,8 @@ function socialEditor() {
     cb.addEventListener('change', () => { st.socialVisible[key] = cb.checked; markDirty(); sync(); });
     const card = h('div', { class: 'vcard', 'data-search': (name + ' ' + key).toLowerCase() },
       h('label', { class: 'switch' }, cb, h('span', {}, name)),
-      h('div', { class: 'f' }, h('label', {}, field === 'whatsapp' ? 'رقم واتساب (بالصيغة الدولية)' : 'الرابط (https://…)'), input), note);
+      h('div', { class: 'f' }, h('label', {}, field === 'whatsapp' ? 'رقم واتساب (استقبال طلبات الفورم + التواصل)' : 'الرابط (https://…)'), input),
+      field === 'whatsapp' ? h('p', { class: 'note' }, 'فورم الحجز وكل أزرار التواصل في الموقع تستخدم هذا الرقم. اكتبه بالصيغة الدولية (مثال: ⁦+966590873178⁩). التعديل يظهر في الموقع خلال دقيقة إلى دقيقتين بعد «نشر».') : null, note);
     sync();
     return card;
   };
@@ -459,7 +460,7 @@ function editor() {
     for (const p of path) v = v[p];
     main.replaceChildren(...[h('h2', {}, sectionList().find(([k]) => k === key)[1]),
       key === 'legal' ? h('p', { class: 'note' }, 'بيانات المنشأة: الاسم التجاري، رقم السجل التجاري، الرقم الضريبي (إن وجد)، العنوان الوطني والبريد الإلكتروني. تظهر في صفحة الشروط والأحكام.') : null,
-      key === 'settings' ? h('p', { class: 'note' }, 'نموذج الحجز: الصق رابط Magmafy OS (رابط Google Apps Script الذي ينتهي بـ /exec) في «رابط إرسال النموذج». الحجوزات تُحفظ في الشيت مباشرة. بدون الرابط، يفتح زر الحجز برنامج البريد عند الزائر.') : null,
+      key === 'settings' ? h('p', { class: 'note' }, 'نموذج الحجز: الزائر يكمل الطلب على واتساب على الرقم المضبوط في «رقم واتساب (استقبال طلبات الفورم + التواصل)». وقبل فتح واتساب تُحفظ نسخة من الطلب في Magmafy OS: الصق رابط Google Apps Script الذي ينتهي بـ /exec في «رابط إرسال النموذج». بدون الرابط يعمل الفورم ويفتح واتساب، لكن بدون نسخة احتياطية.') : null,
       ...(Array.isArray(v) ? [arrayEditor(v, path, key)] : Object.entries(v).map(([k, x]) => fieldFor(x, [...path, k], k)))].filter(Boolean));
     filter();
   };
