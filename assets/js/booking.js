@@ -2,7 +2,7 @@
 // Saudi time and Google Meet or Zoom, then leave your details. The request is sent through
 // Web3Forms when an access key is set in the admin, otherwise it opens the visitor's mail app.
 // Either way the visitor gets a Google Calendar link and an .ics file for the slot.
-import { h, t, str, icon, settings, getLang, safeUrl } from './core.js';
+import { h, t, str, icon, settings, getLang, safeUrl, splitWords } from './core.js';
 import { socialLinks } from './layout.js';
 import { track } from './analytics.js';
 import { crmEndpoint, crmPost, crmBusySlots, getUtm, getReferrer, getReadiness } from './crm.js';
@@ -344,7 +344,7 @@ export function bookingPage() {
     h('section', { class: 'hero hero--compact', 'aria-labelledby': 'bk-title' },
       h('div', { class: 'container hero__inner' },
         h('p', { class: 'eyebrow hero__eyebrow' }, b.eyebrow),
-        h('h1', { class: 'hero__title', id: 'bk-title' }, h('span', { class: 'hero__line' }, ...str(b.title).split(/\s+/).map((w) => h('span', { class: 'word' }, h('span', { class: 'word__inner' }, w))))),
+        h('h1', { class: 'hero__title', id: 'bk-title' }, h('span', { class: 'hero__line' }, ...splitWords(b.title))),
         h('p', { class: 'hero__text' }, b.text),
         h('ul', { class: 'hero__chips' }, ...arr(b.chips).map((c) => h('li', {}, h('b', {}, c.value), h('span', {}, c.label)))))),
     h('section', { class: 'section booking', 'data-shape': 'contact' },

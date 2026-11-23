@@ -12,8 +12,8 @@ html[lang='ar'] .hero__title { font-size: clamp(2.5rem, 6.6vw, 5.8rem); line-hei
 html[lang='ar'] .hero--compact .hero__title { font-size: clamp(2.2rem, 5.4vw, 4.4rem); max-width: 20ch; }
 html[lang='ar'] .section-title, html[lang='ar'] .demo__title { line-height: 1.3; }
 html[lang='ar'] .word { padding-bottom: .16em; }
-html[dir='rtl'] .word { margin-right: 0; margin-left: .24em; }
-html[dir='rtl'] .word:last-child { margin-left: 0; }
+/* Words are separated by a real space now; this keeps the old .24em gap in the Arabic display font. */
+html[lang='ar'] .hero__title { word-spacing: -.015em; }
 .num, [dir='ltr'] { unicode-bidi: isolate; }
 
 /* ---------- RTL mirroring ---------- */

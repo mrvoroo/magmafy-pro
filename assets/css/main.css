@@ -261,8 +261,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero__title { margin: 0 0 28px; font: 600 clamp(2.8rem, 8.4vw, 7.2rem)/.98 var(--f-display); letter-spacing: -.035em; max-width: 14ch; }
 .hero--compact .hero__title { font-size: clamp(2.4rem, 6.4vw, 5.2rem); max-width: 18ch; }
 .hero__line { display: block; }
-.word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-right: .22em; }
-.word:last-child { margin-right: 0; }
+.word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; }
 .word__inner { display: inline-block; will-change: transform; }
 .hero__text { max-width: 560px; font-size: clamp(1.05rem, 1.5vw, 1.22rem); color: var(--c-muted); margin: 0 0 40px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }

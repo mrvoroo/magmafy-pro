@@ -1,5 +1,5 @@
 // Page renderers. Each one builds the <main> content for its data-page value.
-import { h, t, str, icon, content, settings, legal, getLang, safeUrl, safeImage, SERVICE_KEYS, SERVICE_PAGES } from './core.js';
+import { h, t, str, icon, content, settings, legal, getLang, safeUrl, safeImage, splitWords, SERVICE_KEYS, SERVICE_PAGES } from './core.js';
 import { JOURNEY_VIEWS, clientCard, exampleLabel } from './journey.js';
 import { stepVisible } from './demos/kit.js';
 import { SHOWCASES } from './showcase.js';
@@ -8,10 +8,6 @@ import { bookingPage } from './booking.js';
 
 const arr = (v) => (Array.isArray(v) ? v : []);
 
-function splitWords(text, cls = '') {
-  return str(text).split(/\s+/).filter(Boolean).map((w) =>
-    h('span', { class: 'word ' + cls }, h('span', { class: 'word__inner' }, w)));
-}
 
 function heading({ eyebrow, title, accent, level = 'h2', id }) {
   return h('header', { class: 'section-head', 'data-reveal': '' },
@@ -33,6 +29,7 @@ function hero() {
       h('p', { class: 'eyebrow hero__eyebrow' }, t('hero.eyebrow')),
       h('h1', { class: 'hero__title', id: 'hero-title' },
         h('span', { class: 'hero__line' }, ...splitWords(t('hero.title1'))),
+        ' ', // the lines are display:block; the space keeps the text readable as one sentence
         h('span', { class: 'hero__line hero__line--accent' }, ...splitWords(t('hero.title2')))),
       h('p', { class: 'hero__text' }, t('hero.text')),
       h('div', { class: 'hero__actions' },

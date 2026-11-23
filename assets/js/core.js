@@ -107,6 +107,20 @@ export function h(tag, attrs = {}, ...children) {
   return el;
 }
 
+/**
+ * A heading line split into animatable words. A real space text node sits between the word
+ * spans (not after the last one), so the text reads "two words" for crawlers, screen readers,
+ * copy/paste and the pre-rendered HTML, not "twowords".
+ */
+export function splitWords(text, cls = '') {
+  const out = [];
+  str(text).split(/\s+/).filter(Boolean).forEach((w, i) => {
+    if (i) out.push(' ');
+    out.push(h('span', { class: ('word ' + cls).trim() }, h('span', { class: 'word__inner' }, w)));
+  });
+  return out;
+}
+
 function append(el, children) {
   for (const c of children.flat(Infinity)) {
     if (c == null || c === false) continue;
