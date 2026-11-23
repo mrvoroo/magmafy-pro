@@ -176,7 +176,7 @@ window.MG_CONTENT = {
       "ar": {
         "title": "دار ليفينج – معرض أثاث ثلاثي الأبعاد",
         "label": "مشروع توضيحي · موقع 3D",
-        "text": "العميل يلفّ الكنبة، يغيّر القماش، ويحجز زيارة المعرض أو يطلب السعر على واتساب بضغطة."
+        "text": "العميل يُدير الكنبة، ويغيّر القماش، ويحجز زيارة المعرض أو يطلب السعر على واتساب بضغطة."
       },
       "en": {
         "title": "Dar Living – 3D furniture showroom",
@@ -289,8 +289,8 @@ window.MG_CONTENT = {
         "title": "تعرّف على",
         "titleAccent": "Magmafy",
         "paragraphs": [
-          "ماجمافاي: وكالة نمو متخصصة في معارض الأثاث والديكور في الخليج. نساعد المعارض يجيبوا مبيعات أكثر عن طريق إعلانات الميديا، تطوير المتاجر، وتوليد صور AI.",
-          "لذلك نبدأ بدراسة السوق، ثم نبني المحتوى والإعلانات والموقع حول رحلة الشراء الحقيقية: صور وريلز بالذكاء الاصطناعي من صور جوالك، حملات تصل لمن يجهّز بيته الآن، ومعارض ثلاثية الأبعاد يلفّ فيها العميل القطعة ويختار لونها.",
+          "ماجمافاي: وكالة نمو متخصصة في معارض الأثاث والديكور في الخليج. نساعد المعارض على الوصول إلى عملاء جاهزين للشراء عبر إعلانات الميديا، وتحويل المحادثات إلى زيارات، وتطوير الصفحات والمتاجر، وتوليد صور بالذكاء الاصطناعي.",
+          "لذلك نبدأ بدراسة السوق، ثم نبني المحتوى والإعلانات والموقع حول رحلة الشراء الحقيقية: صور وريلز بالذكاء الاصطناعي من صور جوالك، حملات تصل لمن يجهّز بيته الآن، ومعارض ثلاثية الأبعاد يُدير فيها العميل القطعة ويختار لونها.",
           "نعمل بأدوات حديثة مدعومة بالذكاء الاصطناعي، فننجز في أسابيع ما يأخذ شهورًا، ومعك مدير حساب واحد من أول اجتماع إلى أول طلب. ونقيس النجاح بالاستفسارات وزيارات المعرض والمبيعات، لا بالإعجابات."
         ],
         "cta": "ناقش مشروعك معنا",
@@ -326,7 +326,7 @@ window.MG_CONTENT = {
         "research": {
           "num": "01",
           "title": "دراسة السوق",
-          "tagline": "نعرف سوقك ومنافسيك قبل ما نصرف ريالًا واحدًا",
+          "tagline": "نعرف سوقك ومنافسيك قبل أن تصرف ريالًا واحدًا",
           "intro": "تقرير واضح: من ينافسك في مدينتك، بكم يبيع، كيف يعلن ويرد، وأين الفرصة التي لم يأخذها أحد. تستلمه خلال 2–5 أيام عمل مع خطة 90 يومًا.",
           "items": [
             "تحليل المنافسين المباشرين في مدينتك: الرياض، جدة، الدمام وغيرها",
@@ -354,7 +354,7 @@ window.MG_CONTENT = {
         "websites": {
           "num": "03",
           "title": "المواقع والمعارض 3D",
-          "tagline": "خلّي عميلك يلفّ القطعة ويختار لونها قبل ما يزور المعرض",
+          "tagline": "اجعل عميلك يُدير القطعة ويختار لونها قبل أن يزور المعرض",
           "intro": "مواقع ومتاجر سريعة بالعربي والإنجليزي، فيها عرض ثلاثي الأبعاد للقطع، تغيير القماش والألوان، وزر حجز زيارة أو طلب سعر عبر واتساب. وتعمل بسلاسة على الجوال.",
           "items": [
             "مواقع تعريفية ومعارض أونلاين بالعربي والإنجليزي",
@@ -368,7 +368,7 @@ window.MG_CONTENT = {
         "consulting": {
           "num": "04",
           "title": "الاستشارات",
-          "tagline": "جلسة واضحة تطلع منها بخطة، مش بكلام عام",
+          "tagline": "جلسة واضحة تخرج منها بخطة، لا بكلام عام",
           "intro": "استشارات تسويق ونمو لمعارض الأثاث والديكور: نراجع وضعك، نحدد الأولويات، ونرسم معك نطاق الموقع أو خطة الإعلانات قبل أي التزام.",
           "items": [
             "استشارة تسويق ونمو لمعرضك أو متجرك",
@@ -475,7 +475,7 @@ window.MG_CONTENT = {
       },
       "portfolio": {
         "eyebrow": "أعمال مختارة",
-        "title": "شغل تقدر تشوفه.",
+        "title": "أعمال تشاهدها بنفسك.",
         "text": "نماذج حية لما نبنيه لعملائنا: معارض 3D، محتوى، إعلانات وتقارير. مرّر لتشاهد المشروع التالي.",
         "all": "كل الأعمال",
         "visit": "شاهد المشروع",
@@ -527,7 +527,7 @@ window.MG_CONTENT = {
         "emailLabel": "البريد الإلكتروني",
         "whatsappLabel": "واتساب",
         "addressLabel": "نخدم",
-        "addressValue": "المملكة العربية السعودية ودول الخليج · عن بُعد ومن الرياض",
+        "addressValue": "المملكة العربية السعودية ودول الخليج · عن بُعد",
         "pending": "سيُضاف قريبًا",
         "social": "تابعنا",
         "soon": "قريبًا"
@@ -946,7 +946,7 @@ window.MG_CONTENT = {
         "title": "Meet",
         "titleAccent": "Magmafy",
         "paragraphs": [
-          "Magmafy is a growth agency specialised in furniture and décor showrooms in the Gulf. We help showrooms get more sales through social media ads, store development and AI-generated images.",
+          "Magmafy is a growth agency specialised in furniture and décor showrooms in the Gulf. We help showrooms reach customers who are ready to buy through social media ads, turn chats into visits, build pages and stores, and generate AI images.",
           "So we start with market research, then build content, ads and your website around the real buying journey: AI photos and reels made from your phone shots, campaigns that reach people furnishing a home right now, and 3D showrooms where customers spin a piece and pick its colour.",
           "We work with modern, AI-assisted tools, so what usually takes months takes weeks, with one account manager from the first meeting to the first order. And we measure success in enquiries, showroom visits and sales, not likes."
         ],
@@ -1132,7 +1132,7 @@ window.MG_CONTENT = {
       },
       "portfolio": {
         "eyebrow": "Selected work",
-        "title": "Work you can see.",
+        "title": "Work you can see for yourself.",
         "text": "Live samples of what we build for clients: 3D showrooms, content, ads and reports. Scroll for the next project.",
         "all": "All work",
         "visit": "View project",
@@ -1184,7 +1184,7 @@ window.MG_CONTENT = {
         "emailLabel": "Email",
         "whatsappLabel": "WhatsApp",
         "addressLabel": "We serve",
-        "addressValue": "Saudi Arabia and the Gulf · remote and from Riyadh",
+        "addressValue": "Saudi Arabia and the Gulf · remote",
         "pending": "coming soon",
         "social": "Follow us",
         "soon": "coming soon"

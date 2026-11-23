@@ -187,7 +187,7 @@ const wrapCover = (fn, url, cls) => browser(url, fn(), cls);
 /* ---------- Projects ---------- */
 const PROJECTS = [
   { brand: 'Dar Living', view: () => wrapCover(SHOWCASES.showroom, 'dar-living.sa', 'pf-browser--cover'), tags: ['3D', 'WebGL', 'WhatsApp', 'AR/EN'],
-    ar: ['معرض أثاث ثلاثي الأبعاد', 'موقع 3D', 'العميل يلفّ الكنبة، يغيّر القماش، ويحجز زيارة المعرض أو يطلب السعر على واتساب بضغطة. وحجوزات الزيارة تصل من مدن المملكة كلها.'],
+    ar: ['معرض أثاث ثلاثي الأبعاد', 'موقع 3D', 'العميل يُدير الكنبة، ويغيّر القماش، ويحجز زيارة المعرض أو يطلب السعر على واتساب بضغطة. وحجوزات الزيارة تصل من مدن المملكة كلها.'],
     en: ['3D furniture showroom', '3D website', 'Customers spin the sofa, switch the fabric and book a visit or ask for a price on WhatsApp in one tap, with bookings from cities across the Kingdom.'] },
   { brand: 'Bayt Alreem', view: storyCampaign, tags: ['Instagram', 'Stories', 'Meta Ads'],
     ar: ['حملة ستوري لموسم الزواج', 'إعلانات', 'ستوريز بصور AI لغرف كاملة، موجّهة للعرسان في الرياض وجدة، ولوحة متابعة تُظهر الاستفسارات وتكلفتها مباشرة.'],

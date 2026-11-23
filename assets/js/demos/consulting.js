@@ -14,7 +14,7 @@ const T = {
     items: [
       { topic: 'research', i: 'research', ar: ['دراسة السوق', '30 دقيقة', ['نفهم نشاطك ومدينتك ومنافسيك', 'نحدد أسئلة الدراسة', 'تستلم عرضًا خلال 48 ساعة']], en: ['Market research', '30 minutes', ['We learn your business, city and competitors', 'We define the research questions', 'You get a proposal within 48 hours']] },
       { topic: 'website', i: 'websites', ar: ['نطاق الموقع', '30 دقيقة', ['نراجع الصفحات والمزايا معك', 'نقرر: 3D، متجر، حجز زيارة', 'تستلم نطاقًا وجدولًا زمنيًا مكتوبًا']], en: ['Website scope', '30 minutes', ['We go through pages and features together', 'We decide: 3D, store, visit booking', 'You get a written scope and timeline']] },
-      { topic: 'general', i: 'consulting', ar: ['استشارة عامة', '30 دقيقة', ['نراجع حساباتك وإعلاناتك الحالية', 'نحدد أكبر 3 فرص للنمو', 'تطلع بخطوات واضحة حتى لو ما اشتغلنا معًا']], en: ['General consultation', '30 minutes', ['We review your accounts and current ads', 'We name your 3 biggest growth chances', 'You leave with clear steps, even if we don’t work together']] }
+      { topic: 'general', i: 'consulting', ar: ['استشارة عامة', '30 دقيقة', ['نراجع حساباتك وإعلاناتك الحالية', 'نحدد أكبر 3 فرص للنمو', 'تخرج بخطوات واضحة حتى لو لم نعمل معًا']], en: ['General consultation', '30 minutes', ['We review your accounts and current ads', 'We name your 3 biggest growth chances', 'You leave with clear steps, even if we don’t work together']] }
     ],
     book: { ar: 'احجز هذا الاجتماع', en: 'Book this meeting' },
     free: { ar: 'مجاني', en: 'Free' }

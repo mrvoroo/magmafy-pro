@@ -20,7 +20,7 @@ const T = {
   spy: {
     eyebrow: { ar: 'العميل المتخفّي', en: 'Mystery shopper' },
     title: { ar: 'سألنا المنافسين: «كم السعر؟»', en: 'We asked competitors: “How much?”' },
-    text: { ar: 'نراسل المنافسين كعميل عادي في وقت الذروة، ونقيس من يرد، متى، وكيف. هنا تشوف المكسب قبل ما تبدأ.', en: 'We message competitors as an ordinary customer at peak time and measure who replies, when and how. You see the win before you start.' },
+    text: { ar: 'نراسل المنافسين كعميل عادي في وقت الذروة، ونقيس من يرد، متى، وكيف. هنا ترى المكسب قبل أن تبدأ.', en: 'We message competitors as an ordinary customer at peak time and measure who replies, when and how. You see the win before you start.' },
     ask: { ar: 'السلام عليكم، كم سعر الكنبة اللي بالصورة؟ وفيه تقسيط؟', en: 'Hi, how much is the sofa in the photo? Do you offer instalments?' },
     sent: { ar: 'أُرسلت الساعة 9:40 م · الخميس', en: 'Sent 9:40 PM · Thursday' },
     waiting: { ar: 'بانتظار الرد…', en: 'Waiting for a reply…' },
@@ -65,7 +65,7 @@ const T = {
   },
   road: {
     eyebrow: { ar: 'ماذا تستلم', en: 'What you receive' },
-    title: { ar: '2–5 أيام عمل، وتقرير تقدر تشتغل عليه من بكرة.', en: '2–5 working days, and a report you can act on tomorrow.' },
+    title: { ar: '2–5 أيام عمل، وتقرير تبدأ العمل به غدًا.', en: '2–5 working days, and a report you can act on tomorrow.' },
     result: { ar: 'تستلم', en: 'You receive' },
     steps: {
       ar: [['جلسة اكتشاف', 'ساعة على Google Meet أو Zoom نفهم فيها نشاطك وأهدافك ومنافسيك.', 'ملخص الأهداف'], ['جمع البيانات', 'أسعار ومحتوى وإعلانات المنافسين، واختبار العميل المتخفّي.', 'قائمة المنافسين'], ['التحليل', 'شخصيات العملاء، الفجوات، والمواسم المناسبة لنشاطك.', 'خريطة الفرص'], ['العرض والخطة', 'اجتماع نعرض فيه التقرير وخطة 90 يومًا بالأولويات.', 'التقرير + خطة 90 يومًا']],
