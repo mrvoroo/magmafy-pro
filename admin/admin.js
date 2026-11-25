@@ -110,7 +110,7 @@ function validate(data) {
       if (path.startsWith('i18n.')) return;
       if (/^(url|endpoint|linkedin|instagram|facebook|tiktok|x|snapchat|pinterest)$/.test(key) && v && !/^https:\/\/[^\s"'<>]+$/.test(v) && !(key === 'url' && /^[\w\-./]+$/.test(v))) problems.push(path + ': يجب أن يبدأ بـ https://');
       if (/^(image|before|after|thumbBefore|thumbAfter)$/.test(key) && v && !/^assets\/[\w\-./]+\.(png|jpe?g|webp|avif|svg)$/i.test(v)) problems.push(path + ': مسار الصورة يجب أن يكون داخل assets/');
-      if (key === 'whatsapp' && v && !/^\+?[\d\s-]{8,18}$/.test(v)) problems.push(path + ': رقم واتساب غير صالح (مثال: +966590873178)');
+      if (key === 'whatsapp' && v && !/^\+?[\d\s-]{8,18}$/.test(v)) problems.push(path + ': رقم واتساب غير صالح (مثال: +966509209446)');
       if (key === 'email' && v && !/^[^\s@<>]+@[^\s@<>]+\.[a-z]{2,}$/i.test(v)) problems.push(path + ': بريد إلكتروني غير صالح');
     } else if (Array.isArray(v)) v.forEach((x, i) => walk(x, path + '[' + i + ']'));
     else if (v && typeof v === 'object') Object.entries(v).forEach(([k, x]) => walk(x, path ? path + '.' + k : k));
@@ -357,13 +357,13 @@ function socialEditor() {
     const card = h('div', { class: 'vcard', 'data-search': (name + ' ' + key).toLowerCase() },
       h('label', { class: 'switch' }, cb, h('span', {}, name)),
       h('div', { class: 'f' }, h('label', {}, field === 'whatsapp' ? 'رقم واتساب (استقبال طلبات الفورم + التواصل)' : 'الرابط (https://…)'), input),
-      field === 'whatsapp' ? h('p', { class: 'note' }, 'فورم الحجز وكل أزرار التواصل في الموقع تستخدم هذا الرقم. اكتبه بالصيغة الدولية (مثال: ⁦+966590873178⁩). التعديل يظهر في الموقع خلال دقيقة إلى دقيقتين بعد «نشر».') : null, note);
+      field === 'whatsapp' ? h('p', { class: 'note' }, 'فورم الحجز وكل أزرار التواصل في الموقع تستخدم هذا الرقم. اكتبه بالصيغة الدولية (مثال: ⁦+966509209446⁩). التعديل يظهر في الموقع خلال دقيقة إلى دقيقتين بعد «نشر».') : null, note);
     sync();
     return card;
   };
   const waHint = (v) => { const d = v.replace(/[^\d]/g, ''); return d ? 'ظاهرة، وتفتح: wa.me/' + d : 'بدون رقم.'; };
   root.append(
-    row('whatsapp', 'WhatsApp', st, 'whatsapp', { placeholder: '+966590873178', hint: waHint }),
+    row('whatsapp', 'WhatsApp', st, 'whatsapp', { placeholder: '+966509209446', hint: waHint }),
     ...[['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['snapchat', 'Snapchat'], ['x', 'X (Twitter)'], ['linkedin', 'LinkedIn']].map(([k, n]) => row(k, n, st.social, k, { placeholder: 'https://…' })));
   return root;
 }

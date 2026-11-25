@@ -4,7 +4,7 @@
 /** Longest wa.me URL we hand to the browser. Arabic text grows about 6x when encoded. */
 export const MAX_URL = 1800;
 
-/** Digits only: "+966 59-087 3178" -> "966590873178". */
+/** Digits only: "+966 50 920 9446" -> "966509209446". */
 export const waDigits = (v) => String(v || '').replace(/[^\d]/g, '');
 
 /** wa.me link for a number and message (empty when the number is missing or too short). */

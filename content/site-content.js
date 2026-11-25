@@ -118,8 +118,9 @@ window.MG_CONTENT = {
     "defaultLang": "ar",
     "email": "hello@magmafyogp.com",
     "bookingEmail": "hello@magmafyogp.com",
-    "phone": "+966590873178",
-    "whatsapp": "+966590873178",
+    "phone": "+966509209446",
+    "whatsapp": "+966509209446",
+    "whatsappLink": "https://wa.me/message/IYQ7QHUOICSKO1",
     "address": "Online",
     "social": {
       "instagram": "https://www.instagram.com/ahmed__ash",

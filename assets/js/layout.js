@@ -9,7 +9,7 @@ const SOCIAL = [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['snapchat', '
 export function socialLinks(cls = 'footer__social') {
   const links = { ...(settings.social || {}) };
   const wa = String(settings.whatsapp || '').replace(/[^\d]/g, '');
-  links.whatsapp = wa ? 'https://wa.me/' + wa : '';
+  links.whatsapp = /^https:\/\/wa\.me\/message\/[A-Z0-9]+$/.test(String(settings.whatsappLink || '')) ? settings.whatsappLink : wa ? 'https://wa.me/' + wa : '';
   const vis = settings.socialVisible || {};
   const items = SOCIAL.map(([k, name]) => ({ k, name, url: vis[k] === false ? null : safeUrl(links[k]) }))
     .filter((x) => x.url && x.url.startsWith('https://'));
